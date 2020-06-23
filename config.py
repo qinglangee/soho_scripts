@@ -1,0 +1,1 @@
+templateDir = r'd:/workspaces/github/qinglangee/soho_scripts/templates/'
