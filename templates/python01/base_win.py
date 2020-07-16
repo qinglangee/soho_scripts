@@ -1,4 +1,6 @@
 from tkinter import *
+from tkinter import ttk
+
 
 class BaseWin():
     # 初始化窗口， 标题 宽度 高度
@@ -6,6 +8,11 @@ class BaseWin():
         super().__init__()
         self.win = Tk()
         self.init_window(title, w, h)
+
+        self.main= ttk.Frame(self.win, padding="3 3 12 12")
+        self.main.grid(column=0, row=0, sticky=(N, W, E, S))
+        self.win.columnconfigure(0, weight=1)
+        self.win.rowconfigure(0, weight=1)	
 
     def init_window(self, title, w, h):
         self.win.title(title)
