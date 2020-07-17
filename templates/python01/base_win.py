@@ -29,5 +29,22 @@ class BaseWin():
 
     def start(self):
         self.win.mainloop()
-    def destory(self):
+    def destroy(self):
         self.win.destroy()
+
+    # 组件添加到父组件的 grid 中
+    # parent 父组件
+    # ele 子组件
+    # nextRow 是否要另起一行
+    # rspan   rowspan
+    # cspan   columnspan
+    def grid(self, parent, ele, nextRow = False, rspan=1, cspan=1):
+        if(not hasattr(parent, "gridRow")):
+            parent.gridRow = 0
+        if(not hasattr(parent, "gridCol")):
+            parent.gridCol = 0
+        if(nextRow):
+            parent.gridRow += 1
+            parent.gridCol = 0
+        ele.grid(row = parent.gridRow, column=parent.gridCol, rowspan=rspan, columnspan=cspan)
+        parent.gridCol += 1
