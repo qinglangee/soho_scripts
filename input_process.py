@@ -1,7 +1,8 @@
 import sys
 
-import init
-import str_replace
+from functions import init
+from functions import str_replace
+from functions.create_class import factory
 
 
 def printHelp():
@@ -9,6 +10,7 @@ def printHelp():
     hint += "subcmd 子命令有下列选项：\n"
     hint += "init 复制模板: 参数 1 类型 2 序号      init . c++ 02\n"
     hint += "rep 内容替换: 参数 1 替换的目录或文件 2 替换内容文件   rep ./src rep.txt\n"
+    hint += "create 内容替换: 参数 1 要扫描的目录 \n"
     print(hint)
 
 def inputProcess():
@@ -26,6 +28,8 @@ def inputProcess():
         init.checkInput(args[2:])  ## 复制模板文件
     elif subcmd == "rep":
         str_replace.checkInput(args[2:])  ## 文件内容替换
+    elif subcmd == "create":
+        factory.checkInput(args[2:])  ## 文件内容替换
     else:
         printHelp()
 

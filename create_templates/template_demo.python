@@ -1,0 +1,4 @@
+name person
+s firstname 名
+s lastname 姓
+Gender gender 性别

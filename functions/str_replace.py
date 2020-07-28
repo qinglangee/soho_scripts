@@ -5,7 +5,7 @@ import file_util as fu
 
 G_replaceTxt = ""
 # 
-# 替换文件内容
+# 替换程序处理入口
 def replace(srcFiles, replaceTxt):
     # 设置替换文件名，遇到不替换
     global G_replaceTxt

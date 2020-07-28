@@ -11,7 +11,7 @@ def printHelp():
 
 # 把源目录的文件全部复制到目标目录
 def copySubDir(dest, srcType, num='01'):
-    rootPath = c.templateDir + srcType + num
+    rootPath = os.path.join(c.templateDir, srcType + num)
     files = os.listdir(rootPath)
     for filename in files:
         #获取目录或者文件的路径
