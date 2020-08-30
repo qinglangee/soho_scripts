@@ -16,13 +16,13 @@ class AppWin(BaseWin):
         self.initFrame()
     
     def initFrame(self):
-        self.leftFrame = ttk.Frame(self.main)
-        self.leftFrame.pack()
 
-        btn = ttk.Button(self.leftFrame, text="click", command=self.aap)
-        btn.pack()
-    def aap(self):
-        showErr("abcd")
+        self.top = self.layoutGrid(rWeight=3)
+        self.bottom = self.layoutGrid(rWeight=7)
+
+        startB = self.gridAdd(self.top,'button',{'text':'开始'})
+
+        
 
 
 if __name__ == "__main__":

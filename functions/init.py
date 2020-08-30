@@ -17,6 +17,11 @@ def copySubDir(dest, srcType, num='01'):
         #获取目录或者文件的路径
         srcPath = os.path.join(rootPath,filename)
         destPath = os.path.join(dest, filename)
+        # 只做初始化，已有就退出程序
+        if os.path.exists(destPath):
+            print("path:", destPath)
+            print('目标路径已存在，停止复制！')
+            break
         #判断该路径为文件还是路径
         if os.path.isdir(srcPath):
             print("cp  dir:", filename)
