@@ -25,7 +25,7 @@ def inputProcess():
     print("subcmd ", subcmd, args[2:])
 
     if subcmd == "init":
-        init.checkInput(args[2:])  ## 复制模板文件
+        init.check_input(args[2:])  ## 复制模板文件
     elif subcmd == "rep":
         str_replace.checkInput(args[2:])  ## 文件内容替换
     elif subcmd == "create":
