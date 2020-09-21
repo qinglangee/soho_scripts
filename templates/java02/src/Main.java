@@ -4,6 +4,7 @@ public class Main {
 
     public static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
-        new Gui();
+        Gui gui = new Gui();
+        gui.setVisible(true);
     }
 }
