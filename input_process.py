@@ -8,9 +8,9 @@ from functions.create_class import factory
 def printHelp():
     hint = "请输入正确的参数。soho subcmd par1 par2 ...\n"
     hint += "subcmd 子命令有下列选项：\n"
-    hint += "init 复制模板: 参数 1 类型 2 序号      init . c++ 02\n"
+    hint += "init 复制模板: 参数 1 目录 2 类型 3 序号      init . c++ 02\n"
     hint += "rep 内容替换: 参数 1 替换的目录或文件 2 替换内容文件   rep ./src rep.txt\n"
-    hint += "create 内容替换: 参数 1 要扫描的目录 \n"
+    hint += "create 根据模板创建文件: 参数 1 要扫描的目录 \n"
     print(hint)
 
 def inputProcess():
