@@ -1,0 +1,4 @@
+name user 用户信息类
+i id 用户ID
+s username 用户名
+s password 用户密码

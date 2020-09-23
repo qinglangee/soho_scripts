@@ -12,6 +12,7 @@ def distribute(srcDir):
         srcPath = os.path.join(srcDir, filename)
 
         if(filename.startswith('zh_bean_template')):
+            find_one = True
 
             print("template file:", filename)
             if(filename.endswith(".java.tmp")):

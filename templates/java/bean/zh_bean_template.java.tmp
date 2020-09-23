@@ -1,0 +1,16 @@
+name person 个人基础类
+s firstname 名
+s lastname 姓
+Gender gender 性别
+
+
+name student 学生信息类
+extends person
+s UIN UIN编号
+Rank rank 等级
+
+name Cssa320Student java课程相关的信息类
+extends student
+i javaKnowledge java水平
+i section 时段
+s sectionTime 时段
