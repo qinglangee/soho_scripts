@@ -5,14 +5,14 @@ import sys
 import config as c
 def print_help():
     hint = "至少需要两个参数。 目标路径 和 源码类型\n"
-    hint += "init . c++\n"
-    hint += "init . c++ 02\n"
-    hint += "init . c++ 99  (复制工具文件)\n"
+    hint += "init . cpp\n"
+    hint += "init . cpp 02\n"
+    hint += "init . cpp 99  (复制工具文件)\n"
     print(hint)
 
 # 把源目录的文件全部复制到目标目录
 def copy_sub_dir(dest, src_type, num='01'):
-    root_path = os.path.join(c.templateDir, src_type + num)
+    root_path = os.path.join(c.templateDir, src_type, "templates", num)
     files = os.listdir(root_path)
     for filename in files:
         #获取目录或者文件的路径

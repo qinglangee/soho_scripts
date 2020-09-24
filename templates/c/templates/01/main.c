@@ -4,7 +4,8 @@
 #include <stdlib.h>
 
 
-void main(){
+int main(){
     
     printf("*Gave over.*");
+    return 0;
 }
