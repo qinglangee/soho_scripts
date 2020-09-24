@@ -12,6 +12,8 @@ def replace(srcFiles, replaceTxt):
     G_replaceTxt = os.path.basename(replaceTxt).strip()
     # print("repTxt ", replaceTxt, "- -", G_replaceTxt,"-")
     repList = []
+
+    # 切分函数。 替换文件中的内容就是以空格分隔的两个字符串一行
     def splitLine(line):
         parts= re.split("\s+", line)
         # print("---", parts)
@@ -20,7 +22,7 @@ def replace(srcFiles, replaceTxt):
         else:
             return None
 
-    repList = fu.readAndProcess(replaceTxt, splitLine)
+    repList = fu.read_and_process(replaceTxt, splitLine)
     print(repList)
 
     if os.path.isfile(srcFiles):
@@ -42,12 +44,12 @@ def replaceFile(filename, repList):
     # print("-",os.path.basename(filename),"-,-",G_replaceTxt,"-")
     if os.path.basename(filename) == G_replaceTxt:
         return
-    content = fu.readFile(filename)
+    content = fu.read_file(filename)
     newFilename = filename
     for rep in repList:
         content = content.replace(rep[0], rep[1])
         # newFilename = newFilename.replace(rep[0], rep[1])
-    fu.writeFile(newFilename, content)
+    fu.write_file(newFilename, content)
     # if newFilename != filename:
     #     os.remove(filename)
 

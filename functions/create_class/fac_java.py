@@ -21,7 +21,7 @@ class FacJava(FacBase):
 
     # 读取源文件模板
     def readTemplateLines(self):
-        lines = fu.readLines(os.path.join(c.createTemplateDir, 'java01.java'))
+        lines = fu.read_lines(os.path.join(c.createTemplateDir, 'java01.java'))
         return lines
 
     # 转换注释格式
@@ -43,4 +43,4 @@ class FacJava(FacBase):
     def writeSrcFile(self, content, beanDefine):
         outputFile = os.path.join(self.fileDir, beanDefine.classname  + '.java')
         print('outputfile:', outputFile)
-        fu.writeFile(outputFile, content)
+        fu.write_file(outputFile, content)

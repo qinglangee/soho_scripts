@@ -38,7 +38,7 @@ def copy_sub_dir(dest, src_type, num='01'):
 
 # 复制相关工具类
 def copy_util_files(dest, src_type):
-    root_path = os.path.join(c.templateDir, src_type)
+    root_path = os.path.join(c.templateDir, src_type, "util")
     files = os.listdir(root_path)
     dir_name_src = os.path.join(dest, "src")
     for filename in files:

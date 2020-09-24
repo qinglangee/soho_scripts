@@ -5,7 +5,7 @@
 
 using namespace std;
 
-// ÅĞ¶Ï×Ö·û´®ÊÇ²»ÊÇÕûÊı
+// åˆ¤æ–­å­—ç¬¦ä¸²æ˜¯ä¸æ˜¯æ•´æ•°
 bool isNumber(string str){
     for (int i = 0; i < str.size(); i++){
         int tmp = (int)str[i];
@@ -18,7 +18,7 @@ bool isNumber(string str){
     return true;
 }
 
-// ÅĞ¶Ï×Ö·û´®ÊÇ²»ÊÇ¸¡µãÊı
+// åˆ¤æ–­å­—ç¬¦ä¸²æ˜¯ä¸æ˜¯æµ®ç‚¹æ•°
 bool isFloat(string str){
     for (int i = 0; i < str.size(); i++){
         int tmp = (int)str[i];
@@ -31,7 +31,7 @@ bool isFloat(string str){
     return true;
 }
 
-// ×Ö·û´®ÇĞ·Öº¯Êı
+// å­—ç¬¦ä¸²åˆ‡åˆ†å‡½æ•°
 vector<string> split(const string& s, char delimiter){
     vector<std::string> tokens;
     string token;
@@ -44,7 +44,7 @@ vector<string> split(const string& s, char delimiter){
 }
 
 
-// ¶ÁÈ¡ÎÄ¼şÄÚÈİµ½ÁĞ±íÖĞ
+// è¯»å–æ–‡ä»¶å†…å®¹åˆ°åˆ—è¡¨ä¸­
 list<string> FileUtil::readFile(string filename){
     list<string> lines;
     std::ifstream fin(filename, std::ios::in);
@@ -56,14 +56,14 @@ list<string> FileUtil::readFile(string filename){
     return lines;
 }
 
-// ×Ö·û´®Ğ´Èëµ½ÎÄ¼şÖĞ
+// å­—ç¬¦ä¸²å†™å…¥åˆ°æ–‡ä»¶ä¸­
 void FileUtil::writeFile(string filename, string content){
 
     ofstream   ofresult(filename, ios::ate); 
     ofresult<<content;
     ofresult.close();
 }
-// ÁĞ±íÄÚÈİĞ´Èëµ½ÎÄ¼şÖĞ
+// åˆ—è¡¨å†…å®¹å†™å…¥åˆ°æ–‡ä»¶ä¸­
 void FileUtil::writeList(string filename, list<string> lines){
 
     ofstream   ofresult(filename, ios::ate); 

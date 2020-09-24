@@ -21,7 +21,7 @@ class FacCpp(FacBase):
 
     # 读取源文件模板
     def readTemplateLines(self):
-        lines = fu.readLines(os.path.join(c.createTemplateDir, 'cpp01.cpp'))
+        lines = fu.read_lines(os.path.join(c.createTemplateDir, 'cpp01.cpp'))
         return lines
 
     # 转换注释格式
@@ -31,4 +31,4 @@ class FacCpp(FacBase):
 
     # 生成的内容写入文件
     def writeSrcFile(self, content, beanDefine):
-        fu.writeFile(beanDefine.filename + ".cpp", content)
+        fu.write_file(beanDefine.filename + ".cpp", content)

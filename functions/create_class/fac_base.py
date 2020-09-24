@@ -19,7 +19,7 @@ class FacBase():
     # 读取属性内容文件
     def readContent(self, contentFile):
         res = []
-        lines = fu.readLines(contentFile)
+        lines = fu.read_lines(contentFile)
         bean = None
         for line in lines :
             if(len(line.strip()) == 0):
