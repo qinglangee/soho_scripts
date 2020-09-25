@@ -46,7 +46,7 @@ def copy_util_files(dest, src_type):
         dest_path = os.path.join(dest, filename)
         if(os.path.exists(dir_name_src)):
             dest_path = os.path.join(dir_name_src, filename)
-        print("cp file:" , filename)
+        print("cp util file:" , filename)
         shutil.copyfile(src_path, dest_path)
 
 # 复制 git 的配置文件
@@ -56,7 +56,7 @@ def copy_gitignore(dest):
     for filename in files:
         src_path = os.path.join(root_path,filename)
         dest_path = os.path.join(dest, filename)
-        print("cp file:" , filename)
+        print("cp git file:" , filename)
         shutil.copyfile(src_path, dest_path)
 
 # 对输入参数进行基本的检查
