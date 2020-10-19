@@ -31,4 +31,7 @@ def check_input(args):
         print("指定的文件或目录不存在。  请检查")
         return
     dest_dir = os.path.join(args[0], "zh_tmp", args[2])
-    shutil.copytree(src_dir, dest_dir)
+    if(os.path.isfile(src_dir)):
+        shutil.copyfile(src_dir, dest_dir)
+    else:
+        shutil.copytree(src_dir, dest_dir)
