@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body{height:100%;background-color: #ccc;margin:0;padding:0;}
+        #div-top{width:100%;height:8%;}
+        #frame-right{width:100%;height:100%}
+    </style>
+</head>
+<body>
+    <div id="div-top">
+        copy this page to bootstrap example folder. <br>
+        <!-- 
+            # 生成脚本 ， 删除 assets   example_index   
+            for i in `ls` ;do echo "<a href=\"#\" onclick=\"setFrame('${i}index.html')\">$i</a>";  done
+        -->
+        <a href="#" onclick="setFrame('album/index.html')">album/</a>
+        <a href="#" onclick="setFrame('blog/index.html')">blog/</a>
+        <a href="#" onclick="setFrame('carousel/index.html')">carousel/</a>
+        <a href="#" onclick="setFrame('checkout/index.html')">checkout/</a>
+        <a href="#" onclick="setFrame('cover/index.html')">cover/</a>
+        <a href="#" onclick="setFrame('dashboard/index.html')">dashboard/</a>
+        <a href="#" onclick="setFrame('floating-labels/index.html')">floating-labels/</a>
+        <a href="#" onclick="setFrame('grid/index.html')">grid/</a>
+        <a href="#" onclick="setFrame('jumbotron/index.html')">jumbotron/</a>
+        <a href="#" onclick="setFrame('navbar-bottom/index.html')">navbar-bottom/</a>
+        <a href="#" onclick="setFrame('navbar-fixed/index.html')">navbar-fixed/</a>
+        <a href="#" onclick="setFrame('navbars/index.html')">navbars/</a>
+        <a href="#" onclick="setFrame('navbar-static/index.html')">navbar-static/</a>
+        <a href="#" onclick="setFrame('offcanvas/index.html')">offcanvas/</a>
+        <a href="#" onclick="setFrame('pricing/index.html')">pricing/</a>
+        <a href="#" onclick="setFrame('product/index.html')">product/</a>
+        <a href="#" onclick="setFrame('sign-in/index.html')">sign-in/</a>
+        <a href="#" onclick="setFrame('starter-template/index.html')">starter-template/</a>
+        <a href="#" onclick="setFrame('sticky-footer/index.html')">sticky-footer/</a>
+        <a href="#" onclick="setFrame('sticky-footer-navbar/index.html')">sticky-footer-navbar/</a>
+        
+    </div>
+
+    <iframe id="frame-right" src="album/index.html"></iframe>
+</body>
+<script>
+    function setFrame(src){
+        var frame = document.getElementById("frame-right");
+        frame.setAttribute("src", src);
+    }
+</script>
+</html>

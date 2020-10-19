@@ -39,12 +39,13 @@ public class BasePanel extends JPanel {
         // 设置布局方式, JPanel 的默认布局方式是 FlowLayout
         setLayout(new BorderLayout(5,5));
         
-        if(useTop){
-            add(top, BorderLayout.NORTH);
-        }
 
         init(paras);
 
+        if(useTop){
+            add(top, BorderLayout.NORTH);
+        }
+        
         center.setLayout(new BorderLayout(5,5));
         if(useScroll){
             JScrollPane sp = new JScrollPane(center);
