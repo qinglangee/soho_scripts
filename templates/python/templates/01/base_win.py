@@ -14,16 +14,16 @@ class BaseWin():
         self.main= ttk.Frame(self.win, padding="5 5 5 5") # padding 顺序 左上右下
         self.main.grid(column=0, row=0, sticky=(N, W, E, S))
         self.win.columnconfigure(0, weight=1)
-        self.win.rowconfigure(0, weight=1)	
+        self.win.rowconfigure(0, weight=1)  
 
     def init_window(self, title, w, h):
         self.win.title(title)
         # 获取屏幕分辨率
-        screenWidth = self.win.winfo_screenwidth()
-        screenHeight = self.win.winfo_screenheight()
+        screen_width = self.win.winfo_screenwidth()
+        screen_height = self.win.winfo_screenheight()
         
-        x = int((screenWidth - w) / 2)
-        y = int((screenHeight - h) / 2)
+        x = int((screen_width - w) / 2)
+        y = int((screen_height - h) / 2)
         # 设置窗口初始位置在屏幕居中
         self.win.geometry("%sx%s+%s+%s" % (w, h, x, y))
 
@@ -37,15 +37,15 @@ class BaseWin():
     # 组件添加到父组件的 grid 中
     # parent 父组件
     # ele 子组件
-    # nextRow 是否要另起一行
+    # next_row 是否要另起一行
     # rspan   rowspan
     # cspan   columnspan
-    def grid(self, parent, ele, nextRow = False, **others):
+    def grid(self, parent, ele, next_row = False, **others):
         if(not hasattr(parent, "gridRow")):
             parent.gridRow = 0
             parent.gridCol = 0
         else:
-            if(nextRow):
+            if(next_row):
                 parent.gridRow += 1
                 parent.gridCol = 0
             else:
@@ -54,43 +54,49 @@ class BaseWin():
         ele.grid(row = parent.gridRow, column=parent.gridCol, **others)
 
     # 新增一个组件，并用gird布局放置
-    def gridAdd(self, parent, eleType, eleParas={}, gridParas={}, rWeight=0, cWeight=0):
+    # parent 父组件
+    # ele_type 要创建组件的类型
+    # ele_paras  传递给组件的参数
+    # grid_paras 传递给 self.grid() 方法的参数
+    # r_weight  所占行的权重
+    # c_weight  所占列的权重
+    def grid_add(self, parent, ele_type, ele_paras={}, grid_paras={}, r_weight=0, c_weight=0):
         ele = None
-        if eleType == 'button':
-            ele = Button(parent, **eleParas)
-        elif eleType == 'k.button':
-            ele = ttk.Button(parent, **eleParas)
-        elif eleType == 'label':
-            ele = Label(parent, **eleParas)
-        elif eleType == 'k.label':
-            ele = ttk.Label(parent, **eleParas)
-        elif eleType == 'entry':
-            ele = Entry(parent, **eleParas)
-        elif eleType == 'k.entry':
-            ele = ttk.Entry(parent, **eleParas)
-        elif eleType == 'text':
-            ele = Text(parent, **eleParas)
-        elif eleType == 'k.text':
-            ele = ttk.Text(parent, **eleParas)
-        elif eleType == 'checkbutton':
-            ele = Checkbutton(parent, **eleParas)
-        elif eleType == 'k.checkbutton':
-            ele = ttk.Checkbutton(parent, **eleParas)
-        elif eleType == 'canvas':
-            ele = Canvas(parent, **eleParas)
+        if ele_type == 'button':
+            ele = Button(parent, **ele_paras)
+        elif ele_type == 'k.button':
+            ele = ttk.Button(parent, **ele_paras)
+        elif ele_type == 'label':
+            ele = Label(parent, **ele_paras)
+        elif ele_type == 'k.label':
+            ele = ttk.Label(parent, **ele_paras)
+        elif ele_type == 'entry':
+            ele = Entry(parent, **ele_paras)
+        elif ele_type == 'k.entry':
+            ele = ttk.Entry(parent, **ele_paras)
+        elif ele_type == 'text':
+            ele = Text(parent, **ele_paras)
+        elif ele_type == 'k.text':
+            ele = ttk.Text(parent, **ele_paras)
+        elif ele_type == 'checkbutton':
+            ele = Checkbutton(parent, **ele_paras)
+        elif ele_type == 'k.checkbutton':
+            ele = ttk.Checkbutton(parent, **ele_paras)
+        elif ele_type == 'canvas':
+            ele = Canvas(parent, **ele_paras)
         else:
-            raise Exception("Error Type:" + str(eleType))
+            raise Exception("Error Type:" + str(ele_type))
 
-        self.grid(parent, ele, **gridParas)
-        if(rWeight != 0):
-            parent.rowconfigure(parent.gridRow, weight=rWeight)
-        if cWeight != 0:
-            parent.columnconfigure(parent.gridCol, weight=cWeight)
+        self.grid(parent, ele, **grid_paras)
+        if(r_weight != 0):
+            parent.rowconfigure(parent.gridRow, weight=r_weight)
+        if c_weight != 0:
+            parent.columnconfigure(parent.gridCol, weight=c_weight)
 
 
         return ele
     # 在 main 中grid添加布局用的frame
-    def layoutGrid(self, parent=None, rWeight=1, cWeight=1, nextRow=True, padding="3 3 3 3", others={}):
+    def layout_grid(self, parent=None, r_weight=1, c_weight=1, next_row=True, padding="3 3 3 3", others={}):
         p = parent if parent else self.main
 
         # gui_style = ttk.Style()
@@ -100,8 +106,8 @@ class BaseWin():
         ele = ttk.Frame(p, padding=padding, **others)
 
         others = {'sticky':(N, W, E, S)}
-        self.grid(p, ele, nextRow=nextRow, **others)
-        self.main.rowconfigure(p.gridRow, weight=rWeight)	
-        self.main.columnconfigure(p.gridCol, weight=cWeight)
+        self.grid(p, ele, next_row=next_row, **others)
+        self.main.rowconfigure(p.gridRow, weight=r_weight)  
+        self.main.columnconfigure(p.gridCol, weight=c_weight)
 
         return ele

@@ -5,7 +5,7 @@ import tkinter
 # import PIL
 
 from base_win import BaseWin
-from gui_util import *
+from gui_util import showErr, showInfo
 import config as c
 import file_util as fu
 
@@ -17,10 +17,10 @@ class AppWin(BaseWin):
     
     def initFrame(self):
 
-        self.top = self.layoutGrid(rWeight=3)
-        self.bottom = self.layoutGrid(rWeight=7)
+        self.top = self.layout_grid(r_weight=3)
+        self.bottom = self.layout_grid(r_weight=7)
 
-        startB = self.gridAdd(self.top,'button',{'text':'开始'})
+        startB = self.grid_add(self.top,'button',{'text':'开始'})
 
         
 

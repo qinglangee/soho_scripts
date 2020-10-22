@@ -19,15 +19,12 @@ public class BaseFrame extends JFrame {
     }
 
     
-    public BaseFrame(){
-        
-    }
     // 设置窗口的标题和大小
     public void init(String title, int width, int height){
         this.setTitle(title);
         setSize(width, height);
         
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);//窗体居中显示
     }
 }
