@@ -14,7 +14,7 @@ class BaseWin():
         self.main= ttk.Frame(self.win, padding="5 5 5 5") # padding 顺序 左上右下
         self.main.grid(column=0, row=0, sticky=(N, W, E, S))
         self.win.columnconfigure(0, weight=1)
-        self.win.rowconfigure(0, weight=1)  
+        self.win.rowconfigure(0, weight=1)	
 
     def init_window(self, title, w, h):
         self.win.title(title)
@@ -38,8 +38,8 @@ class BaseWin():
     # parent 父组件
     # ele 子组件
     # next_row 是否要另起一行
-    # rspan   rowspan
-    # cspan   columnspan
+    # rowspan   rowspan
+    # columnspan   columnspan
     def grid(self, parent, ele, next_row = False, **others):
         if(not hasattr(parent, "gridRow")):
             parent.gridRow = 0
@@ -82,6 +82,14 @@ class BaseWin():
             ele = Checkbutton(parent, **ele_paras)
         elif ele_type == 'k.checkbutton':
             ele = ttk.Checkbutton(parent, **ele_paras)
+        elif ele_type == 'combobox':
+            ele = ttk.Combobox(parent, **ele_paras)
+        elif ele_type == 'k.combobox':
+            ele = ttk.Combobox(parent, **ele_paras)
+        elif ele_type == 'frame':
+            ele = Frame(parent, **ele_paras)
+        elif ele_type == 'k.frame':
+            ele = ttk.Frame(parent, **ele_paras)
         elif ele_type == 'canvas':
             ele = Canvas(parent, **ele_paras)
         else:
@@ -107,7 +115,7 @@ class BaseWin():
 
         others = {'sticky':(N, W, E, S)}
         self.grid(p, ele, next_row=next_row, **others)
-        self.main.rowconfigure(p.gridRow, weight=r_weight)  
-        self.main.columnconfigure(p.gridCol, weight=c_weight)
+        p.rowconfigure(p.gridRow, weight=r_weight)	
+        p.columnconfigure(p.gridCol, weight=c_weight)
 
         return ele
