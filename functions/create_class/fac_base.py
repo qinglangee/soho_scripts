@@ -29,10 +29,12 @@ class FacBase():
                     res.append(bean)
                 bean = BeanDefine()
                 # print('start ', bean)
+                comment = ""
+                if(line.find("#") > 0):
+                    comment = line[line.find("#")+1:]
                 parts = re.split("\s+", line)
                 bean.setBeanName(parts[1])
-                if len(parts) > 2:
-                    bean.setClassComment(parts[2])
+                bean.setClassComment(comment)
             elif line.startswith('extends'): # extends 开头的是父类
                 parts = re.split("\s+", line)
                 bean.setParentName(parts[1])
@@ -48,13 +50,15 @@ class FacBase():
 
     # 解析字段
     def parseField(self, line):  
+        comment = ""
+        if line.find("#") > 0:
+            comment = line[line.find("#")+1:]
         parts = re.split("\s+", line)
         field = BeanField()
         field.modifier = 'public'
         field.dataType = self.parseType(parts[0])
         field.name = parts[1]
-        if len(parts) > 2:
-            field.comment = parts[2]
+        field.comment = comment
         return field
     
     # 解析数据类型
