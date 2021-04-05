@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang='zh'>
+    <head>
+        <meta charset="utf-8">
+        <title>d3js demo</title>
+        <script src="lib/d3.js"></script>
+    </head>
+    <body>
+        <h1>Test selector</h1>
+        <div id="testStyle">
+            <p>a</p>
+            <p>b</p>
+            <p>c</p>
+            <p>d</p>
+            <p>e</p>
+            <p>f</p>
+            <button onclick="randomColor()">random color</button>
+            <button onclick="alternateColor()">alternate color</button>
+            <button onclick="fontSize()">font size</button>
+        </div>
+        <h1>Enter and Exit</h1>
+        <div id="enter">
+            <p>a</p>
+            <p>b</p>
+            <p>c</p>
+            <button onclick="enter()">enter</button>
+            <button onclick="usedata()">use data</button>
+            <button onclick="usedataEnter()">use data enter</button>
+            <button onclick="addData()">add data</button>
+            <button onclick="usedataExit()">use data exit</button>
+        </div>
+        <h1>Transitions</h1>
+        <div id="transitions">
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+            <circle>a</circle>
+            <button onclick="transColor()">Trans color</button>
+            <button onclick="transCircle()">Trans circle</button>
+            
+        </div>
+    </body>
+<script>
+function randomColor(){
+    // 设置随机属性
+    d3.selectAll("div#testStyle p").style("color", function(){
+        return "hsl(" + Math.random() * 300 +", 100%, 50%)";
+    });
+}
+function alternateColor(){
+    // 设置间隔颜色
+    d3.selectAll("div#testStyle p").style("color", function(d, i){
+        return i % 2 ? "#000" : "#f00";
+    });
+}
+function fontSize(){
+    // 设置字体大小
+    d3.selectAll("div#testStyle p").data([4, 8, 15, 16, 23, 42])
+    .style("font-size", function(d){
+        return d + "px";
+    });
+}
+function enter(){
+    // 设置enter, append 添加的元素添加到前面select选中的元素中
+    // 如果前面没有select,则添加到<html>元素中
+    d3.select("div#enter").selectAll("p")
+        .data([4, 8, 15, 16, 23, 42])
+        .enter().append("p")
+            .text(function(d) { return "I’m number " + d + "!"; });
+}
+function usedata(){
+    var p = d3.select("div#enter").selectAll("p")
+        .data([4, 8, 15, 16, 23, 42])
+            .text(function(d) { return d; });
+}
+let enterData = [4, 8, 15, 16, 23, 42];
+function usedataEnter(){
+    // 数据多了，enter() 会对剩余的数据进行操作
+    var p = d3.select("div#enter").selectAll("p")
+        .data(enterData)
+            .text(function(d) { return d; });
+    p.enter().append("p")
+        .text(function(d){return d;});
+}
+function addData(){
+    enterData.push(3);
+}
+function usedataExit(){
+    // 数据少了， exit() 会选中那些没有数据匹配的节点
+    var p = d3.select("div#enter").selectAll("p")
+        .data([4, 8])
+            .text(function(d) { return d; });
+    p.exit().remove();
+}
+function transColor(){
+    d3.select("#transitions").transition()
+    .style("background-color", "black");
+}
+function transCircle(){
+    let scale = 1;
+    d3.selectAll("circle").transition()
+    .duration(750)
+    .delay(function(d, i) { return i * 10; })
+    .attr("r", function(d) { return Math.sqrt(d * scale); });
+}
+</script>
+</html>

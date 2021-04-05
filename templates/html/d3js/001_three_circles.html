@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='zh'>
+    <head>
+        <meta charset="utf-8">
+        <title>title</title>
+        <script src="lib/d3.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            <svg width="720" height="120">
+                <circle cx="40" cy="60" r="10"></circle>
+                <circle cx="80" cy="60" r="10"></circle>
+                <circle cx="120" cy="60" r="10"></circle>
+              </svg>
+        </div>
+        <button onclick="testCircle()">Test Circle</button>
+        <button onclick="testData()">Test Data</button>
+        <button onclick="testData2()">Test Data2</button>
+    </body>
+<script>
+function testCircle(){
+    // 设置圆的属性
+    var circle = d3.selectAll("div#box circle");
+    circle.style("fill", "steelblue");
+    circle.attr("r", 30);
+    circle.attr("cx", function() { return Math.random() * 720; });
+}
+function testData(){
+    // 绑定数据
+    var circle = d3.selectAll("div#box circle");
+    circle.data([32, 57, 112]);
+    circle.attr("r", function(d) { return Math.sqrt(d); });
+}
+function testData2(){
+    // 绑定数据序号
+    var circle = d3.selectAll("div#box circle");
+    circle.data([32, 57, 112]);
+    circle.attr("cx", function(d, i) { return i * 100 + 30; });
+}
+</script>
+</html>

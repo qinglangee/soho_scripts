@@ -88,8 +88,10 @@ class FacBase():
         getterTemplate = templates['getter']
         setterTemplate = templates['setter']
         for field in b.fields:
-            getterStr = self.createMethod(getterTemplate, field, 'get', '返回')
-            setterStr = self.createMethod(setterTemplate, field, 'set', '设置')
+            # getterStr = self.createMethod(getterTemplate, field, 'get', '返回')
+            # setterStr = self.createMethod(setterTemplate, field, 'set', '设置')
+            getterStr = self.createMethod(getterTemplate, field, 'get', 'return ')
+            setterStr = self.createMethod(setterTemplate, field, 'set', 'set ')
             allMethods += getterStr 
             allMethods += setterStr 
 

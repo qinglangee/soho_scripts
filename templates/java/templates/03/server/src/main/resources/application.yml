@@ -1,0 +1,39 @@
+#默认使用配置
+spring:
+  profiles:
+    active: dev
+  resources:
+    chain:
+      cache: false
+  thymeleaf:
+    cache: false
+
+#公共配置与profiles选择无关
+# @MapperScan("com.river.calculate.dao") 启动类加上这个注解
+mybatis:
+  typeAliasesPackage: com.web.shop.model
+  mapperLocations: classpath:mapping/*.xml
+
+
+---
+
+#开发配置
+spring:
+  profiles: dev
+  resources:
+    chain:
+      cache: false
+  thymeleaf:
+    cache: false
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/zh_shop?serverTimezone=UTC
+    username: root
+    password: zhch
+    driver-class-name: com.mysql.jdbc.Driver
+
+  # datasource:
+  #   url: jdbc:sqlite:d:/workspaces/eclipse_js/soho_works/201230_j_river_data_calculate_tt/calculate/src/main/resources/db.sqlite3
+  #   username: 
+  #   password: 
+  #   driver-class-name: org.sqlite.JDBC
