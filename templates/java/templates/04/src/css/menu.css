@@ -1,0 +1,13 @@
+.login Button{-fx-pref-width:100px;}
+
+.menu {-fx-border-color:#333333;-fx-border-width:5}
+.menu Label{-fx-pref-width:100px;-fx-alignment:center;}
+.menu Button{-fx-pref-width:100px;}
+
+.user_pane{-fx-pref-width:800;}
+
+
+/** video item */
+.video_list {-fx-pref-width:780;-fx-padding:10;}
+.video_list VBox{-fx-pref-width:200;-fx-padding:10;}
+.video_img{-fx-pref-width:200;}

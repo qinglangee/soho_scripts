@@ -1,0 +1,23 @@
+name accountBase 用户信息类
+i type #类别 0 用户 1 教练 2 管理员
+s name #姓名
+s account #用户名
+s password #用户密码
+s sex #性别
+s birth #出生日期
+s target #训练目的
+s major #专业方向
+s desc #个人介绍
+d balance #余额
+s avatar #头像图片名称
+i isMember #是否会员
+s memberDate #会员到期时间
+s coachType #教练类型  Yoga HIT Strength
+i age #年龄
+
+name video 视频信息
+i id #视频ID
+s type #分类
+s name #名称
+s pic # 封面图片
+s path # 视频地址

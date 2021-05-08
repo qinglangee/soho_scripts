@@ -1,0 +1,1 @@
+cp -r src/main/resources/static/*  target/classes/static/

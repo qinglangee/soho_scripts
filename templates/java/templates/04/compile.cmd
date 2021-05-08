@@ -13,8 +13,10 @@ call vars.cmd
 @REM > javac @sources.txt
 
 dir /s /B *.java > sources.txt
-javac -d classes -cp %zh_classpath% -encoding utf-8 @sources.txt
 
+javac -d classes -cp %zh_classpath% -encoding utf-8 --module-path %PATH_TO_FX% --add-modules javafx.controls,javafx.fxml,javafx.media @sources.txt
+xcopy src\fxml\*.fxml classes\fxml\ /Y
+xcopy src\css\*.css classes\css\ /Y
 if %errorlevel%==0 (
     call run.cmd %1 %2 %3 %4 %5 %6 %7
 )

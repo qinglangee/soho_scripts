@@ -1,0 +1,1 @@
+set zh_classpath=classes;lib/gson-2.3.jar

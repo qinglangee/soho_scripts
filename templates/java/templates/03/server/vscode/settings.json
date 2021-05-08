@@ -1,0 +1,10 @@
+{
+    "saveAndRun":{
+        "commands":[
+            {
+                "match":"\\.html$|\\.js$|\\.css$",
+                "cmd":"./copy_static.cmd"
+            }
+        ]
+    }
+}

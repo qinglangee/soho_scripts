@@ -1,0 +1,6 @@
+name account 用户信息类
+i type #类别 0 用户 1 教练 2 管理员
+s name #姓名
+s account #用户名
+s password #用户密码
+List<Integer> collects #收藏的视频
