@@ -22,8 +22,8 @@ class FacBase():
         lines = fu.read_lines(contentFile)
         bean = None
         for line in lines :
-            if(len(line.strip()) == 0):
-                continue   # 空行不处理
+            if(len(line.strip()) == 0 or line.startswith("#")):
+                continue   # 空行和注释不处理
             if(line.startswith("name")): # name 开头的是开始一个新的bean
                 if bean != None:
                     res.append(bean)
@@ -31,13 +31,17 @@ class FacBase():
                 # print('start ', bean)
                 comment = ""
                 if(line.find("#") > 0):
-                    comment = line[line.find("#")+1:]
+                    comment = line[line.find("#")+1:].strip()
                 parts = re.split("\s+", line)
                 bean.setBeanName(parts[1])
                 bean.setClassComment(comment)
             elif line.startswith('extends'): # extends 开头的是父类
                 parts = re.split("\s+", line)
                 bean.setParentName(parts[1])
+            elif line.startswith('import '): # import 语句
+                bean.addImport(line)
+            elif line.startswith('package'): # package
+                bean.setPackage(line)
             else:  # 其余的都是字段
                 field = self.parseField(line)
                 bean.addField(field)
@@ -52,10 +56,10 @@ class FacBase():
     def parseField(self, line):  
         comment = ""
         if line.find("#") > 0:
-            comment = line[line.find("#")+1:]
+            comment = line[line.find("#")+1:].strip()
         parts = re.split("\s+", line)
         field = BeanField()
-        field.modifier = 'public'
+        field.modifier = 'private'
         field.dataType = self.parseType(parts[0])
         field.name = parts[1]
         field.comment = comment
@@ -101,6 +105,11 @@ class FacBase():
 
 
         fileContent = templates['file']
+        
+        # package 和 import 就 java 会用到
+        fileContent = fileContent.replace(r'${package}', beanDefine.package)
+        fileContent = fileContent.replace(r'${import}', beanDefine.concatImport())
+
         fileContent = fileContent.replace(r'${classComment}', beanDefine.classComment)
         fileContent = fileContent.replace(r'${classname}', beanDefine.classname)
         fileContent = fileContent.replace(r'${fields}', allFieldStr)
@@ -118,6 +127,7 @@ class FacBase():
     def readTemplateLines(self):
         pass
 
+    
     # 转换注释格式
     # **由子类具体实现**
     def createComment(self, comment):
@@ -127,7 +137,7 @@ class FacBase():
     def createMethod(self, methodTemplate, field, methodType, commentBefore):
         name = field.name
         methodStr = methodTemplate.replace(r'${comment}', self.createComment(field.comment, before=commentBefore))
-        methodStr = methodStr.replace(r'${modifier}', field.modifier)
+        methodStr = methodStr.replace(r'${modifier}', 'public')
         methodStr = methodStr.replace(r'${type}', field.dataType)
         methodName = methodType + name[:1].upper() + name[1:]
         methodStr = methodStr.replace(r'${methodName}', methodName)

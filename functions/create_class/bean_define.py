@@ -1,6 +1,10 @@
 # 代表一个 bean 的定义内容
 class BeanDefine():
     def __init__(self):
+        # package 和 importItems 只有 java 会用到
+        self.package = ""
+        self.importItems = []
+
         self.filename = "defaultFileName"
         self.parentClassname = ""
         self.classname = "defaultBeanName"
@@ -33,6 +37,21 @@ class BeanDefine():
     
     def addField(self, field):
         self.fields.append(field)
+
+    # 设置 package
+    def setPackage(self, package):
+        self.package = package
+    # 添加一个import
+    def addImport(self, importItem):
+        self.importItems.append(importItem)
+
+    # 组合 java 的 import
+    def concatImport(self):
+        importStr = ""
+        for importItem in self.importItems:
+            importStr += importItem + "\n"
+        return importStr
+
 
     def __str__(self):
         res = self.classname

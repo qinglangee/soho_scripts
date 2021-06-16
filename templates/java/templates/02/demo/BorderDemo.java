@@ -20,6 +20,13 @@ public class BorderDemo extends JPanel{
         add(btn);
     }
 
+    public void addCheckBox(String content, Border border){
+        JCheckBox box = new JCheckBox(content);
+        box.setBorder(border);
+        box.setBorderPainted(true); // 需要设置画边框才会显示
+        add(box);
+    }
+
     public void setBorder(){
 
         JPanel jpanel = new JPanel();
@@ -45,6 +52,9 @@ public class BorderDemo extends JPanel{
         Border b1 = BorderFactory.createLineBorder(Color.blue, 2);  //组合边框
         Border b2 = BorderFactory.createEtchedBorder();
         addButton("组合边框", BorderFactory.createCompoundBorder(b1, b2));
+
+
+        addCheckBox("Check box 的 border 需要显式指定开启", BorderFactory.createLineBorder(Color.blue, 2));
     }
 
     public static void main(String[] args) {

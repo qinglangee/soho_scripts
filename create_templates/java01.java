@@ -1,4 +1,6 @@
 ```file
+${package}
+${import}
 /**
  * ${classComment}
  */
@@ -25,7 +27,7 @@ ${methods}
     }
 ```
 ```string
-    ${modifier} String toString(){
+    public String toString(){
         StringBuilder sb = new StringBuilder("{");
         ${appendFields}
         sb.append("}");

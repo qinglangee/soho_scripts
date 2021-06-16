@@ -1,0 +1,3 @@
+D:\workspaces\github\qinglangee\soho_scripts\templates\java\templates\04\src\LoginController.java
+D:\workspaces\github\qinglangee\soho_scripts\templates\java\templates\04\src\Main.java
+D:\workspaces\github\qinglangee\soho_scripts\templates\java\templates\04\src\ScreenController.java
