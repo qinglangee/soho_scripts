@@ -10,6 +10,8 @@ class FacJava(FacBase):
     def parseType(self, content):
         if content == 'i':
             return 'int'
+        elif content == 'l':
+            return 'long'
         elif content == 's':
             return 'String'
         elif content == 'f':

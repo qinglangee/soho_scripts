@@ -14,8 +14,10 @@ call vars.cmd
 
 dir /s /B *.java > sources.txt
 
-xcopy src\view\*.fxml classes\view\ /Y
-xcopy src\view\*.css classes\view\ /Y
+rem xcopy src\view\*.fxml classes\view\ /Y
+rem xcopy src\view\*.css classes\view\ /Y
+
+xcopy /r /s /B src\view classes\view\ /Y
 javac -d classes -cp %zh_classpath% -encoding utf-8 --module-path %PATH_TO_FX% --add-modules javafx.controls,javafx.fxml,javafx.media @sources.txt
 if %errorlevel%==0 (
     call run.cmd %1 %2 %3 %4 %5 %6 %7

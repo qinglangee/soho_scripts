@@ -50,7 +50,7 @@ public class ConsoleUtil{
     {
         System.out.print(prompt + " ");
         String response = sc.nextLine().trim();;
-        while(options != null && !contains(options, response)){
+        while(options != null && options.length > 0 && !contains(options, response)){
             info(ERROR_INPUT);
             info(prompt);
             response = sc.nextLine().trim();
