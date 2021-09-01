@@ -18,8 +18,11 @@ public class ConsoleUtil{
     }
 
     
-    private void info(String content){
+    private void info(CharSequence content){
         System.out.println(content);
+    }
+    private void prompt(CharSequence content){
+        System.out.print(content);
     }
     
     /**
@@ -27,9 +30,9 @@ public class ConsoleUtil{
      * @param prompt prompt infomation
      * @return integer which user inputed
      */
-    private int inputInt(String prompt)
+    public int inputInt(String prompt)
     {
-        System.out.print(prompt + " ");
+        prompt(prompt + " ");
         int num;
         try{
             num = Integer.parseInt(sc.nextLine());
@@ -46,13 +49,13 @@ public class ConsoleUtil{
      * @param options options to input
      * @return user input
      */
-    private String input(String prompt, String ... options) 
+    public String input(String prompt, CharSequence ... options) 
     {
-        System.out.print(prompt + " ");
+        prompt(prompt + " ");
         String response = sc.nextLine().trim();;
         while(options != null && options.length > 0 && !contains(options, response)){
             info(ERROR_INPUT);
-            info(prompt);
+            prompt(prompt);
             response = sc.nextLine().trim();
         }
         return response;
@@ -63,7 +66,7 @@ public class ConsoleUtil{
      * @param prompt prompt infomation
      * @return true if user input yes or y
      */
-    private boolean yesTo(String prompt)
+    public boolean yesTo(String prompt)
     {
         String response = input(prompt, "yes", "no", "y", "n");
         return response.equals("yes") || response.equals("y");
@@ -75,13 +78,13 @@ public class ConsoleUtil{
      * @param str string to check
      * @return true if str is in options
      */
-    private boolean contains(String[] options, String str)
+    private boolean contains(CharSequence[] options, CharSequence str)
     {
         if(options == null || str == null)
         {
             return false;
         }
-        for(String option : options)
+        for(CharSequence option : options)
         {
             if(str.equals(option))
             {
