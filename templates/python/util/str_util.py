@@ -8,3 +8,7 @@ def fill_head(text, length, fill=' '):
         for i in range(length- len(text)):
             text = fill + text
     return text
+
+
+def format_str(str, *args):
+    return str.format(*args)
