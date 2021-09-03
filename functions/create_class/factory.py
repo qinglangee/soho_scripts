@@ -27,16 +27,16 @@ def distribute(srcDir):
 
 
 # 打印提示信息
-def printHelp():
+def print_help():
     hint = "至少需要一个参数。 生成目标路径\n"
     hint += "create . \n"
     hint += "create ./src \n"
     print(hint)
 
 # 输入参数检查
-def checkInput(args):
+def check_input(args):
     if(len(args) < 1): 
-        printHelp()
+        print_help()
         return
     if not os.path.exists(args[0]):
         print("指定的文件或目录不存在。  请检查")

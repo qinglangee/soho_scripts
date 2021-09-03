@@ -3,8 +3,8 @@ import sys
 from functions import init
 from functions import str_replace
 from functions.create_class import factory
-from functions import copy_file
-from functions import backup
+from functions import copy_file, backup, tishi
+
 
 
 def printHelp():
@@ -18,7 +18,10 @@ def printHelp():
     hint += "    create ./src\n"
     hint += "cp 复制模板文件: 参数 1 . 当前目录 2 要cp的分类目录 3 分类的子目录 \n"
     hint += "    cp . java util  # cp 文件到 zh_demo 目录\n"
-    hint += "backup 备份文件\n"
+    hint += "backup 备份文件 \n\t没有参数。 备份一些配置文件\n"
+    hint += "tishi 提示一些命令用法 \n"
+    hint += "    tishi git \n"
+    hint += "    tishi xcopy \n"
     print(hint)
 
 def inputProcess():
@@ -35,13 +38,15 @@ def inputProcess():
     if subcmd == "init":
         init.check_input(args[2:])  ## 复制模板文件
     elif subcmd == "rep":
-        str_replace.checkInput(args[2:])  ## 文件内容替换
+        str_replace.check_input(args[2:])  ## 文件内容替换
     elif subcmd == "create":
-        factory.checkInput(args[2:])  ## 文件内容替换
+        factory.check_input(args[2:])  ## 文件内容替换
     elif subcmd == "cp":
         copy_file.check_input(args[2:])  ## copy 文件模板
     elif subcmd == "backup":
         backup.execute()  ## 备份文件
+    elif subcmd == "tishi":
+        tishi.check_input(args[2:])  ## 命令用法提示
     else:
         print("=======没有对应的子命令=======")
         printHelp()

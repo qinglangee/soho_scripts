@@ -55,16 +55,16 @@ def replaceFile(filename, repList):
 
 
 # 打印提示信息
-def printHelp():
+def print_help():
     hint = "至少需要两个参数。 目标路径 和 替换文本文件\n"
     hint += "rep . rep.txt\n"
     hint += "rep ./src rep.txt\n"
     print(hint)
 
 # 输入参数检查
-def checkInput(args):
+def check_input(args):
     if(len(args) < 2): 
-        printHelp()
+        print_help()
         return
     if not os.path.exists(args[0]):
         print("指定的文件或目录不存在。  请检查")
