@@ -73,6 +73,21 @@ public class ConsoleUtil{
     }
 
     /**
+     * Wait for user to press any key
+     */
+    public void waitKey(String prompt){
+        waitEnter();
+    }
+
+    /**
+     * wait for user input enter key
+     */
+    public void waitEnter(String prompt){
+        prompt(prompt);
+        sc.nextLine();
+    }
+
+    /**
      * check if str is in the options array
      * @param options string array
      * @param str string to check

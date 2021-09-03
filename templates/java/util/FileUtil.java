@@ -6,7 +6,7 @@ public class FileUtil {
     
     private static final String DEFAULT_CHARSET = "utf-8";
     /**
-     * 文本内容写入文件，默认使用 utf-8 编码
+     * Write content into file, default use utf-8 encode
      * @param filename
      * @param content
      */
@@ -14,7 +14,7 @@ public class FileUtil {
         writeFile(filename, content, DEFAULT_CHARSET);
     }
     /**
-     * 文本内容写入文件
+     * Write content into file
      * @param filename
      * @param content
      * @param charset
@@ -31,7 +31,7 @@ public class FileUtil {
         }
     }
     /**
-     * 文本内容追加到文件后面，默认使用 utf-8 编码
+     * Append content into file, default use utf-8 encode
      * @param filename
      * @param content
      */
@@ -39,7 +39,7 @@ public class FileUtil {
         appendFile(filename, content, DEFAULT_CHARSET);
     }
     /**
-     * 文本内容追加到文件后面
+     * Append content into file
      * @param filename
      * @param content
      * @param charset
@@ -55,7 +55,7 @@ public class FileUtil {
     }
 
     /**
-     * 读取文件行的内容到一个列表中
+     * Read file content into a string list.
      * @param filename
      * @return
      */
@@ -85,7 +85,7 @@ public class FileUtil {
     }
 
     /**
-     * 读取文件内容到一个字符串
+     * Read file content as string
      * @param filename
      * @return
      */
