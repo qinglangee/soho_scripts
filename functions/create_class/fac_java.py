@@ -41,8 +41,7 @@ class FacJava(FacBase):
         result = template.replace(r"${modifier}", beanDefine.fields[0].modifier)
         result = result.replace(r"${appendFields}", appendFields)
         return result
-    # 生成的内容写入文件
-    def writeSrcFile(self, content, beanDefine):
-        outputFile = os.path.join(self.fileDir, beanDefine.classname  + '.java')
-        print('outputfile:', outputFile)
-        fu.write_file(outputFile, content)
+
+    # 生成文件名
+    def getBeanFilename(self, beanDefine):
+        return os.path.join(self.fileDir, beanDefine.classname  + '.java')

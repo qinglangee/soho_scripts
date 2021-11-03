@@ -7,6 +7,8 @@ ${import}
 public class ${classname} ${parent}{
 ${fields}
 
+${originalCode}
+
 ${methods}
 }
 ```

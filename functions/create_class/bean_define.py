@@ -10,6 +10,7 @@ class BeanDefine():
         self.classname = "defaultBeanName"
         self.classComment = ""
         self.fields = []
+        self.originalCode = "" # 需要替换的原文件代码，默认为空
 
     # 设置文件名和类名
     def setBeanName(self, name):

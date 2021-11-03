@@ -114,11 +114,14 @@ class FacBase():
         fileContent = fileContent.replace(r'${classname}', beanDefine.classname)
         fileContent = fileContent.replace(r'${fields}', allFieldStr)
         fileContent = fileContent.replace(r'${methods}', allMethods)
-        fileContent = fileContent.replace(r'${modifier}', b.fields[0].modifier)
+        fileContent = fileContent.replace(r'${modifier}', b.fields[0].modifier)   # c++ 有这个
         if not beanDefine.parentClassname == '':
             fileContent = fileContent.replace(r'${parent}', 'extends ' + beanDefine.parentClassname)
         else:
             fileContent = fileContent.replace(r'${parent}', '')
+
+        # 读取原文件内容，如果有就保留
+        fileContent = fileContent.replace(r'${originalCode}', self.readOriginalCode(beanDefine))
 
         return fileContent
 
@@ -168,7 +171,36 @@ class FacBase():
         return templates
 
     # 生成的内容写入文件
-    # **由子类具体实现**
     def writeSrcFile(self, content, beanDefine):
+        outputFile = self.getBeanFilename(beanDefine)
+        print('outputfile:', outputFile)
+        fu.write_file(outputFile, content)
+
+    # **由子类具体实现, 文件名不同**
+    def getBeanFilename(self, beanDefine):
         pass
+
+    # 读取原来文件中的自写的代码
+    def readOriginalCode(self, beanDefine):
+        beanFileName = self.getBeanFilename(beanDefine)
+        if not os.path.exists(beanFileName): # 文件不存在就返回空字符串
+            return ""
+        originalCode = ""
+        # 内容标识符 [useful bean code start/end]
+
+        lines = fu.read_lines(beanFileName)
+        start = False
+        for line in lines:
+            if "useful bean code start" in line:
+                start = True
+
+            if start:
+                originalCode += line + "\n"
+
+            if "useful bean code end" in line:
+                start = False
+        return originalCode
+
+
+
 

@@ -29,6 +29,6 @@ class FacCpp(FacBase):
         # print('use fac java.createComment()')
         return '/** ' + before + comment + after + ' */'
 
-    # 生成的内容写入文件
-    def writeSrcFile(self, content, beanDefine):
-        fu.write_file(beanDefine.filename + ".cpp", content)
+    # 生成文件名
+    def getBeanFilename(self, beanDefine):
+        return os.path.join(self.fileDir, beanDefine.filename + ".cpp")

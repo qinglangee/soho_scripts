@@ -4,6 +4,8 @@ public class ${classname}{
     ${modifier}:
 ${fields}
 
+${originalCode}
+
 ${methods}
 }
 ```
