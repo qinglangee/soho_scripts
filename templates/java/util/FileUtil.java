@@ -46,7 +46,7 @@ public class FileUtil {
      */
     public static void appendFile(String filename, String content, String charset) {
         File file = new File(filename);
-        try(OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(file), charset);
+        try(OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(file, true), charset);
         BufferedWriter bw = new BufferedWriter(osw);) {
             bw.append(content);
         } catch (IOException e) {

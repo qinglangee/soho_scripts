@@ -97,7 +97,7 @@ NORTHEAST、GridBagConstraints.EAST、GridBagConstraints.SOUTH、GridBagConstrai
         gridBagLayout.setConstraints(b3, cons);
         gridBagLayout.setConstraints(b4, cons);
         
-        cons.gridy = 2;
+        cons.gridy = 2; // 开始第二行
         JButton b5 = new JButton("Button5");
         JButton b6 = new JButton("Button6");
         gridBagLayout.setConstraints(b5, cons);

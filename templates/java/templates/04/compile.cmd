@@ -12,7 +12,8 @@ call vars.cmd
 @REM > dir /s /B *.java > sources.txt
 @REM > javac @sources.txt
 
-dir /s /B *.java > sources.txt
+@REM dir /s /B *.java > sources.txt
+dir /s /B src\*.java > sources.txt
 
 rem xcopy src\view\*.fxml classes\view\ /Y
 rem xcopy src\view\*.css classes\view\ /Y
