@@ -30,8 +30,7 @@ public class ConsoleUtil{
      * @param prompt prompt infomation
      * @return integer which user inputed
      */
-    public int inputInt(String prompt)
-    {
+    public int inputInt(String prompt){
         prompt(prompt + " ");
         int num;
         try{
@@ -49,8 +48,7 @@ public class ConsoleUtil{
      * @param options options to input
      * @return user input
      */
-    public String input(String prompt, CharSequence ... options) 
-    {
+    public String input(String prompt, CharSequence ... options){
         prompt(prompt + " ");
         String response = sc.nextLine().trim();;
         while(options != null && options.length > 0 && !contains(options, response)){
@@ -66,8 +64,7 @@ public class ConsoleUtil{
      * @param prompt prompt infomation
      * @return true if user input yes or y
      */
-    public boolean yesTo(String prompt)
-    {
+    public boolean yesTo(String prompt){
         String response = input(prompt, "yes", "no", "y", "n");
         return response.equals("yes") || response.equals("y");
     }
@@ -93,16 +90,12 @@ public class ConsoleUtil{
      * @param str string to check
      * @return true if str is in options
      */
-    private boolean contains(CharSequence[] options, CharSequence str)
-    {
-        if(options == null || str == null)
-        {
+    private boolean contains(CharSequence[] options, CharSequence str){
+        if(options == null || str == null){
             return false;
         }
-        for(CharSequence option : options)
-        {
-            if(str.equals(option))
-            {
+        for(CharSequence option : options){
+            if(str.equals(option)){
                 return true;
             }
         }

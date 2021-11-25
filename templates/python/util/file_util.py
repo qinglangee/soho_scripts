@@ -34,3 +34,9 @@ def readFile(filename):
     with open(filename, 'r') as file:
         content = file.read()
     return content
+
+def read_lines(filename):
+    file = open(filename)
+    lines = [line.strip('\n') for line in file.readlines()]
+    file.close()
+    return lines
