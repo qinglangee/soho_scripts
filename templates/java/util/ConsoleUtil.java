@@ -43,6 +43,23 @@ public class ConsoleUtil{
     }
 
     /**
+     * get user input double
+     * @param prompt prompt infomation
+     * @return double which user inputed
+     */
+    public double inputDouble(String prompt){
+        prompt(prompt + " ");
+        double num;
+        try{
+            num = Double.parseDouble(sc.nextLine());
+            return num;
+        }catch(Exception e){
+            info("Please enter a double number.");
+            return inputInt(prompt);
+        }
+    }
+    
+    /**
      * get user input from console
      * @param prompt prompt infomation
      * @param options options to input
@@ -73,7 +90,7 @@ public class ConsoleUtil{
      * Wait for user to press any key
      */
     public void waitKey(String prompt){
-        waitEnter();
+        waitEnter(prompt);
     }
 
     /**

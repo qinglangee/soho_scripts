@@ -54,7 +54,7 @@ public class DbUtil implements Serializable {
         for (int i = 0; i < columnCount; i++) {
           String name = rsmd.getColumnName(i + 1);
           Object obj = rs.getObject(i + 1);
-          map.put(name, obj);
+          map.put(name.toUpperCase(), obj);
         }
         list.add(map);
       }
