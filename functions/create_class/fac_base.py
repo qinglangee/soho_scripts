@@ -46,7 +46,6 @@ class FacBase():
                 field = self.parseField(line)
                 bean.addField(field)
                 # print(field)
-
         res.append(bean)
         # print('end', bean)
         # print("res[0]", res)
@@ -62,7 +61,7 @@ class FacBase():
         field.modifier = 'private'
         field.dataType = self.parseType(parts[0])
         field.name = parts[1]
-        field.comment = comment
+        field.comment = comment if comment != "" else parts[1]
         return field
     
     # 解析数据类型
