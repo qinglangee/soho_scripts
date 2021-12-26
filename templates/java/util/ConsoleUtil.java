@@ -66,11 +66,11 @@ public class ConsoleUtil{
      * @return user input
      */
     public String input(String prompt, CharSequence ... options){
-        prompt(prompt + " ");
+        System.out.print(prompt + " ");
         String response = sc.nextLine().trim();;
         while(options != null && options.length > 0 && !contains(options, response)){
-            info(ERROR_INPUT);
-            prompt(prompt);
+            System.out.println(ERROR_INPUT);
+            System.out.print(prompt);
             response = sc.nextLine().trim();
         }
         return response;

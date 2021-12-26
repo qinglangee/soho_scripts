@@ -14,6 +14,11 @@ public class BaseDialog {
                             JOptionPane.INFORMATION_MESSAGE);
     }
 
+    public static String showInput(String msg){
+        String content = JOptionPane.showInputDialog(null, msg);
+        return content;
+    }
+
     // 两个选项
     public static boolean confirm(String msg, String title){
         Component parent = null;

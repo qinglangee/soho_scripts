@@ -4,7 +4,7 @@ ${import}
 /**
  * ${classComment}
  */
-public class ${classname} ${parent}{
+public class ${classname} ${parent} ${interfaces}{
 ${fields}
 
 ${originalCode}

@@ -22,8 +22,8 @@ class FacBase():
         lines = fu.read_lines(contentFile)
         bean = None
         for line in lines :
-            if(len(line.strip()) == 0 or line.startswith("#")):
-                continue   # 空行和注释不处理
+            if(len(line.strip()) == 0 or line.strip().startswith("#") or line.strip().startswith("//")):
+                continue   # 空行和注释不处理, 两种注释开头
             if(line.startswith("name")): # name 开头的是开始一个新的bean
                 if bean != None:
                     res.append(bean)
@@ -38,10 +38,15 @@ class FacBase():
             elif line.startswith('extends'): # extends 开头的是父类
                 parts = re.split("\s+", line)
                 bean.setParentName(parts[1])
+            elif line.startswith('implements'): # extends 开头的是父类
+                bean.implements = line
             elif line.startswith('import '): # import 语句
                 bean.addImport(line)
             elif line.startswith('package'): # package
                 bean.setPackage(line)
+            elif line.startswith('toString'): # package
+                parts = re.split("\s+", line)
+                bean.toString = int(parts[1])
             else:  # 其余的都是字段
                 field = self.parseField(line)
                 bean.addField(field)
@@ -114,10 +119,14 @@ class FacBase():
         fileContent = fileContent.replace(r'${fields}', allFieldStr)
         fileContent = fileContent.replace(r'${methods}', allMethods)
         fileContent = fileContent.replace(r'${modifier}', b.fields[0].modifier)   # c++ 有这个
+        
+        fileContent = fileContent.replace(r'${interfaces}', beanDefine.implements) 
+
         if not beanDefine.parentClassname == '':
             fileContent = fileContent.replace(r'${parent}', 'extends ' + beanDefine.parentClassname)
         else:
             fileContent = fileContent.replace(r'${parent}', '')
+        
 
         # 读取原文件内容，如果有就保留
         fileContent = fileContent.replace(r'${originalCode}', self.readOriginalCode(beanDefine))

@@ -8,8 +8,8 @@ s firstname # 名
 s lastname # 姓
 Gender gender # 性别
 
-# useful bean code start
-# useful bean code end
+// # useful bean code start
+// # useful bean code end
 
 name student # 学生信息类
 extends person

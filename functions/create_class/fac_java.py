@@ -33,6 +33,8 @@ class FacJava(FacBase):
 
     # 创建 toString 方法
     def createToString(self, template, beanDefine):
+        if beanDefine.toString == 0:
+            return ""
         appendFields = ''
         for field in beanDefine.fields:
             appendFields += 'sb.append("' + field.name
