@@ -1,7 +1,7 @@
 import re
 import os
 
-import file_util as fu
+from util import file_util as fu
 from .bean_define import BeanDefine, BeanField
 class FacBase():
     fileDir = None

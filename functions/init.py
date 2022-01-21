@@ -3,6 +3,12 @@ import os
 import sys
 
 import config as c
+
+def short_desc():
+    hint = "init 复制模板: 参数 1 目录 2 类型 3 序号  \n"
+    hint += "    init . c++ 02\n"
+    return hint
+    
 def print_help():
     hint = "至少需要两个参数。 目标路径 和 源码类型\n"
     hint += "init . cpp\n"

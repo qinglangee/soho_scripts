@@ -2,9 +2,12 @@ import os
 import shutil
 
 import config 
-import dir_util
+from util import dir_util
 
-
+def short_desc():
+    hint = "cp 复制模板文件: 参数 1 . 当前目录 2 要cp的分类目录 3 分类的子目录 \n"
+    hint += "    cp . java util  # cp 文件到 zh_demo 目录\n"
+    return hint
 # 打印提示信息
 def print_help():
     hint = "至少需要两个参数。 目标路径 和 替换文本文件\n"

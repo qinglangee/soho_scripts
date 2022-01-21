@@ -1,6 +1,6 @@
 import os
 
-import file_util as fu
+from util import file_util as fu
 import config as c
 from .fac_base import FacBase
 

@@ -7,7 +7,7 @@ import tkinter
 from base_win import BaseWin
 from gui_util import showErr, showInfo
 import config as c
-import file_util as fu
+from util import file_util as fu
 
 class AppWin(BaseWin):
     def __init__(self):

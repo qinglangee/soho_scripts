@@ -4,6 +4,12 @@ names = {
     'xcopy':['xcopy /S /Y src dest    # /S 递归复制所有目录  /Y 确认覆盖旧文件'],
 }
 
+
+def short_desc():
+    hint = "tishi 提示一些命令用法 \n"
+    hint += "    tishi git \n"
+    hint += "    tishi xcopy \n"
+    return hint
 def print_help():
     hint = "至少需要一个参数。 命令名字\n"
     hint += "tishi git\n"
@@ -21,7 +27,6 @@ def print_help():
 
 # 对输入参数进行基本的检查
 def check_input(args):
-    # print(len(args))
     if(len(args) < 1): 
         print_help()
         return

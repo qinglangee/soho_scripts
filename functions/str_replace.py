@@ -1,9 +1,24 @@
 import os
 import re
 
-import file_util as fu
+from util import file_util as fu
 
 G_replaceTxt = ""
+
+
+def short_desc():
+    hint = "rep 内容替换: 参数 1 替换的目录或文件 2 替换内容文件  \n"
+    hint += "    把参数1中文件内容按参数2文件中的替换规则替换掉\n"
+    hint += "    参数2文件中每行两个字符串以空格分隔开\n"
+    hint += "    rep ./src rep.txt\n"
+    return hint
+# 打印提示信息
+def print_help():
+    hint = "至少需要两个参数。 目标路径 和 替换文本文件\n"
+    hint += "rep . rep.txt\n"
+    hint += "rep ./src rep.txt\n"
+    print(hint)
+    
 # 
 # 替换程序处理入口
 def replace(srcFiles, replaceTxt):
@@ -53,13 +68,6 @@ def replaceFile(filename, repList):
     # if newFilename != filename:
     #     os.remove(filename)
 
-
-# 打印提示信息
-def print_help():
-    hint = "至少需要两个参数。 目标路径 和 替换文本文件\n"
-    hint += "rep . rep.txt\n"
-    hint += "rep ./src rep.txt\n"
-    print(hint)
 
 # 输入参数检查
 def check_input(args):
