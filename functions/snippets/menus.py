@@ -34,6 +34,7 @@ def create_print_menu(flags, hints):
         line += flags[i]+": " + hints[i]
         line += '");'
         codes.append(line)
+        codes.append('System.out.print("Enter option: ");')
     codes.append("}")
 
     result = ""
