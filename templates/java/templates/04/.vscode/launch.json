@@ -1,0 +1,35 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch MenuScreenControllerDemo",
+            "request": "launch",
+            "vmArgs": "--module-path d:/software/javafx-sdk-11.0.2/lib/ --add-modules javafx.controls,javafx.fxml",
+            "mainClass": "use.MenuScreenControllerDemo",
+            "projectName": "04_a1acb2ca"
+        },
+        {
+            "type": "java",
+            "name": "Launch BorderPaneDemo",
+            "request": "launch",
+            "vmArgs": "--module-path d:/software/javafx-sdk-11.0.2/lib/ --add-modules javafx.controls,javafx.fxml",
+            "mainClass": "use.BorderPaneDemo",
+            "projectName": "04_a1acb2ca"
+        },
+        {
+            "type": "java",
+            "name": "Launch MenuDemo",
+            "request": "launch",
+            "vmArgs": "--module-path d:/software/javafx-sdk-11.0.2/lib/ --add-modules javafx.controls,javafx.fxml",
+            "mainClass": "use.MenuDemo",
+            "projectName": "04_a1acb2ca"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "vmArgs": "--module-path d:/software/javafx-sdk-11.0.2/lib/ --add-modules javafx.controls,javafx.fxml",
+            "mainClass": "TimerDemo"
+        }
+    ]
+}

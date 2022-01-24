@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import java.net.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="use.MenuScreenControllerDemo"
+    >
+    <stylesheets><URL value="@menu.css"/></stylesheets>
+    <Button text="menu screen 02"/>
+    
+</VBox>

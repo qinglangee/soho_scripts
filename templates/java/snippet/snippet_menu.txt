@@ -1,0 +1,9 @@
+[type]@menu
+1@Add paper@addPaper()
+2@Delete paper@deletePaper()
+3@Select paper@selectPaper()
+4@Sorting@sorting()
+5@Filtering/Searching@search()
+6@Statistical evaluations and analyses@statistical()
+0@Exit@
+[type]@menu[end]

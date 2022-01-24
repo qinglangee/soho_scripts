@@ -15,6 +15,7 @@ name student # 学生信息类
 extends person
 s UIN #UIN编号
 Rank rank #等级
+toString 0 # 0 没有 toString 方法
 
 name Cssa320Student #java课程相关的信息类
 extends student

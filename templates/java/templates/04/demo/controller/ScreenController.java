@@ -1,4 +1,6 @@
+package controller;
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 
 import javafx.fxml.FXMLLoader;
@@ -7,24 +9,25 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class ScreenController {
-    private HashMap<String, Pane> screenMap = new HashMap<>();
-    private Scene main;
+    protected HashMap<String, Pane> screenMap = new HashMap<>();
+    protected Scene main;
 
     private static ScreenController instance;
 
-    public ScreenController(Scene main) {
-        this.main = main;
-    }
 
     public static ScreenController getInstance(){
         if(instance == null){
-            instance = new ScreenController(null);
+            instance = new ScreenController();
         }
         return instance;
     }
 
     public void setScene(Scene scene){
         this.main = scene;
+    }
+
+    public Scene getScene(){
+        return main;
     }
 
     protected void addScreen(String name, Pane pane){
@@ -54,7 +57,12 @@ public class ScreenController {
         Pane pane;
         try {
             pane = loader.<Pane>load();
-            pane.getStylesheets().add(getClass().getResource("css/menu.css").toExternalForm());
+            URL url = getClass().getResource("css/menu.css");
+            if(url != null){
+                pane.getStylesheets().add(url.toExternalForm());
+            }else{
+                System.err.println("ERROR: css is not exist");
+            }
             addScreen(path, pane);
         } catch (IOException e) {
             e.printStackTrace();
