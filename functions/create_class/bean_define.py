@@ -11,7 +11,7 @@ class BeanDefine():
         self.classComment = ""
         self.fields = []
         self.originalCode = "" # 需要替换的原文件代码，默认为空
-        self.toString = 1 # 设置 toString() 方法的形式
+        self.toString = 0 # 设置 toString() 方法的形式
         self.implements = ""
 
     # 设置文件名和类名
