@@ -2,6 +2,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import java.net.*?>
+<?import javafx.scene.control.cell.*?>
 
 <HBox xmlns:fx="http://javafx.com/fxml" fx:controller="LoginController" alignment="center">
     <stylesheets>
