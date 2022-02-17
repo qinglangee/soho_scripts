@@ -1,0 +1,32 @@
+```file
+<!DOCTYPE html>
+<html lang='zh'>
+    <head>
+        <meta charset="utf-8">
+        <script src="lib/jquery-3.5.1.js"></script>
+        <script src="lib/bootstrap.js"></script>
+        <script src="lib/vue-2.6.12.js"></script>
+        <script src="lib/vue-router-3.4.9.js"></script>
+        <link rel="stylesheet" href="lib/bootstrap.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="js/index.css">
+        <title></title>
+    </head>
+    <body>
+        <div class="container" id="container">
+                <div class="row">
+                    
+                    <label for="" class="col-4">Your birthday:</label>
+                    <input type="text" class="form-control col-8" v-model="birthday">
+                </div>
+                ${rows}
+        </div>
+    </body>
+</html>
+```
+```row
+<div class="row">
+    <label for="" class="col-4">${col_name}:</label>
+    <input type="text" class="form-control col-8">
+</div>
+```

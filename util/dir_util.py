@@ -30,3 +30,4 @@ def get_files(dir, filter = None):
             files.append(os.path.join(dir, filename))
     
     return files
+

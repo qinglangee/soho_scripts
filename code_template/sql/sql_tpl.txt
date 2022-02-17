@@ -1,0 +1,14 @@
+```table
+CREATE TABLE ${table_name} (
+${content}
+);
+```
+```column
+    ${name} ${type}${length}${other},
+```
+```pk
+    PRIMARY KEY (${name}),
+```
+```fk
+    CONSTRAINT ${name} FOREIGN KEY (${col}) REFERENCES ${ref_table} (${ref_col}),
+```
