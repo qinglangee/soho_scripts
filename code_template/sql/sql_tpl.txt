@@ -12,3 +12,44 @@ ${content}
 ```fk
     CONSTRAINT ${name} FOREIGN KEY (${col}) REFERENCES ${ref_table} (${ref_col}),
 ```
+
+
+# bean converter 模板
+```beanfile
+package ${package};
+
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
+import java.util.TimeZone;
+
+
+public class Converter {
+
+    static SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
+    static SimpleDateFormat formater2 = new SimpleDateFormat("yyyy-MM-dd HH");
+    static{
+        formater.setTimeZone(TimeZone.getTimeZone("GMT+0:00"));
+        formater2.setTimeZone(TimeZone.getTimeZone("GMT+0:00"));
+    }
+
+${convert_methods}    
+}
+```
+
+```convert_method
+    /**
+    * Convert map to ${bean_name}
+    * @param map the map of data retrive from database
+    * @return data bean
+    */
+    public static ${bean_name} to${bean_name}(Map<String, Object> map){
+        ${bean_name} ${bean_var} = new ${bean_name}();
+${set_statements}
+        return ${bean_var};
+    }
+```
+```set_statement
+        ${bean_var}.${method_name}((${data_type})map.get("${col_name}"));
+```

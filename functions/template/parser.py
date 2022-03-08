@@ -40,9 +40,10 @@ def parse_file(filename):
             line = line.strip()
             if len(line) == 3:
                 templates[templateName] = parse_snippet(template, templateName)
-                template = ''
             elif len(line) > 3:
                 templateName = line[3:]
+            # ``` 之外的行就忽略掉了
+            template = ''
         else:
             template += line + "\n"
     return templates

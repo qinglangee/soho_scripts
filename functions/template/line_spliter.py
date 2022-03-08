@@ -14,7 +14,7 @@ class DefUnit:
         self.fields = [] # 除名字外的其它一些特殊属性， 元素为键值元组  [('type', 'class'), ('age','34')]
         self.items = [] # 列表的列表，每个元素代表一行，默认把行按 @ 切分, 包含 field 以外的行
         
-        # 列表的列表，每个元素代表一行，默认把行按 @ 切分， 包含所有的行
+        # 列表的列表，每个元素代表一行，默认把行按空白切分，以@开头的按@切分， 包含所有的行
         # fields 中的会以 * 开头， 为了 lines 统一处理时也可以区分
         self.lines = [] 
 
@@ -29,6 +29,8 @@ class DefUnit:
             if field[0] == name:
                 return field[1]
         return None
+    def has_field(self, name):
+        return self.get_field(name) != None
 
 def parse_file(filename, trim=True):
     lines = fu.read_lines(filename)
