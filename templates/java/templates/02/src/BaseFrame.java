@@ -27,4 +27,14 @@ public class BaseFrame extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);//窗体居中显示
     }
+
+    /**
+     * Change content container
+     * @param container
+     */
+    public void changeMainPanel(Container container){
+        setContentPane(container);
+        revalidate();
+        repaint();
+    }
 }

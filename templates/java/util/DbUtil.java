@@ -21,13 +21,19 @@ public class DbUtil implements Serializable {
     try {
       Class.forName("org.sqlite.JDBC");
       c = DriverManager.getConnection("jdbc:sqlite:" + dbFile);
+
+      // mysql
+      // Class.forName("com.mysql.jdbc.Driver");
+      // c = DriverManager.getConnection("jdbc:mysql://localhost:3306/zh_thegeneralpractitioner?serverTimezone=UTC&amp", "root", "zhch");
+
       System.out.println("Connect database successfully");
 
-      stmt = c.createStatement();
-      String sql = "CREATE TABLE cityinfo " +
-                    "(city text PRIMARY KEY NOT NULL," +
-                    " info text)";
-      stmt.executeUpdate(sql);
+      // Test sql statement
+      // stmt = c.createStatement();
+      // String sql = "CREATE TABLE cityinfo " +
+      //               "(city text PRIMARY KEY NOT NULL," +
+      //               " info text)";
+      // stmt.executeUpdate(sql);
 
     } catch (Exception e) {
     }
@@ -38,6 +44,26 @@ public class DbUtil implements Serializable {
       stmt.executeUpdate(sql);
     } catch (Exception e) {
       e.printStackTrace();
+    }
+  }
+
+  /** Insert with sql and reutn pk */
+  public int insert(String sql) {
+    try (PreparedStatement statement = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        int affectedRows = statement.executeUpdate();
+        ResultSet re = statement.getGeneratedKeys();
+        if(re != null){
+          re.next();
+          return re.getInt(1);
+        }else{
+          return -1;
+        }
+
+        // omitted
+    } catch (SQLException e) {
+        // handle the database related exception appropriately
+        e.printStackTrace();
+        return -1;
     }
   }
 

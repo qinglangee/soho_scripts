@@ -26,9 +26,9 @@ public class GridPanel extends JPanel{
         }
     }
     // add component to next row
-    public void addToNewRow(JComponent comp){
+    public void addToNewRow(JComponent ... comps){
         gridY++;
-        addToRow(comp, gridY);
+        addToRow(comps);
     }
 
     // add component to assigned row

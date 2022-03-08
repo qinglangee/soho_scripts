@@ -47,14 +47,14 @@ NORTHEAST、GridBagConstraints.EAST、GridBagConstraints.SOUTH、GridBagConstrai
         panel.setLayout(gridBagLayout);
         int x=0, y=0;
 
-        addToGrid(panel, gridBagLayout, new JButton("b1"), 0, y, 1,1);
-        addToGrid(panel, gridBagLayout, new JButton("b2"), 1, y++, 2,1);
+        addToGrid(panel, new JButton("b1"), 0, y, 1,1);
+        addToGrid(panel, new JButton("b2"), 1, y++, 2,1);
 
-        addToGrid(panel, gridBagLayout, new JButton("b3 ..."), 1, y, 2,1);
-        addToGrid(panel, gridBagLayout, new JButton("精确指定坐标排列"), 3, y++, 2,1);
+        addToGrid(panel, new JButton("b3 ..."), 1, y, 2,1);
+        addToGrid(panel, new JButton("精确指定坐标排列"), 3, y++, 2,1);
         
-        addToGrid(panel, gridBagLayout, new JLabel("Label"), 0, y, 1,1);
-        addToGrid(panel, gridBagLayout, new JTextField(), 1, y, 2,1);
+        addToGrid(panel, new JLabel("Label"), 0, y, 1,1);
+        addToGrid(panel, new JTextField(), 1, y, 2,1);
 
 
         add(panel);
@@ -62,7 +62,8 @@ NORTHEAST、GridBagConstraints.EAST、GridBagConstraints.SOUTH、GridBagConstrai
 
 
     
-    private void addToGrid(JPanel parent, GridBagLayout gridBagLayout, Component comp, int x, int y, int width, int height){
+    private void addToGrid(JPanel parent, Component comp, int x, int y, int width, int height){
+        GridBagLayout gridBagLayout = (GridBagLayout)parent.getLayout();
         GridBagConstraints gridBagConstraints=new GridBagConstraints();//实例化这个对象用来对组件进行管理
         gridBagConstraints.fill=GridBagConstraints.BOTH;//该方法是为了设置如果组件所在的区域比组件本身要大时的显示情况 
         //NONE：不调整组件大小。 
