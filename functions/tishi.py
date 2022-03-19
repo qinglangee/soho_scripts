@@ -1,6 +1,10 @@
 
 names = {
-    'git':['git archive --format zip --output /path_out.zip master'],
+    'git':[
+        'git archive --format zip --output /path_out.zip master',
+        'git update-index --assume-unchanged filename',
+        'git update-index --no-assume-unchanged filename',
+    ],
     'xcopy':['xcopy /S /Y src dest    # /S 递归复制所有目录  /Y 确认覆盖旧文件'],
 }
 
