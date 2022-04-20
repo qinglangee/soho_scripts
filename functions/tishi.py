@@ -9,7 +9,11 @@ names = {
     'hash':[
         'Get-FileHash ".\\2021-04-18 21-18-28.mkv" -Algorithm md5',
         'Get-FileHash ".\\2021-04-18 21-18-28.mkv" -Algorithm sha256'
-    ]
+    ],
+    'php':{
+        'php -S localhost:8000',
+        'php -S localhost:8000 -t foo/   指定根目录',
+    }
 }
 
 
