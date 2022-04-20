@@ -9,7 +9,7 @@
 # 对应的，如果是二进制文件，就都加一个b就好啦：
 # 'rb'　　'wb'　　'ab'　　'rb+'　　'wb+'　　'ab+'
 #######################################################
-
+import os
 
 # 逐行处理文件， fun 是传入的处理函数
 # 比较省内存，处理特大文件用
@@ -67,6 +67,9 @@ def read_file(filename, encoding='utf-8'):
 
 # 写入文件内容。覆盖
 def write_file(filename, content, encoding='utf-8'):
+    # create dir if not exists
+    if not os.path.exists(os.path.dirname(filename)):
+        os.makedirs(os.path.dirname(filename))
     file_object = open(filename, 'w', encoding=encoding)
     file_object.write(content)
     file_object.close()

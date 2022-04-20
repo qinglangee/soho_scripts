@@ -22,8 +22,7 @@ def process(src_dir, filename):
 
     # 初始化几个全局变量
     tpl_snippets = parser.parse_file(os.path.join(c.code_template_dir, "sql/sql_tpl.txt"))
-    units = line_spliter.parse_file(filename)
-    setting = units[0]
+    setting, units = line_spliter.parse_with_setting(filename)
     sql_type = setting.get_field('type')
     if sql_type == 'mysql':
         type_dict = mysql_dict
@@ -34,14 +33,14 @@ def process(src_dir, filename):
 
 
     content = ""
-    for unit in units[1:]:
+    for unit in units:
         content += create_table(unit)
     # 生成的 sql 语句内容输出到文件
     fu.write_file(os.path.join(src_dir, setting.get_field('output')), content)
 
     # 如果需要创建转换类就创建一下
     if(setting.has_field('converter')):
-        create_converter(src_dir, units[1:])
+        create_converter(src_dir, units)
 
 # 把一个表的定义信息转换面建表语句
 def create_table(unit):

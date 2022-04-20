@@ -6,6 +6,10 @@ names = {
         'git update-index --no-assume-unchanged filename',
     ],
     'xcopy':['xcopy /S /Y src dest    # /S 递归复制所有目录  /Y 确认覆盖旧文件'],
+    'hash':[
+        'Get-FileHash ".\\2021-04-18 21-18-28.mkv" -Algorithm md5',
+        'Get-FileHash ".\\2021-04-18 21-18-28.mkv" -Algorithm sha256'
+    ]
 }
 
 

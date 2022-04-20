@@ -1,28 +1,23 @@
 import clipboard as clip
-
-def create(lines):
+from util import string_util, check_util
+from .snippet_common import snippet_result
+def create(unit):
     flags = []
     names = []
     hints = []
-    for line in lines:
-        parts = line.split("@")
-        flags.append(parts[0])
-        hints.append(parts[1])
-        names.append(parts[2])
+    for line in unit.items:
+        flags.append(line[0])
+        hints.append(line[1])
+        names.append(line[2])
 
-    for h in hints:
-        print(h)
-
-    for n in names:
-        print(n)
 
     result = "public static Scanner sc = new Scanner(System.in);\n\n"
     result += create_print_menu(flags, hints)
     result += create_loop(flags, names)
     result += create_methods(flags, names)
+    result = string_util.indent(result)
 
-    print(result)
-    clip.copy(result)
+    snippet_result(result, unit)
 
 
 def create_print_menu(flags, hints):
@@ -34,7 +29,7 @@ def create_print_menu(flags, hints):
         line += flags[i]+": " + hints[i]
         line += '");'
         codes.append(line)
-        codes.append('System.out.print("Enter option: ");')
+    codes.append('\tSystem.out.print("Enter option: ");')
     codes.append("}")
 
     result = ""

@@ -31,3 +31,6 @@ def get_files(dir, filter = None):
     
     return files
 
+def create_dir(path):
+    '''just for note'''
+    os.makedirs(path)

@@ -1,0 +1,10 @@
+*name setting
+*output src # 输出文件目录
+*beanpackage bean # 如果 bean manager 不在同一个包
+*package bean.manage # 如果生成 converter, package
+
+
+# 其它类型需要的再加
+*name student
+
+*name course

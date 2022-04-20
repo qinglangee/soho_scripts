@@ -1,0 +1,32 @@
+# 命令行程序菜单
+*name menu
+*file src/Main.java
+*title menu_of_input
+@1@Add a new token qqqqwq@addToken()
+@2@Delete a token@deleteToken()
+@3@Add manager@addManager()
+@0@Quit@exit()
+
+# 字段创建和检测
+*name field
+*file src/ui/FirstController.java
+*title label_text_pair
+email
+pass
+firstName
+
+*name field
+*file src/ui/FirstController.java
+*title label_text_init
+*type init
+email Email
+pass Password
+@firstName@First name
+
+*name field
+*file src/ui/FirstController.java
+*title label_text_check
+*type check
+email Email
+pass Password
+@firstName@First name

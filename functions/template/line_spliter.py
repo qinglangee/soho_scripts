@@ -32,6 +32,10 @@ class DefUnit:
     def has_field(self, name):
         return self.get_field(name) != None
 
+def parse_with_setting(filename, trim=True):
+    units = parse_file(filename, trim)
+    return units[0], units[1:]
+
 def parse_file(filename, trim=True):
     lines = fu.read_lines(filename)
     return parse_lines(lines, trim)
