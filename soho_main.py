@@ -7,6 +7,7 @@ from functions.create_class import factory
 from functions.create_code import code_template
 from functions import copy_file, backup, tishi
 from functions.snippets import snippet
+from functions.vscode import vscode
 
 
 sub_cmds = {
@@ -18,6 +19,7 @@ sub_cmds = {
     "tishi":tishi, ## 命令用法提示
     "code":code_template, ## 命令用法提示
     "snippet":snippet, ## 生成代码片段
+    "vs":vscode, ## vscode 配置修改
 }
 
 def print_help():
