@@ -96,7 +96,7 @@ def special_line(line):
     elif line[0] == '*fk':
         return tpl_snippets['fk'].replace_by_list(line[1:])
     elif line[0] == '*zh_keep':
-        return '    ' + line[1]
+        return '    ' + line[1] + "\n"
 
     return ''
 
