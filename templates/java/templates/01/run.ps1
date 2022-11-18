@@ -37,7 +37,7 @@ if(($1 -eq "c") -or ($1 -eq "compile")){
     run_java $2 $3 $4 $5 $6 $7 $8 $9
 }
 
-
+# javac -cp ".;../lib/*" *.java
 
 # dir /s /B src\*.java > sources.txt
 

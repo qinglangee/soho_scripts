@@ -14,18 +14,18 @@ public class BaseFrame extends JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // 确保一个漂亮的外观风格
+        // Set Jframe style
         JFrame.setDefaultLookAndFeelDecorated(true);
     }
 
     
-    // 设置窗口的标题和大小
+    // Set Title and size
     public void init(String title, int width, int height){
         this.setTitle(title);
         setSize(width, height);
         
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);//窗体居中显示
+        setLocationRelativeTo(null);// locate to center
     }
 
     /**

@@ -15,8 +15,8 @@ public class Main extends Application {
         Scene scene = new Scene(pane, 1000, 600);
         stage.setScene(scene);
 
-        ScreenController screen = ScreenController.getInstance();
-        screen.setScene(scene);
+        // ScreenController screen = ScreenController.getInstance();
+        // screen.setScene(scene);
         
         stage.show();
     }
