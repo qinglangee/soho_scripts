@@ -83,10 +83,11 @@ NORTHEAST、GridBagConstraints.EAST、GridBagConstraints.SOUTH、GridBagConstrai
         GridBagLayout gridBagLayout = new GridBagLayout();
         panel.setLayout(gridBagLayout);
         GridBagConstraints cons = new GridBagConstraints();//实例化这个对象用来对组件进行管理
-        cons.gridx = GridBagConstraints.RELATIVE;
-        cons.gridy = GridBagConstraints.RELATIVE;
+        // gridwidth 设置每个格子在宽度上占几个格子， 类似 colspan, 默认就是1
         cons.gridwidth=1;
         cons.gridheight=1;
+
+        cons.gridy = GridBagConstraints.RELATIVE;
 
         JButton b1 = new JButton("Relative可以自动排列,不会换行");
         JButton b2 = new JButton("Button2");
@@ -101,8 +102,10 @@ NORTHEAST、GridBagConstraints.EAST、GridBagConstraints.SOUTH、GridBagConstrai
         cons.gridy = 2; // 开始第二行
         JButton b5 = new JButton("Button5");
         JButton b6 = new JButton("Button6");
+        JButton b7 = new JButton("Button7");
         gridBagLayout.setConstraints(b5, cons);
         gridBagLayout.setConstraints(b6, cons);
+        gridBagLayout.setConstraints(b7, cons);
 
         panel.add(b1);
         panel.add(b2);
@@ -110,6 +113,7 @@ NORTHEAST、GridBagConstraints.EAST、GridBagConstraints.SOUTH、GridBagConstrai
         panel.add(b4);
         panel.add(b5);
         panel.add(b6);
+        panel.add(b7);
         add(panel);
     }
 
@@ -125,15 +129,14 @@ NORTHEAST、GridBagConstraints.EAST、GridBagConstraints.SOUTH、GridBagConstrai
         GridBagLayout gridBagLayout = new GridBagLayout();
         panel.setLayout(gridBagLayout);
         GridBagConstraints cons = new GridBagConstraints();//实例化这个对象用来对组件进行管理
-        cons.gridx = GridBagConstraints.RELATIVE;
-        cons.gridy = GridBagConstraints.RELATIVE;
-        cons.gridwidth=1;
-        cons.gridheight=1;
+        cons.gridwidth=GridBagConstraints.RELATIVE;
+        cons.gridheight=GridBagConstraints.RELATIVE;
         JButton b1 = new JButton("fill 的不同填充方式");
         b1.setPreferredSize(new Dimension(250, 250));
         gridBagLayout.setConstraints(b1, cons);
 
         JButton b2 = new JButton("VER");
+        // fill 只是在格子大于控件时起作用，也就是别的控件把格子撑大了的时候。 没有别人撑大，格子会贴到控件大小
         cons.fill = GridBagConstraints.VERTICAL;
         gridBagLayout.setConstraints(b2, cons);
         
@@ -151,11 +154,86 @@ NORTHEAST、GridBagConstraints.EAST、GridBagConstraints.SOUTH、GridBagConstrai
 
     private void addGrid4(){
 
+        JPanel panel = Util.panel(Color.green);
+        panel.setPreferredSize(new Dimension(350, 350));
+        GridBagLayout gridBagLayout = new GridBagLayout();
+        panel.setLayout(gridBagLayout);
+        GridBagConstraints cons = new GridBagConstraints();//实例化这个对象用来对组件进行管理
+        cons.gridx = 0;
+        cons.gridy = 0;
+        JButton b1 = new JButton("这里有个格子");
+        b1.setPreferredSize(new Dimension(150, 50));
+        gridBagLayout.setConstraints(b1, cons);
+
+        
+        JButton b3 = new JButton("这里也有个格子");
+        b3.setPreferredSize(new Dimension(150, 50));
+        cons.gridx = 1;
+        cons.gridy = 0;
+        cons.fill = GridBagConstraints.BOTH;
+        gridBagLayout.setConstraints(b3, cons);
+
+        /**
+         * REMAINDER 是占据没人占的格子
+         * 如果没有空格子，REMAINDER不会占据容器剩余空间
+         * REMAINDER 只是占了，并没有放大。 然后设置了 fill 才会在空间大的时候放大。  
+         */
+        JButton b2 = new JButton("REMAINDER");
+		cons.gridwidth = GridBagConstraints.REMAINDER;
+		cons.gridheight = GridBagConstraints.REMAINDER;
+        cons.gridx = 0;
+        cons.gridy = 1;
+        cons.fill = GridBagConstraints.BOTH;
+        gridBagLayout.setConstraints(b2, cons);
+
+
+
+        
+        panel.add(b1);
+        panel.add(b2);
+        panel.add(b3);
+        add(panel);
     }
     private void addGrid5(){
-
     }
     private void addGrid6(){
+        
+        add(new TestPane());
+    }
+
+    public class TestPane extends JPanel {
+
+        public TestPane() {
+
+            setLayout(new GridBagLayout());
+            GridBagConstraints gbc = new GridBagConstraints();
+            gbc.gridx = 0;
+            gbc.gridy = 0;
+            gbc.gridheight = gbc.REMAINDER;
+            gbc.weightx = 1;
+            gbc.fill = GridBagConstraints.BOTH;
+
+            JTextArea patch = new JTextArea(10, 30);
+
+            add(new JScrollPane(patch), gbc);
+
+            gbc = new GridBagConstraints();
+            gbc.gridx = 1;
+            gbc.gridy = 0;
+            gbc.fill = GridBagConstraints.HORIZONTAL;
+            for (int index = 0; index < 6; index++) {
+                add(new JButton("Button #" + index), gbc);
+                gbc.gridy++;
+            }
+
+            gbc.gridx = 1;
+            gbc.anchor = GridBagConstraints.SOUTH;
+            gbc.weighty = 1;
+            gbc.fill = GridBagConstraints.HORIZONTAL;
+            add(new JButton("Play >"), gbc);
+
+
+        }
 
     }
 

@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class ConsoleUtil{
     Scanner sc = new Scanner(System.in);
-    public static final String ERROR_INPUT = "Error input.";
+    public static final String ERROR_INPUT = "Invalid input.";
     
     // post: asks the user a question, forcing an answer of "y" or "n";
     //       returns true if the answer was yes, returns false otherwise
