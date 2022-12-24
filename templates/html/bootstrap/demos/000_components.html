@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Components</title>
+
+
+  <link rel="stylesheet" href="jslib/bootstrap.min.css">
+  <script src="jslib/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="jslib/prism.css">
+
+  <script src="jslib/prism.js"></script>
+  <script src="jslib/jquery-3.5.1.js"></script>
+
+  <style>
+    /* .btn-copy{
+      position: relative;
+      top: 50px;
+      right: -45%;
+    } */
+  </style>
+
+</head>
+
+<body>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Active</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+        aria-expanded="false">Dropdown</a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    </li>
+  </ul>
+
+  <div class="container">
+    
+    <div class="example">
+      <div class="stage">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Active</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="stage">
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Active</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
+<script>
+  function escapeHtml(htmlStr) {
+    return htmlStr
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      // .replace(/"/g, "&quot;")
+      // .replace(/'/g, "&#39;")
+      // .replace(/&/g, "&amp;")
+      ;
+
+  }
+  function unEscapeHtml(htmlStr) {
+    htmlStr = htmlStr.replace(/&lt;/g, "<");
+    htmlStr = htmlStr.replace(/&gt;/g, ">");
+    htmlStr = htmlStr.replace(/&quot;/g, "\"");
+    htmlStr = htmlStr.replace(/&#39;/g, "\'");
+    htmlStr = htmlStr.replace(/&amp;/g, "&");
+    return htmlStr;
+  }
+  function replaceHtml() {
+    const examples = $('.example');
+    let index = 0;
+    for (let example of examples) {
+      index++;
+      example = $(example);
+      const stage = $(".stage", example);
+      stage.attr('id', "stage_" + index);
+      let html = escapeHtml(stage.html());
+      html = html.replace(/^\s{8}/gm, '');
+      const codeBox = $("<div></div>");
+      const codeToggle = $("<div style='width:30%;background-color:#F0F0F0;' class='text-center'>Code </div>");
+      const code = $("<pre style='display:none;'><code class='language-html'></code></pre>")
+      $("code", code).html(html);
+      codeToggle.on('mouseover', ()=>code.show());
+      code.on("mouseleave", ()=>code.hide());
+      const copyBtn = $("<button class='btn btn-primary btn-sm btn-copy'>Copy</button>");
+      const stageId = 'stage_' + index;
+      copyBtn.on('click', ()=>{
+        copyCode(stageId);
+      });
+      codeBox.append(codeToggle);
+      codeToggle.append(copyBtn);
+      codeBox.append(code);
+      example.append(codeBox);
+      // console.log(html);
+    }
+  }
+  function copyCode(stageId){
+    const clip = navigator.clipboard;
+    if(clip == null){
+      alert("can not copy.");
+    }
+    
+    const stage = $("#" + stageId);
+    let html = stage.html();
+    html = html.replace(/^\s{8}/gm, '');
+    clip.writeText(html);
+    console.log('copy ...');
+  }
+  function init() {
+    replaceHtml();
+  }
+
+  init();
+</script>
+
+</html>
