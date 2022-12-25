@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>Dashboard</title>
+
+
+
+
+  <!-- Bootstrap core CSS -->
+  <link href="jslib/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    #container {
+      display: grid;
+      grid-template-areas: "header header header header header header header"
+        "sidebar main main main main main main";
+      height: 100%;
+    }
+
+    .menu {
+      grid-area: sidebar;
+      background-color: #F0F0F0;
+      height: 100%;
+      overflow-y: scroll;
+    }
+
+    .main {
+      grid-area: main;
+      height: 100%;
+      overflow-y: scroll;
+      background-color: #F0F0F4;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container" id="container">
+    <!-- header -->
+    <div class="header">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+    </div>
+    <!-- menu -->
+    <div class="menu">
+
+      <ul class="nav flex-column mb-2" id="menu_box">
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <span data-feather="file-text"></span>
+            Current month
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- main -->
+    <div class="main">
+
+      <table class="table table-striped table-sm">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Header</th>
+            <th scope="col">Header</th>
+            <th scope="col">Header</th>
+            <th scope="col">Header</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+  <script src="jslib/bootstrap.bundle.min.js"></script>
+  <script src="jslib/feather-4.28.0.min.js"></script>
+  <script src="jslib/jquery-3.5.1.js"></script>
+  <script>
+
+
+    function addMenus() {
+      let menuBox = $("#menu_box");
+      for (let i = 0; i < 50; i++) {
+        const menu = $(`<li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text"></span>
+                <b>Current month</b>
+              </a>
+            </li>`);
+        menu.find("b").html('Current month ' + i);
+        menuBox.append(menu);
+      }
+    }
+
+    function addTableRows() {
+      let tbody = $("#tbody");
+      for (let i = 0; i < 120; i++) {
+        let tr = $("<tr></tr>");
+        for (let j = 0; j < 5; j++) {
+          tr.append($("<td>content " + (i + j) + "</td>"));
+        }
+        tbody.append(tr);
+      }
+    }
+
+    function init() {
+      addTableRows();
+      addMenus();
+
+
+      feather.replace({ 'aria-hidden': 'true' })
+    }
+
+    init();
+  </script>
+</body>
+
+</html>
