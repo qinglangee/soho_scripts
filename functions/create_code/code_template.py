@@ -6,7 +6,7 @@ from . import sql_code
 from . import manager_code
 
 def short_desc():
-    hint = "code 根据模板创建文件, 设置都在模板文件里 \n"
+    hint = "code 根据模板创建文件, 设置都在 .hint 模板文件里 \n"
     hint += "    code \n"
     return hint
 

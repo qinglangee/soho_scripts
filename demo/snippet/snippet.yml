@@ -1,0 +1,30 @@
+
+
+# 各个属性的名字不要写错了
+# name : snippet 类型  
+# file : 要写入的文件
+# title : 写入文件中的标记位置
+# values 中每个值的个数与 template 中占位符数量相同可以不写序号， 数量不同就必须写序号
+snippets:
+  - name: custom
+    file: aa.html
+    title: input_fields
+    template: |
+      <div class="row">
+      <div class="rol-3">{0}</div>
+      <div class="rol-3">{1}</div>
+      <div class="rol-3">{2}</div>
+      </div>
+    values:
+      - [a1, a2, a5]
+      - [b1, b2, b3]
+
+    values:  # values 列表两种写法 
+      - 
+        - a1
+        - a2
+        - a3
+      - 
+        - b1
+        - b2
+        - b3

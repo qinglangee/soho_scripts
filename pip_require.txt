@@ -1,0 +1,5 @@
+
+
+pip install clipboard
+pip install pyyaml
+pip install jinja2

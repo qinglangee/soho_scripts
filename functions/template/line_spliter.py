@@ -42,6 +42,7 @@ def parse_file(filename, trim=True):
 
 
 def parse_lines(lines, trim=True):
+    '''解析自定义输入文件格式'''
     units = []
     unit = None
     for line in lines:

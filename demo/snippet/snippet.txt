@@ -1,4 +1,8 @@
-# 命令行程序菜单
+# *file 设置的话，在文件中查找 *title 对应的  //  title  start / end 行， 替换中间的内容
+# *file 不设置则生成的内容存放到剪贴板中  
+
+# 命令行程序菜单, 生成菜单对应调用函数的形式
+# 内容为每一行分3部分 1 菜单输入的标号 2 菜单提示文字 3 菜单对应调用的函数  
 *name menu
 *file src/Main.java
 *title menu_of_input
@@ -8,6 +12,7 @@
 @0@Quit@exit()
 
 # 字段创建和检测
+# 生成 Swing 填写字段 JTextField 和对应的 JLabel 定义
 *name field
 *file src/ui/FirstController.java
 *title label_text_pair
@@ -15,6 +20,7 @@ email
 pass
 firstName
 
+# 生成字段 JTextField 和 JLabel 的初始化
 *name field
 *file src/ui/FirstController.java
 *title label_text_init
@@ -23,6 +29,8 @@ email Email
 pass Password
 @firstName@First name
 
+
+# 生成字段不能为空的检测代码
 *name field
 *file src/ui/FirstController.java
 *title label_text_check

@@ -25,14 +25,33 @@ def indent(input, count=1, tab_size=4):
     return result
 
 def replace_by_flag(filename, flag_str, content):
-    '''根据标记，替换 start end 标记中间部分的内容'''
+    '''根据标记，简单替换 start end 标记中间部分的内容'''
     text = file_util.read_file(filename)
-    start = rf'// *{flag_str} *start\n'
-    end = rf'// *{flag_str} *end\n'
+    start = rf'// *{flag_str} *start.*\n'   # 正则   //    flag_str    start
+    end = rf'// *{flag_str} *end.*\n'
     replacement = f'// {flag_str} start\n' + content + f'// {flag_str} end\n'
     # re.DOTALL 会匹配换行符，可以替换多行
     replaced = re.sub(start + r'.*' + end, replacement, text, flags=re.DOTALL)
     file_util.write_file(filename, replaced)
+
+def replace_lines_between_flag(filename, flag_str, content):
+    '''根据标记，替换 start end 标记行中间部分的内容'''
+    lines = file_util.read_lines(filename)
+    new_lines = []
+    start = rf'.*{flag_str} *start'   # 正则     flag_str    start
+    end = rf'.*{flag_str} *end'
+    replace = False
+    for line in lines:
+        if not replace:
+            new_lines.append(line)
+        if re.match(start, line):
+            replace = True
+            new_lines.append(content)
+        if re.match(end, line):
+            replace = False
+            new_lines.append(line)
+
+    file_util.write_list(filename, new_lines)
 
 def delete_line_by_flag(origin, flag_str, total=False):
     '''删除符合 flag 标记的行内容'''

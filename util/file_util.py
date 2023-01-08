@@ -10,6 +10,7 @@
 # 'rb'　　'wb'　　'ab'　　'rb+'　　'wb+'　　'ab+'
 #######################################################
 import os
+import yaml
 
 # 逐行处理文件， fun 是传入的处理函数
 # 比较省内存，处理特大文件用
@@ -67,8 +68,9 @@ def read_file(filename, encoding='utf-8'):
 
 # 写入文件内容。覆盖
 def write_file(filename, content, encoding='utf-8'):
+    parent_dir = os.path.dirname(filename)
     # create dir if not exists
-    if not os.path.exists(os.path.dirname(filename)):
+    if parent_dir != '' and not os.path.exists(parent_dir):
         os.makedirs(os.path.dirname(filename))
     file_object = open(filename, 'w', encoding=encoding)
     file_object.write(content)
@@ -103,3 +105,9 @@ def append_list(filename, list, toString=None, encoding='utf-8'):
     append_file(filename, content, encoding=encoding)
 
 
+
+
+# 加载 yaml 文件
+def load_yaml(filename):
+    with open(filename, 'r', encoding='utf-8') as file:
+        return yaml.safe_load(file)
