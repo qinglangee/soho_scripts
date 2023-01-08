@@ -47,12 +47,31 @@
 
     .menu {
       height: 100%;
-      overflow-y: scroll;
+      overflow-y: auto;
     }
 
     .main {
       height: 100%;
-      overflow-y: scroll;
+      overflow-y: auto;
+    }
+      
+    .menu .nav-link {
+      font-weight: 500;
+      color: #333;
+    }
+
+    .menu .nav-link .feather {
+      margin-right: 4px;
+      color: #727272;
+    }
+
+    .menu .nav-link.active {
+      color: #2470dc;
+    }
+
+    .menu .nav-link:hover .feather,
+    .menu .nav-link.active .feather {
+      color: inherit;
     }
   </style>
 </head>
@@ -61,14 +80,18 @@
 
   <div class="container" id="container">
     <!-- header -->
-
+  
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.html">Company name</a>
       <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
         data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+      <div class="navbar-nav">
+        <div class="nav-item text-nowrap text-white">
+          Nav可Container内，可外. header 内容靠右平均分布
+        </div>
+      </div>
       <div class="navbar-nav">
         <div class="nav-item text-nowrap">
           <a class="nav-link px-3" href="#">Sign out</a>
@@ -83,7 +106,7 @@
 
         <ul class="nav flex-column mb-2" id="menu_box">
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link active" href="#">
               <span data-feather="file-text"></span>
               Current month
             </a>
@@ -121,7 +144,7 @@
 
     function addMenus() {
       let menuBox = $("#menu_box");
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 50; i++) {
         const menu = $(`<li class="nav-item">
               <a class="nav-link" href="#">
                 <span data-feather="file-text"></span>
@@ -135,7 +158,7 @@
 
     function addTableRows() {
       let tbody = $("#tbody");
-      for (let i = 0; i < 12; i++) {
+      for (let i = 0; i < 120; i++) {
         let tr = $("<tr></tr>");
         for (let j = 0; j < 5; j++) {
           tr.append($("<td>content " + (i + j) + "</td>"));

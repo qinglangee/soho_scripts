@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang='zh'>
+  <head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Feather Icons</title>
+    
+    <link rel="stylesheet" href="jslib/bootstrap.min.css">
+    <style>
+      .main-box{
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+      }
+      .icon-box{
+        position: relative;
+        width:120px;
+        height: 160px;
+        float: left;
+        text-align: center;
+        border: 1px solid;
+        margin: 3px;
+        padding: 5px;
+        border-radius: 5px;
+      }
+      .icon-box svg{
+        width: 24px;
+        height: 100px;
+        stroke-width: 2px;
+      }
+      .icon-box button{
+        position: absolute;
+        top: 3px;
+        right:3px;
+        display: none;
+      }
+      .icon{
+        font-size: 20px;
+      }
+      #demo{display: none;}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row mt-4 mb-4">
+        <div class="col-8">
+          <input type="text" class="form-control" id="search_input">
+        </div>
+        <div class="col-4">
+          <button class="btn btn-primary">查找</button>
+        </div>
+      </div>
+      <div>
+        引用文件名 feather-4.28.0.min.js 不变，实际上内容换了，已经不是 4.28.0 版本了。 
+      </div>
+    </div>
+    <div class="main-box">
+      <div class="sidebar">
+        <div>Size 
+          <input type="range" name="size" id="size" min="12" max="100" value="24"/>
+          <span id="size_value">24</span>px
+        </div>
+        <div>Stroke width
+          <input type="range" name="width" id="width" min="0.5" max="5" value="1.5"/>
+          <span id="width_value">1.5</span>px
+        </div>
+        <div>Color
+          <input type="text" name="color" id="color" value="currentColor"/>
+        </div>
+      </div>
+      <div class="main" id="main">
+      </div>
+    </div>
+    <div id="demo">
+      <div class="icon-box">
+        <div>
+          <i class="icon"></i>
+        </div>
+        <span class="name"></span>
+        <button class="btn btn-info btn-sm ">copy</button>
+      </div>
+    </div>
+  </body>
+  <script src="jslib/feather-4.28.0.min.js"></script>
+  <script src="jslib/jquery-3.5.1.js"></script>
+  <script>
+    /** 
+     * 收集页面所有图标名称 https://feathericons.com/  
+     * 页面做的相当古怪， 动态显示的，不好收集， 要自己手动滚动页面收集
+    */
+    function collectIconNames(){
+      const total = 287; // 先手动数一数一共287个
+      let allNames = [];
+
+      let collectOnce = function(){
+        let spans = document.querySelectorAll('div>div>div>span');
+        for(let span of spans){
+          const name = span.innerHTML;
+          if(allNames.indexOf(name) < 0){
+            allNames.push(name);
+          }
+        }
+        console.log("size: ", allNames.length);        
+        if(allNames.length < total){
+          setTimeout(function(){
+            collectOnce();
+          }, 300);
+        }else{
+          let str = "const iconNames = [";
+          let i = 0;
+          for(let name of allNames){
+            str += (i > 0 ? ',':'') + "'" + name + "'";
+            i++;
+          }
+          str += "];";
+          console.log(str);
+        }
+      }
+
+      collectOnce();
+    }
+    // collectIconNames();
+
+    //////////  页面显示列表  ///////////////////////////////////////////////////////////////
+    const iconNames = ['activity','airplay','alert-circle','alert-octagon','alert-triangle','align-center','align-justify','align-left','align-right','anchor','aperture','archive','arrow-down-circle','arrow-down-left','arrow-down-right','arrow-down','arrow-left-circle','arrow-left','arrow-right-circle','arrow-right','arrow-up-circle','arrow-up-left','arrow-up-right','arrow-up','at-sign','award','bar-chart-2','bar-chart','battery-charging','battery','bell-off','bell','bluetooth','bold','book-open','book','bookmark','box','briefcase','calendar','camera-off','camera','cast','check-circle','check-square','check','chevron-down','chevron-left','chevron-right','chevron-up','chevrons-down','chevrons-left','chevrons-right','chevrons-up','chrome','circle','clipboard','clock','cloud-drizzle','cloud-lightning','cloud-off','cloud-rain','cloud-snow','cloud','code','codepen','codesandbox','coffee','columns','command','compass','copy','corner-down-left','corner-down-right','corner-left-down','corner-left-up','corner-right-down','corner-right-up','corner-up-left','corner-up-right','cpu','credit-card','crop','crosshair','database','delete','disc','divide-circle','divide-square','divide','dollar-sign','download-cloud','download','dribbble','droplet','edit-2','edit-3','edit','external-link','eye-off','eye','facebook','fast-forward','feather','figma','file-minus','file-plus','file-text','file','film','filter','flag','folder-minus','folder-plus','folder','framer','frown','gift','git-branch','git-commit','git-merge','git-pull-request','github','gitlab','globe','grid','hard-drive','hash','headphones','heart','help-circle','hexagon','home','image','inbox','info','instagram','italic','key','layers','layout','life-buoy','link-2','link','linkedin','list','loader','lock','log-in','log-out','mail','map-pin','map','maximize-2','maximize','meh','menu','message-circle','message-square','mic-off','mic','minimize-2','minimize','minus-circle','minus-square','minus','monitor','moon','more-horizontal','more-vertical','mouse-pointer','move','music','navigation-2','navigation','octagon','package','paperclip','pause-circle','pause','pen-tool','percent','phone-call','phone-forwarded','phone-incoming','phone-missed','phone-off','phone-outgoing','phone','pie-chart','play-circle','play','plus-circle','plus-square','plus','pocket','power','printer','radio','refresh-ccw','refresh-cw','repeat','rewind','rotate-ccw','rotate-cw','rss','save','scissors','search','send','server','settings','share-2','share','shield-off','shield','shopping-bag','shopping-cart','shuffle','sidebar','skip-back','skip-forward','slack','slash','sliders','smartphone','smile','speaker','square','star','stop-circle','sun','sunrise','sunset','table','tablet','tag','target','terminal','thermometer','thumbs-down','thumbs-up','toggle-left','toggle-right','tool','trash-2','trash','trello','trending-down','trending-up','triangle','truck','tv','twitch','twitter','type','umbrella','underline','unlock','upload-cloud','upload','user-check','user-minus','user-plus','user-x','user','users','video-off','video','voicemail','volume-1','volume-2','volume-x','volume','watch','wifi-off','wifi','wind','x-circle','x-octagon','x-square','x','youtube','zap-off','zap','zoom-in','zoom-out'];
+
+    function addIconElements(filter){
+      const html = $('#demo').html();
+      const main = $('#main');
+      main.html('');
+      let i = 0;
+      for(let name of iconNames){
+        if(filter == null || filterMatch(name, filter)){
+
+          i++;
+          const div = $(html);
+          const divId = 'icon_' + i;
+          div.attr('id', divId);
+          div.find('.icon').attr('data-feather', name);
+          div.find('.name').html(name);
+          div.find('button').on('click',()=>copyCode(name));
+          div.on('mouseenter', ()=>$('button', div).show());
+          div.on('mouseleave', ()=>$('button', div).hide());
+          main.append(div);
+        }
+      }
+    }
+    function showIcons(filter){
+
+      addIconElements(filter);
+
+      feather.replace({ 'aria-hidden': 'true' })
+    }
+
+    function filterMatch(name, filter){
+      if(filter == null){
+        return true;
+      }
+      let start = -1;
+      for(let i = 0; i < filter.length; i++){
+        const index = name.indexOf(filter.charAt(i));
+        if(index >= 0 && index > start){
+          start = index;
+        }else{
+          return false;
+        }
+      }
+      return true;
+    }
+
+    
+    function copyCode(name){
+      const clip = navigator.clipboard;
+      if(clip == null){
+        alert("can not copy.");
+      }
+      
+      let html = '<i data-feather="'+name+'"></i>';
+      clip.writeText(html);
+      console.log('copy ... ', html);
+    }
+
+    function initBind(){
+      console.log('bind');
+      $('#search_input').on('keyup', function(){
+        showIcons($('#search_input').val());
+      });
+
+      $('#size').change(()=>{
+        $('.icon-box svg').css('width', $('#size').val());
+        $('#size_value').html($('#size').val());
+      });
+
+      $('#width').change(()=>{
+        $('.icon-box svg').css('stroke-width', $('#width').val());
+        $('#width_value').html($('#width').val());
+      });
+
+      $('#color').change(()=>{
+        $('.icon-box svg').css('color', $('#color').val());
+      });
+    }
+
+    function init(){
+      initBind();
+      showIcons();
+    }
+    init();
+  </script>
+</html>

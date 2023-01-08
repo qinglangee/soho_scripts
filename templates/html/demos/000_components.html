@@ -1,0 +1,2633 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Components</title>
+
+
+  <link rel="stylesheet" href="jslib/bootstrap.min.css">
+  <script src="jslib/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="jslib/prism.css">
+
+  <script src="jslib/prism.js"></script>
+  <script src="jslib/jquery-3.5.1.js"></script>
+  <script src="jslib/feather-4.28.0.min.js"></script>
+
+  <!-- Custom styles for this template -->
+  <style>
+    body {
+      font-size: .875rem;
+    }
+
+    .feather {
+      width: 16px;
+      height: 16px;
+      vertical-align: text-bottom;
+    }
+
+    /*
+* Sidebar
+*/
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      /* rtl:raw:
+right: 0;
+*/
+      bottom: 0;
+      /* rtl:remove */
+      left: 0;
+      z-index: 100;
+      /* Behind the navbar */
+      padding: 48px 0 0;
+      /* Height of navbar */
+      box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+    }
+
+    @media (max-width: 767.98px) {
+      .sidebar {
+        top: 5rem;
+      }
+    }
+
+
+    .sidebar .nav-link {
+      font-weight: 500;
+      color: #333;
+    }
+
+    .sidebar .nav-link .feather {
+      margin-right: 4px;
+      color: #727272;
+    }
+
+    .sidebar .nav-link.active {
+      color: #2470dc;
+    }
+
+    .sidebar .nav-link:hover .feather,
+    .sidebar .nav-link.active .feather {
+      color: inherit;
+    }
+
+    .sidebar-heading {
+      font-size: .75rem;
+      text-transform: uppercase;
+    }
+
+    /*
+* Navbar
+*/
+
+    #page_header .navbar-brand {
+      padding-top: .75rem;
+      padding-bottom: .75rem;
+      font-size: 1rem;
+      background-color: rgba(0, 0, 0, .25);
+      box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+    }
+
+    #page_header .navbar .navbar-toggler {
+      top: .25rem;
+      right: 1rem;
+    }
+
+    #page_header .navbar .form-control {
+      padding: .75rem 1rem;
+      border-width: 0;
+      border-radius: 0;
+    }
+
+    #page_header .form-control-dark {
+      color: #fff;
+      background-color: rgba(255, 255, 255, .1);
+      border-color: rgba(255, 255, 255, .1);
+    }
+
+    #page_header .form-control-dark:focus {
+      border-color: transparent;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+    }
+
+    #sidebarMenu {
+      overflow-y: scroll;
+    }
+
+    .category {
+      padding-top: 40px;
+      font-size: 42px;
+      font-weight: bolder;
+    }
+  </style>
+
+</head>
+
+<body>
+  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow" id="page_header">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.html">Company name</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+      data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+    <div class="navbar-nav">
+      <div class="nav-item text-nowrap">
+        <a class="nav-link px-3" href="#">Sign out</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Saved reports</span>
+            <a class="link-secondary" href="#" aria-label="Add a new report">
+              <span data-feather="plus-circle"></span>
+            </a>
+          </h6>
+          <ul class="nav flex-column mb-2" id="menu_box">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text"></span>
+                Current month
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="zh-example" data-category="accordion"></div>
+        <div class="zh-example">
+          <p class="content">
+            <b>data-bs-parent="#accordionExample"</b> 控制同一个父亲内的孩子打开会关闭其它孩子。 不添加这个属性，各自都是独立的。
+          </p>
+          <div class="stage">
+            <div class="accordion" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne">
+                    Accordion Item #1
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>This is the first item's accordion body.</strong> It is shown by default
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo">
+                    Accordion Item #2
+                  </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>This is the second item's accordion body.</strong> It is hidden by default
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree">
+                    Accordion Item #3
+                  </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>This is the third item's accordion body.</strong> It is hidden by default.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="zh-example">
+          <p class="content">
+            添加 <b>.accordion-flush</b> 移除一些默认的背景色 边框 圆角
+          </p>
+          <div class="stage">
+            <div class="accordion accordion-flush" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne">
+                    Accordion Item #1
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>This is the first item's accordion body.</strong> It is shown by default
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo">
+                    Accordion Item #2
+                  </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>This is the second item's accordion body.</strong> It is hidden by default
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree">
+                    Accordion Item #3
+                  </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>This is the third item's accordion body.</strong> It is hidden by default.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="zh-example" data-category="alert"></div>
+
+        <div class="zh-example">
+          <div class="stage">
+            <div class="alert alert-primary" role="alert">
+              A simple primary alert—check it out!
+            </div>
+            <div class="alert alert-secondary" role="alert">
+              A simple secondary alert—check it out!
+            </div>
+            <div class="alert alert-success" role="alert">
+              A simple success alert—check it out!
+            </div>
+            <div class="alert alert-danger" role="alert">
+              A simple danger alert—check it out!
+            </div>
+            <div class="alert alert-warning" role="alert">
+              A simple warning alert—check it out!
+            </div>
+            <div class="alert alert-info" role="alert">
+              A simple info alert—check it out!
+            </div>
+            <div class="alert alert-light" role="alert">
+              A simple light alert—check it out!
+            </div>
+            <div class="alert alert-dark" role="alert">
+              A simple dark alert—check it out!
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            <b>.alert-link</b> 提供配套的链接颜色
+          </p>
+          <div class="stage">
+            <div class="alert alert-primary" role="alert">
+              A simple primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you
+              like.
+            </div>
+          </div>
+        </div>
+        <div class="zh-example">
+          <p class="content">
+            <b>.alert-heading</b> 等 包含其它内容
+          </p>
+          <div class="stage">
+            <div class="alert alert-success" role="alert">
+              <h4>Well done!</h4>
+              <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit
+                longer so that you can see how spacing within an alert works with this kind of content.</p>
+              <hr>
+              <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+            </div>
+          </div>
+        </div>
+        <div class="zh-example">
+          <p class="content">
+            用 js 可以控制 alert 消失。
+          </p>
+          <div class="stage">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example" data-category="badges"></div>
+        <div class="zh-example">
+          <p class="content">徽章</p>
+          <div class="stage">
+            <h1>Example heading <span class="badge bg-primary">New</span></h1>
+            <h2>Example heading <span class="badge bg-secondary">New</span></h2>
+            <h3>Example heading <span class="badge bg-info">New</span></h3>
+            <h4>Example heading <span class="badge bg-success">New</span></h4>
+            <h5>Example heading <span class="badge bg-secondary">New</span></h5>
+            <h6>Example heading <span class="badge bg-secondary">New</span></h6>
+          </div>
+        </div>
+        <div class="zh-example">
+          <p class="content">
+            按钮之中
+          </p>
+          <div class="stage">
+            <button type="button" class="btn btn-primary">
+              Notifications <span class="badge bg-secondary">4</span>
+            </button>
+          </div>
+        </div>
+        <div class="zh-example">
+          <p class="content">
+            在角落上
+          </p>
+          <div class="stage">
+            <button type="button" class="btn btn-primary position-relative">
+              Inbox
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                99+
+                <span class="visually-hidden">unread messages</span>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div class="zh-example">
+          <p class="content">
+            小圆点
+          </p>
+          <div class="stage">
+            <button type="button" class="btn btn-primary position-relative">
+              Profile
+              <span
+                class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                <span class="visually-hidden">New alerts</span>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div class="zh-example">
+          <p class="content">
+            设置背景色
+          </p>
+          <div class="stage">
+            <span class="badge bg-primary">Primary</span>
+            <span class="badge bg-secondary">Secondary</span>
+            <span class="badge bg-success">Success</span>
+            <span class="badge bg-danger">Danger</span>
+            <span class="badge bg-warning text-dark">Warning</span>
+            <span class="badge bg-info text-dark">Info</span>
+            <span class="badge bg-light text-dark">Light</span>
+            <span class="badge bg-dark">Dark</span>
+          </div>
+        </div>
+        <div class="zh-example">
+          <p class="content">
+            药片形状
+          </p>
+          <div class="stage">
+            <span class="badge rounded-pill bg-primary">Primary</span>
+            <span class="badge rounded-pill bg-secondary">Secondary</span>
+            <span class="badge rounded-pill bg-success">Success</span>
+            <span class="badge rounded-pill bg-danger">Danger</span>
+            <span class="badge rounded-pill bg-warning text-dark">Warning</span>
+            <span class="badge rounded-pill bg-info text-dark">Info</span>
+            <span class="badge rounded-pill bg-light text-dark">Light</span>
+            <span class="badge rounded-pill bg-dark">Dark</span>
+          </div>
+        </div>
+
+        <div class="zh-example" data-category="breadcrumb"></div>
+
+
+        <div class="zh-example">
+          <p class="content">
+            面包屑
+          </p>
+          <div class="stage">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Library</a></li>
+                <li class="breadcrumb-item active">Data</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            修改分隔符
+          </p>
+          <div class="stage">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Library</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            去掉分隔符
+          </p>
+          <div class="stage">
+            <nav style="--bs-breadcrumb-divider: '';" aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Library</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+
+        <div class="zh-example" data-category="buttons"></div>
+
+        <div class="zh-example">
+          <p class="content">
+            各种颜色的按钮
+          </p>
+          <div class="stage">
+            <button type="button" class="btn btn-primary">Primary</button>
+            <button type="button" class="btn btn-secondary">Secondary</button>
+            <button type="button" class="btn btn-success">Success</button>
+            <button type="button" class="btn btn-danger">Danger</button>
+            <button type="button" class="btn btn-warning">Warning</button>
+            <button type="button" class="btn btn-info">Info</button>
+            <button type="button" class="btn btn-light">Light</button>
+            <button type="button" class="btn btn-dark">Dark</button>
+
+            <button type="button" class="btn btn-link">Link</button>
+
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            <b>.text-nowrap</b> 让button 不折断文字，超出了范围
+          </p>
+          <div class="stage">
+
+            <div class="row">
+              <div class="col-1">
+                <button type="button" class="btn btn-dark text-nowrap">Dark button no wrap got at very long</button>
+              </div>
+              <div class="col-1">
+                <button type="button" class="btn btn-danger">Danger</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            <b>.btn</b> 用在 a 标签上时，如果不是链接而是调用函数， 应该给它一个 <b>role="button"</b>
+          </p>
+          <div class="stage">
+            <a class="btn btn-primary" href="#" role="button">Link</a>
+            <button class="btn btn-primary" type="submit">Button</button>
+            <input class="btn btn-primary" type="button" value="Input">
+            <input class="btn btn-primary" type="submit" value="Submit">
+            <input class="btn btn-primary" type="reset" value="Reset">
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            外轮廓按钮
+          </p>
+          <div class="stage">
+            <button type="button" class="btn btn-outline-primary">Primary</button>
+            <button type="button" class="btn btn-outline-secondary">Secondary</button>
+            <button type="button" class="btn btn-outline-success">Success</button>
+            <button type="button" class="btn btn-outline-danger">Danger</button>
+            <button type="button" class="btn btn-outline-warning">Warning</button>
+            <button type="button" class="btn btn-outline-info">Info</button>
+            <button type="button" class="btn btn-outline-light">Light</button>
+            <button type="button" class="btn btn-outline-dark">Dark</button>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            控制大小 一共大中小3档
+          </p>
+          <div class="stage">
+            <button type="button" class="btn btn-primary btn-lg">Large button</button>
+            <button type="button" class="btn btn-secondary btn-lg">Large button</button>
+            <button type="button" class="btn btn-primary btn-sm">Small button</button>
+            <button type="button" class="btn btn-secondary btn-sm">Small button</button>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            按钮不可用设置属性 <b>disabled</b>， a 标签不可用加 <b>.disabled</b> 类
+          </p>
+          <div class="stage">
+            <button type="button" class="btn btn-lg btn-primary" disabled>Primary button</button>
+            <button type="button" class="btn btn-secondary btn-lg" disabled>Button</button>
+            <a href="#" class="btn btn-primary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">Primary
+              link</a>
+            <a href="#" class="btn btn-secondary btn-lg disabled" tabindex="-1" role="button"
+              aria-disabled="true">Link</a>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            控制按钮显示 用 grid 布局
+          </p>
+          <div class="stage">
+            <div class="d-grid gap-2">
+              <button class="btn btn-primary" type="button">Button</button>
+              <button class="btn btn-primary" type="button">Button</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            控制宽度
+          </p>
+          <div class="stage">
+            <div class="d-grid gap-2">
+              <button class="btn btn-primary col-6 mx-auto" type="button">Button</button>
+              <button class="btn btn-primary col-6" type="button">Button</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            不同宽度下切换显示方式
+          </p>
+          <div class="stage">
+            <div class="d-grid gap-2 d-md-block">
+              <button class="btn btn-primary" type="button">Button</button>
+              <button class="btn btn-primary" type="button">Button</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            靠右显示
+          </p>
+          <div class="stage">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button class="btn btn-primary me-md-2" type="button">Button</button>
+              <button class="btn btn-primary" type="button">Button</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example" data-category="button group"></div>
+        <div class="zh-example">
+          <p class="content">
+            按钮组 , role 是给辅助功能用的
+          </p>
+          <div class="stage">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-primary active">Left</button>
+              <button type="button" class="btn btn-primary">Middle</button>
+              <button type="button" class="btn btn-primary">Right</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            Checkbox and radio button groups
+          </p>
+          <div class="stage">
+            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+              <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btncheck1">Checkbox 1</label>
+
+              <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btncheck2">Checkbox 2</label>
+
+              <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btncheck3">Checkbox 3</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            Button toolbar, 感觉这个 toolbar 套一层没什么大用，可能是为了语义更明确吧
+          </p>
+          <div class="stage">
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+              <div class="btn-group me-2" role="group" aria-label="First group">
+                <button type="button" class="btn btn-primary">1</button>
+                <button type="button" class="btn btn-primary">2</button>
+                <button type="button" class="btn btn-primary">3</button>
+                <button type="button" class="btn btn-primary">4</button>
+              </div>
+              <div class="btn-group me-2" role="group" aria-label="Second group">
+                <button type="button" class="btn btn-secondary">5</button>
+                <button type="button" class="btn btn-secondary">6</button>
+                <button type="button" class="btn btn-secondary">7</button>
+              </div>
+              <div class="btn-group" role="group" aria-label="Third group">
+                <button type="button" class="btn btn-info">8</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            组合 btn-group 和 input-group
+          </p>
+          <div class="stage">
+            <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+              <div class="btn-group me-2" role="group" aria-label="First group">
+                <button type="button" class="btn btn-outline-secondary">1</button>
+                <button type="button" class="btn btn-outline-secondary">2</button>
+                <button type="button" class="btn btn-outline-secondary">3</button>
+                <button type="button" class="btn btn-outline-secondary">4</button>
+              </div>
+              <div class="input-group">
+                <div class="input-group-text" id="btnGroupAddon">@</div>
+                <input type="text" class="form-control" placeholder="Input group example"
+                  aria-label="Input group example" aria-describedby="btnGroupAddon">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            控制大小同 button 差不多， 后面加 -sm -lg
+          </p>
+          <div class="stage">
+
+            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-primary active">Left</button>
+              <button type="button" class="btn btn-primary">Middle</button>
+              <button type="button" class="btn btn-primary">Right</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            <b>.btn-group</b> 可以嵌套多层
+          </p>
+          <div class="stage">
+            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+              <button type="button" class="btn btn-primary">1</button>
+              <button type="button" class="btn btn-primary">2</button>
+
+              <div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                  <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                  <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            竖着排列
+          </p>
+          <div class="stage">
+            <div class="btn-group-vertical" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-primary active">Left</button>
+              <button type="button" class="btn btn-primary">Middle</button>
+              <button type="button" class="btn btn-primary">Right</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example" data-category="cards"></div>
+
+
+        <div class="zh-example">
+          <p class="content">
+            Card 自带边框，没有初始宽度，不设置就占满可用宽度
+          </p>
+          <div class="stage">
+            <div class="card" style="width: 18rem;">
+              <img src="imgs/bootstrap-logo.svg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            需要 padding 内容的时候就用 <b>.card-body</b>
+          </p>
+          <div class="stage">
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            Titles, text, and links
+          </p>
+          <div class="stage">
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            List groups
+          </p>
+          <div class="stage">
+            <div class="card" style="width: 18rem;">
+              <div class="card-header">
+                Featured
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">An item</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+              </ul>
+              <div class="card-footer">
+                Card footer
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            可以放多个 <b>.card-body</b>
+          </p>
+          <div class="stage">
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">An item</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+              </ul>
+              <div class="card-body">
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            突然来个 <b>.blockquote</b> 是什么鬼
+          </p>
+          <div class="stage">
+            <div class="card">
+              <div class="card-header">
+                Quote
+              </div>
+              <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                  <p>A well-known quote, contained in a blockquote element.</p>
+                  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>
+                  </footer>
+                </blockquote>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            组合 nav
+          </p>
+          <div class="stage">
+            <div class="card text-center">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="true" href="#">Active</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            Image overlay, 可以设置背景图
+          </p>
+          <div class="stage">
+            <div class="card bg-dark text-white w-25">
+              <img src="imgs/bootstrap-logo.svg" class="card-img" alt="...">
+              <div class="card-img-overlay">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                  content. This content is a little bit longer.</p>
+                <p class="card-text">Last updated 3 mins ago</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            横向排列
+          </p>
+          <div class="stage">
+            <div class="card mb-3" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="imgs/bootstrap-logo.svg" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                      additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            颜色体系可以改颜色
+          </p>
+          <div class="stage">
+            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+              <div class="card-header">Header</div>
+              <div class="card-body">
+                <h5 class="card-title">Primary card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            Border 也可以改颜色
+          </p>
+          <div class="stage">
+            <div class="card border-success mb-3" style="max-width: 18rem;">
+              <div class="card-header">Header</div>
+              <div class="card-body text-success">
+                <h5 class="card-title">Success card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            Card group 可以放多个 card
+          </p>
+          <div class="stage">
+            <div class="card-group w-50">
+              <div class="card">
+                <img src="imgs/bootstrap-logo.svg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                    additional content. This content is a little bit longer.</p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+              </div>
+              <div class="card">
+                <img src="imgs/bootstrap-logo.svg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.
+                  </p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+              </div>
+              <div class="card">
+                <img src="imgs/bootstrap-logo.svg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                    additional content. This card has even longer content than the first to show that equal height
+                    action.</p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example" data-category="carousel"></div>
+
+
+        <div class="zh-example">
+          <p class="content">
+            旋转木马效果
+          </p>
+          <div class="stage">
+            <div id="carouselExampleSlidesOnly" class="carousel slide w-25" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="imgs/001.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="imgs/003.jpg" class="d-block w-100" alt="...">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            用 button 做控制按键
+          </p>
+          <div class="stage">
+            <div id="carouselExampleControls" class="carousel slide w-25" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="imgs/001.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="imgs/003.jpg" class="d-block w-100" alt="...">
+                </div>
+              </div>
+
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            带位置指示点位的
+          </p>
+          <div class="stage">
+            <div id="carouselExampleIndicators" class="carousel slide w-25" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                  aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                  aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                  aria-label="Slide 3"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="imgs/001.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="imgs/002.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="imgs/003.jpg" class="d-block w-100" alt="...">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            With captions
+          </p>
+          <div class="stage">
+            <div id="carouselExampleCaptions" class="carousel slide w-25" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                  aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                  aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                  aria-label="Slide 3"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="imgs/001.jpg" class="d-block w-100" alt="...">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h5>First slide label</h5>
+                    <p>Some representative placeholder content for the first slide.</p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="imgs/002.jpg" class="d-block w-100" alt="...">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h5>Second slide label</h5>
+                    <p>Some representative placeholder content for the second slide.</p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="imgs/003.jpg" class="d-block w-100" alt="...">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h5>Third slide label</h5>
+                    <p>Some representative placeholder content for the third slide.</p>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example" data-category="close button"></div>
+
+        <div class="zh-example">
+          <p class="content">
+            就简单的一个叉
+          </p>
+          <div class="stage">
+            <button type="button" class="btn-close" aria-label="Close"></button>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            白色的, 可以用在深色的底上
+          </p>
+          <div class="stage">
+            <div class="row bg-dark">
+
+              <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+              <button type="button" class="btn-close btn-close-white" disabled aria-label="Close"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example" data-category="collapse"></div>
+
+        <div class="zh-example">
+          <p class="content">
+            控制展开与折叠
+          </p>
+          <div class="stage">
+            <p>
+              <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                aria-expanded="false" aria-controls="collapseExample">
+                Link with href
+              </a>
+              <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample">
+                Button with data-bs-target
+              </button>
+            </p>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                Some placeholder content for the collapse component. This panel is hidden by default but revealed when
+                the user activates the relevant trigger.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            用 <b>.class</b> 作为 target 可以同时控制多个元素
+          </p>
+          <div class="stage">
+            <p>
+              <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button"
+                aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
+              <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                data-bs-target="#multiCollapseExample2" aria-expanded="false"
+                aria-controls="multiCollapseExample2">Toggle second element</button>
+              <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse"
+                aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both
+                elements</button>
+            </p>
+            <div class="row">
+              <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                  <div class="card card-body">
+                    Some placeholder content for the first collapse component of this multi-collapse example. This panel
+                    is hidden by default but revealed when the user activates the relevant trigger.
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample2">
+                  <div class="card card-body">
+                    Some placeholder content for the second collapse component of this multi-collapse example. This
+                    panel is hidden by default but revealed when the user activates the relevant trigger.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example" data-category="drop downs"></div>
+
+        <div class="zh-example">
+          <p class="content">
+            下拉菜单
+          </p>
+          <div class="stage">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown button
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            不同色系. 最外层的 <b>class="dropdown"</b> 没什么用，加不加的不影响。。。 换成 <b>.btn-group</b> 也可以， 删掉也可以。
+          </p>
+          <div class="stage">
+            <!-- Example single danger button -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Action
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            拉开是深色系
+          </p>
+          <div class="stage">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown button
+              </button>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                <li><a class="dropdown-item active" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            向上展开
+          </p>
+          <div class="stage">
+            <div class="btn-group dropup">
+              <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Dropup
+              </button>
+              <ul class="dropdown-menu">
+                <!-- Dropdown menu links -->
+                <li><a class="dropdown-item active" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            一直展开的 drop down, 需要单独设置 position:static 和 display:block, 不然会飘起来<br>
+            <b>.active</b> 会区别显示
+          </p>
+          <div class="stage">
+            <ul class="dropdown-menu d-block" style="position:static">
+              <li><span class="dropdown-item-text">Dropdown item text</span></li>
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item active" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="zh-example" data-category="list group"></div>
+
+        <div class="zh-example">
+          <p class="content">
+            <b>.list-group</b> 默认线分隔的竖着一组，<b>.active</b> <b>.disabled</b> 区别显示
+          </p>
+          <div class="stage">
+            <ul class="list-group">
+              <li class="list-group-item active">An item .active</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item disabled">A third item .disabled</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            用链接和对应的修饰类可以有划过的效果
+          </p>
+          <div class="stage">
+            <div class="list-group">
+              <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                The current link item
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">A second link item</a>
+              <a href="#" class="list-group-item list-group-item-action">A third link item</a>
+              <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+              <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">A
+                disabled link item</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            <b>.list-group-flush</b> 去掉边框
+          </p>
+          <div class="stage">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+              <li class="list-group-item">A fourth item</li>
+              <li class="list-group-item">And a fifth one</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            显示序号
+          </p>
+          <div class="stage">
+            <ol class="list-group list-group-numbered">
+              <li class="list-group-item">Cras justo odio</li>
+              <li class="list-group-item">Cras justo odio</li>
+              <li class="list-group-item">Cras justo odio</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            改为横向排列
+          </p>
+          <div class="stage">
+            <ul class="list-group list-group-horizontal">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            根据宽度改变是否横向排列
+          </p>
+          <div class="stage">
+            <ul class="list-group list-group-horizontal-md">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            横向排列并等分宽度
+          </p>
+          <div class="stage">
+            <ul class="list-group list-group-horizontal-md">
+              <li class="list-group-item flex-fill">An item</li>
+              <li class="list-group-item flex-fill">A second item</li>
+              <li class="list-group-item flex-fill">A third item</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            设置颜色体系 <b>.list-group-item-primary</b>, 加了 <b>.list-group-item-action</b> 的可以有滑过效果, 也支持 <b>.active</b>
+          </p>
+          <div class="stage">
+            <ul class="list-group">
+              <li class="list-group-item active">A simple default list group item</li>
+
+              <li class="list-group-item list-group-item-primary ">A simple primary list group item</li>
+              <li class="list-group-item list-group-item-secondary">A simple secondary list group item</li>
+              <li class="list-group-item list-group-item-success">A simple success list group item</li>
+              <li class="list-group-item list-group-item-danger list-group-item-action">A simple danger list group item
+              </li>
+              <li class="list-group-item list-group-item-warning list-group-item-action">A simple warning list group
+                item</li>
+              <li class="list-group-item list-group-item-info list-group-item-action">A simple info list group item</li>
+              <li class="list-group-item list-group-item-light list-group-item-action ">A simple light list group item
+              </li>
+              <li class="list-group-item list-group-item-dark list-group-item-action">A simple dark list group item</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            组合徽章显示
+          </p>
+          <div class="stage">
+            <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                A list item
+                <span class="badge bg-primary rounded-pill">14</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                A second list item
+                <span class="badge bg-primary rounded-pill">2</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                A third list item
+                <span class="badge bg-primary rounded-pill">1</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            组合任意的html内容
+          </p>
+          <div class="stage">
+            <div class="list-group">
+              <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">List group item heading</h5>
+                  <small>3 days ago</small>
+                </div>
+                <p class="mb-1">Some placeholder content in a paragraph.</p>
+                <small>And some small print.</small>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">List group item heading</h5>
+                  <small class="text-muted">3 days ago</small>
+                </div>
+                <p class="mb-1">Some placeholder content in a paragraph.</p>
+                <small class="text-muted">And some muted small print.</small>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">List group item heading</h5>
+                  <small class="text-muted">3 days ago</small>
+                </div>
+                <p class="mb-1">Some placeholder content in a paragraph.</p>
+                <small class="text-muted">And some muted small print.</small>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            扩大复选框可用范围
+          </p>
+          <div class="stage">
+            <div class="list-group">
+              <label class="list-group-item">
+                <input class="form-check-input me-1" type="checkbox" value="">
+                First checkbox
+              </label>
+              <label class="list-group-item">
+                <input class="form-check-input me-1" type="checkbox" value="">
+                Second checkbox
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example" data-category="modal"></div>
+        <div class="zh-example">
+          <p class="content">
+            Modal 基本有个 header , body, footer 什么的， 都是可选的
+          </p>
+          <div class="stage">
+            <div class="modal" tabindex="-1" style="position:static;display:block;">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            Button 控制 modal 显示， <b>.modal-dialog-centered</b> 可以让 dialog 垂直居中
+          </p>
+          <div class="stage">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Launch demo modal
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    ...
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            内容太长在 modal 内部滚动
+          </p>
+          <div class="stage">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalLong">
+              Launch Long modal
+            </button>
+            <!-- Scrollable modal -->
+            <div class="modal" id="exampleModalLong">
+
+              <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>
+                    bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>bb<br>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="zh-example">
+          <p class="content">
+            内部可以嵌套 <b>.container-fluid</b> 设置布局
+          </p>
+          <div class="stage">
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalGrid">
+              Launch demo modal
+            </button>
+
+            <style>
+              #exampleModalGrid div.row>div {
+                background-color: #72727233;
+                margin: 5px;
+              }
+            </style>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalGrid" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-md-4">.col-md-4</div>
+                        <div class="col-md-4 ms-auto">.col-md-4 .ms-auto</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 ms-auto">.col-md-3 .ms-auto</div>
+                        <div class="col-md-2 ms-auto">.col-md-2 .ms-auto</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 ms-auto">.col-md-6 .ms-auto</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-9">
+                          Level 1: .col-sm-9
+                          <div class="row">
+                            <div class="col-8 col-sm-6">
+                              Level 2: .col-8 .col-sm-6
+                            </div>
+                            <div class="col-4 col-sm-6">
+                              Level 2: .col-4 .col-sm-6
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            通过 js 显示同一个 modal 设置不同内容
+          </p>
+          <div class="stage">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalContent"
+              data-bs-whatever="@mdo">Open modal for @mdo</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalContent"
+              data-bs-whatever="@fat">Open modal for @fat</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalContent"
+              data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+
+            <div class="modal fade" id="exampleModalContent" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Recipient:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                      </div>
+                      <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Message:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send message</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <script>
+              var exampleModal = document.getElementById('exampleModalContent')
+              exampleModal.addEventListener('show.bs.modal', function (event) {
+                // Button that triggered the modal
+                var button = event.relatedTarget
+                // Extract info from data-bs-* attributes
+                var recipient = button.getAttribute('data-bs-whatever')
+                // If necessary, you could initiate an AJAX request here
+                // and then do the updating in a callback.
+                //
+                // Update the modal's content.
+                var modalTitle = exampleModal.querySelector('.modal-title')
+                var modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+                modalTitle.textContent = 'New message to ' + recipient
+                modalBodyInput.value = recipient
+              })
+
+            </script>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            显示过程中高度改变， 调用 <b> myModal.handleUpdate()</b> 来更新
+          </p>
+          <div class="stage">
+
+          </div>
+        </div>
+
+
+        <div class="zh-example" data-category="nav&link"></div>
+
+
+        <div class="zh-example">
+          <p class="content">
+            普通链接导航
+          </p>
+          <div class="stage">
+            <ul class="nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Active</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            直接用 <b>a</b> 标签， 不用嵌套 <b>li</b>
+          </p>
+          <div class="stage">
+            <nav class="nav">
+              <a class="nav-link active" aria-current="page" href="#">Active</a>
+              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </nav>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            添加 <b>justify-content-center</b> 居中显示， 添加 <b>justify-content-end</b> 靠右显示
+          </p>
+          <div class="stage">
+            <ul class="nav justify-content-center">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Active</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            添加 <b>flex-column</b> 竖排显示
+          </p>
+          <div class="stage">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Active</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            tabs 标签显示
+          </p>
+          <div class="stage">
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Active</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            pills 药丸显示
+          </p>
+          <div class="stage">
+            <ul class="nav nav-pills">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Active</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            占满空间， 但不一定是平分。 如果再加上 <b>nav-justified</b> 就是平分了。
+          </p>
+          <div class="stage">
+            <nav class="nav nav-pills nav-fill">
+              <a class="nav-link active" aria-current="page" href="#">Active</a>
+              <a class="nav-link" href="#">Much longer nav link</a>
+              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </nav>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            里面再包含 drop down
+          </p>
+          <div class="stage">
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Active</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                  aria-expanded="false">Dropdown</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Separated link</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="zh-example" data-category="navbar"></div>
+
+        <div class="zh-example">
+          <p class="content">
+          <pre>
+
+              Navbar 啊，包含了一些可用的子元素  
+              
+      <b>.navbar-brand</b> for your company, product, or project name.
+      <b>.navbar-nav</b> for a full-height and lightweight navigation (including support for dropdowns).
+      <b>.navbar-toggler</b> for use with our collapse plugin and other navigation toggling behaviors.
+      Flex and spacing utilities for any form controls and actions.
+      <b>.navbar-text</b> for adding vertically centered strings of text.
+      <b>.collapse.navbar-collapse</b> for grouping and hiding navbar contents by a parent breakpoint.
+      Add an optional .navbar-scroll to set a max-height and scroll expanded navbar content.
+            </pre>
+          </p>
+          <div class="stage">
+
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            Brand 大点的字， 可以用在多数元素上
+          </p>
+          <div class="stage">
+            <nav class="navbar navbar-light bg-light">
+              <div class="container-fluid">
+                <a class="navbar-brand " href="#">
+                  <img src="imgs/bootstrap-logo.svg" alt="" width="30" height="24"
+                    class="d-inline-block align-text-top">
+                  Bootstrap
+                </a>
+              </div>
+            </nav>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            响应式布局的导航
+          </p>
+          <div class="stage">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            直接用 <b>a</b> 标签做链接， 省代码
+          </p>
+          <div class="stage">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                  aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                  <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                  </div>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            组合 form 表单
+          </p>
+          <div class="stage">
+            <nav class="navbar navbar-light bg-light">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <a href="#" class="btn btn-info">abc</a>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            </nav>
+          </div>
+        </div>
+
+        <div class="zh-example" data-category="offcanvas"></div>
+
+        <div class="zh-example">
+          <p class="content">
+            侧边隐藏内容 <b>offcanvas-start offcanvas-start</b> 控制位置
+          </p>
+          <div class="stage">
+            <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+              aria-controls="offcanvasExample">
+              Link with href
+            </a>
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample">
+              Button with data-bs-target
+            </button>
+
+            <div class="offcanvas offcanvas-sart" tabindex="-1" id="offcanvasExample"
+              aria-labelledby="offcanvasExampleLabel">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                  aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <div>
+                  Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images,
+                  lists, etc.
+                </div>
+                <div class="dropdown mt-3">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown">
+                    Dropdown button
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            <b> data-bs-scroll="true" data-bs-backdrop="false" </b> 这两个属性可以控制内容是否可以滚动
+          </p>
+          <div class="stage">
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Enable body scrolling</button>
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop">Enable backdrop
+              (default)</button>
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Enable both scrolling
+              & backdrop</button>
+
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+              id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                  aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <p>Try scrolling the rest of the page to see this option in action.</p>
+              </div>
+            </div>
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop"
+              aria-labelledby="offcanvasWithBackdropLabel">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">Offcanvas with backdrop</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                  aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <p>.....</p>
+              </div>
+            </div>
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+              aria-labelledby="offcanvasWithBothOptionsLabel">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdroped with scrolling</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                  aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <p>Try scrolling the rest of the page to see this option in action.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example" data-category="pagination"></div>
+
+        <div class="zh-example">
+          <p class="content">
+            页面翻页导航
+          </p>
+          <div class="stage">
+            <nav aria-label="Page navigation">
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <div class="zh-example" data-category="popovers"></div>
+
+        <div class="zh-example">
+          <p class="content">
+            popover 需要 js 手动开启， 用的时候别忘了加 js,
+          </p>
+          <div class="stage">
+            <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="Popover title"
+              data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle
+              popover</button>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            指定显示的位置
+          </p>
+          <div class="stage">
+            <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover"
+              data-bs-placement="top" data-bs-content="Top popover">
+              Popover on top
+            </button>
+            <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover"
+              data-bs-placement="right" data-bs-content="Right popover">
+              Popover on right
+            </button>
+            <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover"
+              data-bs-placement="bottom" data-bs-content="Bottom popover">
+              Popover on bottom
+            </button>
+            <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover"
+              data-bs-placement="left" data-bs-content="Left popover">
+              Popover on left
+            </button>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            滑过和获得焦点时显示
+          </p>
+          <div class="stage">
+            <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
+              data-bs-content="Disabled popover">
+              <button class="btn btn-primary" type="button" disabled>Disabled button</button>
+            </span>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            启动 popover 的 js
+          </p>
+          <div class="stage">
+
+            <script>
+              // js 手动开启 popover
+              var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+              var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl)
+              })
+            </script>
+          </div>
+        </div>
+
+        <div class="zh-example" data-category="progress"></div>
+
+        <div class="zh-example">
+          <p class="content">
+            用了两个元素来模仿进度条
+          </p>
+          <div class="stage">
+            <div class="progress">
+              <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            带显示数字的
+          </p>
+          <div class="stage">
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+                aria-valuemax="100">25%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            设置不同的高度 一个高度是 1, 另一个是 20
+          </p>
+          <div class="stage">
+            <div class="progress mb-2" style="height: 1px;">
+              <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+            <div class="progress" style="height: 20px;">
+              <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            设置颜色系
+          </p>
+          <div class="stage">
+            <div class="progress">
+              <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50"
+                aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            同一条显示多个进度
+          </p>
+          <div class="stage">
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0"
+                aria-valuemax="100"></div>
+              <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30"
+                aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20"
+                aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            带条纹的样式
+          </p>
+          <div class="stage">
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%"
+                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            动态的
+          </p>
+          <div class="stage">
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+                aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example" data-category="scrollspy"></div>
+
+        <div class="zh-example">
+          <p class="content">
+            滚动指示器， 可以根据滚动位置设置 active 元素. 如果滚动容器不是 body, 必须要设置 height 和 overflow-y: scroll;<br>
+            对于 <b>nav</b> 和 <b>group-list</b> 组件可以设置指示器
+          </p>
+          <div class="stage">
+            <nav id="navbar-example2" class="navbar navbar-light bg-light px-3">
+              <a class="navbar-brand" href="#">Navbar</a>
+              <ul class="nav nav-pills">
+                <li class="nav-item">
+                  <a class="nav-link" href="#scrollspyHeading1">First</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#scrollspyHeading2">Second</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                    aria-expanded="false">Dropdown</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#scrollspyHeading3">Third</a></li>
+                    <li><a class="dropdown-item" href="#scrollspyHeading4">Fourth</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#scrollspyHeading5">Fifth</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+            <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example"
+              tabindex="0" style="height:200px;overflow-y:scroll;">
+              <h4 id="scrollspyHeading1">First heading</h4>
+              <p>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a</p>
+              <h4 id="scrollspyHeading2">Second heading</h4>
+              <p>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a</p>
+              <h4 id="scrollspyHeading3">Third heading</h4>
+              <p>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a</p>
+              <h4 id="scrollspyHeading4">Fourth heading</h4>
+              <p>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a</p>
+              <h4 id="scrollspyHeading5">Fifth heading</h4>
+              <p>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="zh-example" data-category="spinners"></div>
+
+        <div class="zh-example">
+          <p class="content">
+            旋转条
+          </p>
+          <div class="stage">
+            <div class="spinner-border text-primary" role="status">
+            </div>
+            <div class="spinner-border text-secondary" role="status">
+            </div>
+            <div class="spinner-border text-success" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-border text-danger" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-border text-warning" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-border text-info" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-border text-light" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-border text-dark" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example" data-category="toasts"></div>
+
+        <div class="zh-example">
+          <p class="content">
+            Toast 会显示一些提示信息，一会儿自动消失
+          </p>
+          <div class="stage">
+            <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header">
+                <img src="..." class="rounded me-2" alt="...">
+                <strong class="me-auto">Bootstrap</strong>
+                <small>11 mins ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+              <div class="toast-body">
+                Hello, world! This is a toast message.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            Toast 也需要手动开启, 如果不设置 <b>autohide: false</b> 会自动消失. <br>
+            开启了 toast, 调用 toast 对象的 show() 方法来显示它， 它自己会按设置时间消失。
+          </p>
+          <div class="stage">
+            <button type="button" class="btn btn-primary" id="liveToastBtn"
+              onclick="new bootstrap.Toast(document.getElementById('liveToast')).show();">Show live toast</button>
+
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+              <div id="liveToast" class="toast" data-bs-delay="2000" role="alert" aria-live="assertive"
+                aria-atomic="true">
+                <div class="toast-header">
+                  <img src="..." class="rounded me-2" alt="...">
+                  <strong class="me-auto">Bootstrap</strong>
+                  <small>11 mins ago</small>
+                  <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                  Hello, world! This is a toast message.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+
+          </p>
+          <div class="stage">
+            <script>
+              var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+              var toastList = toastElList.map(function (toastEl) {
+                return new bootstrap.Toast(toastEl, { delay: 2000 })
+              })
+            </script>
+
+          </div>
+        </div>
+
+        <div class="zh-example" data-category="tooltips"></div>
+
+        <div class="zh-example">
+          <p class="content">
+            Popovers 需要点开， tooltips 不需要点
+          <ol>
+            <li>
+              Tooltips 也需要手动开启
+            </li>
+            <li>指定 <b>container: 'body'</b> 避免一些复杂组件的显示问题。</li>
+            <li>hiden 元素不会触发</li>
+            <li>.disabled 或 disabled 元素 要在它的包含元素上触发</li>
+            <li>Tooltip 对应的元素被移除前要先隐藏 tooltip</li>
+          </ol>
+          </p>
+          <div class="stage">
+            <div class="row">
+              <div class="col-1">
+                <a href="#" class="btn btn-primary" style="white-space: nowrap;"  data-bs-toggle="tooltip" title="Tooltip on top">abc def ghi kkk goud klk</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            指定不同的方向
+          </p>
+          <div class="stage">
+            <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+              Tooltip on top
+            </button>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right">
+              Tooltip on right
+            </button>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+              Tooltip on bottom
+            </button>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left">
+              Tooltip on left
+            </button>
+          </div>
+        </div>
+        
+        <div class="zh-example">
+          <p class="content">
+            title 里还可以写代码。。。
+          </p>
+          <div class="stage">
+            <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
+              Tooltip with HTML
+            </button>
+          </div>
+        </div>
+
+        <div class="zh-example">
+          <p class="content">
+            启动所有 tooltip 的代码
+          </p>
+          <div class="stage">
+            <script>
+              var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+              var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+              })
+
+            </script>
+          </div>
+        </div>
+
+
+
+        <div class="zh-example">
+          <p class="content">
+
+          </p>
+          <div class="stage">
+
+          </div>
+        </div>
+
+
+
+        <div class="zh-example" data-category="example"></div>
+      </main>
+    </div>
+  </div>
+  <div class="container">
+
+  </div>
+
+
+
+</body>
+<script>
+  function escapeHtml(htmlStr) {
+    return htmlStr
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      // .replace(/"/g, "&quot;")
+      // .replace(/'/g, "&#39;")
+      // .replace(/&/g, "&amp;")
+      ;
+
+  }
+  function unEscapeHtml(htmlStr) {
+    htmlStr = htmlStr.replace(/&lt;/g, "<");
+    htmlStr = htmlStr.replace(/&gt;/g, ">");
+    htmlStr = htmlStr.replace(/&quot;/g, "\"");
+    htmlStr = htmlStr.replace(/&#39;/g, "\'");
+    htmlStr = htmlStr.replace(/&amp;/g, "&");
+    return htmlStr;
+  }
+  function replaceHtml() {
+    const examples = $('.zh-example');
+    let index = 0;
+    for (let example of examples) {
+      index++;
+      example = $(example);
+
+      if (example.attr('data-category') != null) {
+        setupCategory(example, index);
+        continue;
+      }
+
+      const stage = $(".stage", example);
+      stage.attr('id', "stage_" + index);
+      let html = escapeHtml(stage.html());
+      html = html.replace(/^\s{10}/gm, '');
+      const codeBox = $("<div></div>");
+      const codeToggle = $("<div style='width:30%;background-color:#F0F0F0;' class='text-center'>Code </div>");
+      const code = $("<pre style='display:none;'><code class='language-html'></code></pre>")
+      $("code", code).html(html);
+      codeToggle.on('mouseover', () => code.show());
+      code.on("mouseleave", () => code.hide());
+      const copyBtn = $("<button class='btn btn-primary btn-sm btn-copy'>Copy</button>");
+      const stageId = 'stage_' + index;
+      copyBtn.on('click', () => {
+        copyCode(stageId);
+      });
+      codeBox.append(codeToggle);
+      codeToggle.append(copyBtn);
+      codeBox.append(code);
+      example.append(codeBox);
+      // console.log(html);
+    }
+  }
+
+  function setupCategory(ele, index) {
+    const id = 'category_' + index;
+    ele.attr('id', id);
+    ele.addClass('category');
+    const category = ele.attr('data-category');
+    ele.html(category);
+
+    let menu = $(`
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span data-feather="file-text"></span>
+        </a>
+      </li>`);
+    menu.find('a').attr('href', '#' + id);
+    menu.find('a').append(category)
+    $('#menu_box').append(menu);
+  }
+  function copyCode(stageId) {
+    const clip = navigator.clipboard;
+    if (clip == null) {
+      alert("can not copy.");
+    }
+
+    const stage = $("#" + stageId);
+    let html = stage.html();
+    html = html.replace(/^\s{8}/gm, '');
+    clip.writeText(html);
+    console.log('copy ...');
+  }
+  function init() {
+    replaceHtml();
+
+    feather.replace({ 'aria-hidden': 'true' })
+  }
+
+  init();
+</script>
+
+</html>

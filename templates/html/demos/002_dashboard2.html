@@ -21,22 +21,26 @@
 
     #container {
       display: grid;
-      grid-template-areas: "header header header header header header header"
-        "sidebar main main main main main main";
+      grid-template-columns: 1fr 1fr 1fr 1fr ;
+      grid-template-areas: "header header header header"
+        "sidebar main main main";
       height: 100%;
+    }
+    .header{
+      grid-area: header;
     }
 
     .menu {
       grid-area: sidebar;
       background-color: #F0F0F0;
       height: 100%;
-      overflow-y: scroll;
+      overflow-y: auto;
     }
 
     .main {
       grid-area: main;
       height: 100%;
-      overflow-y: scroll;
+      overflow-y: auto;
       background-color: #F0F0F4;
     }
   </style>
@@ -46,13 +50,13 @@
 
   <div class="container" id="container">
     <!-- header -->
-    <div class="header">
+    <div class="header bg-dark">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Active</a>
+          <a class="nav-link active" aria-current="page" href="index.html">Active</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#">grid 布局，固定宽度比</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
