@@ -63,17 +63,70 @@
             <button>Submit</button>
           </form>
           <script class="stage">
+            // 第一种是拦截form提交
             let form01 = document.querySelector('#form01');
             form01.addEventListener('submit', (e) => {
               e.preventDefault();  // 阻止表单提交行为
               const isValid = e.target.checkValidity(); // 执行表单验证检查
               console.log(isValid); // 输出验证结果
             });
+
+            // 第二种是调用 from 的验证
+            function submitBtnClick(){
+              let form01 = document.querySelector('#form01');
+              // from.reportValidity() 会执行 checkValidity() 并且显示浏览的默认提示。  
+              if(from01.reportValidity()){
+                // 做接下来的事
+              }
+            }
+          </script>
+        </div>
+
+
+        <div class="zh-example" data-category="scroll 滚动到底部"></div>
+        <div class="zh-example">
+          <script class="stage">
+            let ele = document.getElementsByTagName('html')[0];
+            ele.scrollTop = ele.scrollHeight;  // 把元素滚动到的位置设置为元素的高度
+          </script>
+        </div>
+
+
+        <div class="zh-example" data-category="字符串常用方法"></div>
+        <div class="zh-example">
+          <script class="stage">
+            let s1 = 'abc', s2 = 'def';
+            s1.localeCompare(s2);  // 比较字符串大小  1 s1 大, -1 s1 小, 0 相等
+          </script>
+        </div>
+
+
+        <div class="zh-example" data-category="模板字符串"></div>
+        <div class="zh-example">
+          <input type="text" id="str1" value="abc">
+          <button onclick="useStrTemplate()">使用字符串模板</button>
+          <input type="text" id="str2">
+          <script class="stage">
+            function useStrTemplate(){
+              let text = $('#str1').val();
+              let str = `模板内容加上${text}`;
+              console.log('str', str);
+              $('#str2').val(str);
+            }
           </script>
         </div>
 
         
-        <div class="zh-example" data-category="c2"></div>
+        <div class="zh-example" data-category="数组常用方法"></div>
+        <div class="zh-example">
+          <script class="stage">
+            let arr01 = [1,2,3,4];
+            arr01.sort();  // 数组排序  
+            function cmp01(a, b){return a - b;}
+            arr01.sort(cmp01); // 数组用自定义方法排序
+          </script>
+        </div>
+
       </main>
     </div>
   </div>

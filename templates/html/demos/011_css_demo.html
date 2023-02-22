@@ -58,10 +58,200 @@
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="zh-example" data-category="毛玻璃效果"></div>
-        <div class="zh-example">
-          
+        <div class="zh-example" id="glass01">
+          <div class="d1">
+            <div class="d2">
+
+            </div>
+          </div>
+          <style class="stage">
+            #glass01 .d1{
+              width:500px;
+              height:300px;
+              background-image: url(imgs/001.jpg);
+            }
+            #glass01 .d2{
+              width: 300px;
+              height: 200px;
+              margin: 50px 100px;
+
+              background-color: rgb(0, 0, 0, 0.5);
+              backdrop-filter: blur(7px);
+              box-shadow: 0 0 30px 10px rgba(0, 0, 0, .3);
+            }
+          </style>
         </div>
-        <div class="zh-example" data-category="c2"></div>
+
+        
+        <div class="zh-example" data-category="文字模糊效果"></div>
+        <div class="zh-example" id="text01">
+          <div class="d1 text-center">
+            这里有些文字
+          </div>
+          <style class="stage">
+            #text01 .d1{
+              width:500px;
+              height:300px;
+              background-color: antiquewhite;
+
+              color: rgba(0,0,0,0);
+              text-shadow: 0 0 10px #000;
+            }
+            #text01 .d1:hover{
+              color: rgba(0,0,0,1);
+              text-shadow: none;
+            }
+          </style>
+        </div>
+
+        <div class="zh-example" data-category="shadow 阴影设置"></div>
+        <div class="zh-example" id="shadow01">
+          <div class="d1">con1</div>
+          <div class="d2">con2</div>
+          <div class="d3">con3</div>
+          <style class="stage">
+            #shadow01 div{
+              width: 100px;
+              height: 50px;
+              margin: 20px;
+            }
+            #shadow01 .d1{
+              box-shadow: 10px 13px 15px #f00; /** 设置右，下偏移距离， 模糊半径， 颜色  */
+            }
+            #shadow01 .d2{
+              box-shadow: 0px 5px 5px #f00; /** 设置右，下偏移距离， 模糊半径， 颜色  */
+            }
+            #shadow01 .d3{
+              box-shadow: 5px 5px 0px #f00; /** 设置右，下偏移距离， 模糊半径， 颜色  */
+            }
+          </style>
+        </div>
+
+        <div class="zh-example" data-category="btn 按钮样式设置"></div>
+        <div class="zh-example">
+          <button id="btn01">按钮样式设置</button>
+          <style class="stage">
+            #btn01{
+              background-color: aquamarine;
+            }
+            #btn01:hover{
+              background-color: rgb(98, 195, 163);
+            }
+            #btn01:active{
+              background-color: rgb(65, 126, 106);
+            }
+          </style>
+        </div>
+
+
+        <div class="zh-example" data-category="a 链接样式设置"></div>
+        <div class="zh-example" id="a-demo1">
+          <a href="javascript:void(0)" class="a1">链接a1默认样式</a>
+          <a href="javascript:void(0)" class="a2">链接a2</a>
+          <style class="stage">
+            #a-demo1 .a2 {
+              color: rgb(22, 232, 162);
+              text-decoration: none;
+              /** 去掉链接的下划线 */
+            }
+
+            #a-demo1 .a2:hover {
+              color: rgb(87, 190, 156);
+            }
+
+            #a-demo1 .a2:active {
+              color: rgb(27, 82, 64);
+            }
+          </style>
+        </div>
+
+        <div class="zh-example" data-category="ele 背景图全部铺满"></div>
+        <div class="zh-example">
+          <div id="bg01"></div>
+          <div id="bg02"></div>
+          <div id="bg03"></div>
+          <style class="stage">
+            #bg01 {
+              height: 300px;
+              background: url(imgs/001.jpg) no-repeat;
+              background-size: 100% 100%;
+              /** background 不随着元素动的 */
+              background-attachment: fixed;
+            }
+
+            #bg02 {
+              height: 300px;
+              /* 加载背景图 */
+              background-image: url(imgs/002.jpg);
+              /* 背景图垂直、水平均居中 */
+              background-position: center center;
+              /* 背景图不平铺 */
+              background-repeat: no-repeat;
+              /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
+              background-attachment: fixed;
+              /* 让背景图基于容器大小伸缩 */
+              background-size: cover;
+              /* 设置背景颜色，背景图加载过程中会显示背景色 */
+              background-color: #464646;
+            }
+
+            #bg03 {
+              height: 300px;
+              background: url(imgs/001.jpg) no-repeat;
+              /** background 是做不背景，不随着元素动的 */
+              background-size: 100% 100%;
+            }
+          </style>
+        </div>
+
+        <div class="zh-example" data-category="table 边框合并单线"></div>
+        <div class="zh-example">
+          <p class="content">虽说但是这个加不加都是一个效果就让我懵逼了</p>
+          <table id="table01">
+            <tr>
+              <th>Head1</th>
+              <th>Head2</th>
+            </tr>
+            <tr>
+              <td>content1</td>
+              <td>content2</td>
+            </tr>
+          </table>
+          <table id="table02">
+            <tr>
+              <th>Head1</th>
+              <th>Head2</th>
+            </tr>
+            <tr>
+              <td>content1</td>
+              <td>content2</td>
+            </tr>
+            <tr>
+              <td>content1</td>
+              <td>content2</td>
+            </tr>
+          </table>
+          <style class="stage">
+            #table01 {
+              border-collapse: collapse;
+              /** 设置表格边框合并 */
+            }
+
+            #table01 td,
+            #table01 th {
+              border: 1px solid #000000;
+            }
+
+            #table02 {
+              border: 1px solid #000000;
+            }
+
+            #table02 td,
+            #table02 th {
+              border: 1px solid #000000;
+            }
+          </style>
+        </div>
       </main>
     </div>
   </div>
@@ -73,6 +263,19 @@
    */
   function processCode(example, index) {
 
+    const stage = $(".stage", example);
+    stage.attr('id', "stage_" + index);
+    console.log('001', stage);
+    console.log('002', stage.html());
+    if (stage.length == 0) {
+      return;
+    }
+    let html = fbase.escapeHtml(stage.html());
+    html = html.replace(/^\s{10}/gm, '');
+
+    const codeBox = fbase.createCodeBlock('css', html, index);
+
+    example.append(codeBox);
   }
   fbase.initPageContent(processCode);
   feather.replace({ 'aria-hidden': 'true' })
