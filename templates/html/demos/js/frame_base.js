@@ -45,7 +45,7 @@
    * 没有 data-category 的作为内容 div, 取出其中的 .stage 元素，取其 html 作为 code 添加显示出来。 
    * 内容实行扁平化管理，层级上有 data-category 的实际上是包含跟随它的后续 .zh-example，但也都是同级的 div. 
    */
-  function initPageContent(callback) {
+  function initPageContent(callback, codeType='js') {
 
     const examples = $('.zh-example');
     let index = 0;
@@ -59,7 +59,7 @@
       }
 
       if (callback != null) {
-        callback(example, index);
+        callback(example, index, codeType);
       }
     }
   }
@@ -101,6 +101,28 @@
     return codeBox;
   }
 
+  /**
+   * 找出页面块中的代码部分，创建出代码展示部分. 
+   * 这个方法可以对只是查找 .stage 中代码并展示的进行统一处理
+   * @param {*} example 要被处理的页面块
+   * @param {*} index 页面块排的序号
+   * @returns 
+   */
+  function processCode(example, index, codeType) {
+
+    const stage = $(".stage", example);
+    stage.attr('id', "stage_" + index);
+    if (stage.length == 0) {
+      return;
+    }
+    let html = fbase.escapeHtml(stage.html());
+    html = html.replace(/^\s{10}/gm, '');
+
+    const codeBox = fbase.createCodeBlock(codeType, html, index);
+
+    example.append(codeBox);
+  }
+
 
 
   return {
@@ -108,6 +130,7 @@
     setupCategory,
     initPageContent,
     createCodeBlock,
+    processCode,
   }
 }));
 

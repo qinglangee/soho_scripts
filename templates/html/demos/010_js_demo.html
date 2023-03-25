@@ -72,10 +72,10 @@
             });
 
             // 第二种是调用 from 的验证
-            function submitBtnClick(){
+            function submitBtnClick() {
               let form01 = document.querySelector('#form01');
               // from.reportValidity() 会执行 checkValidity() 并且显示浏览的默认提示。  
-              if(from01.reportValidity()){
+              if (from01.reportValidity()) {
                 // 做接下来的事
               }
             }
@@ -107,7 +107,7 @@
           <button onclick="useStrTemplate()">使用字符串模板</button>
           <input type="text" id="str2">
           <script class="stage">
-            function useStrTemplate(){
+            function useStrTemplate() {
               let text = $('#str1').val();
               let str = `模板内容加上${text}`;
               console.log('str', str);
@@ -116,14 +116,38 @@
           </script>
         </div>
 
-        
+
         <div class="zh-example" data-category="数组常用方法"></div>
         <div class="zh-example">
           <script class="stage">
-            let arr01 = [1,2,3,4];
+            let arr01 = [1, 2, 3, 4];
             arr01.sort();  // 数组排序  
-            function cmp01(a, b){return a - b;}
+            function cmp01(a, b) { return a - b; }
             arr01.sort(cmp01); // 数组用自定义方法排序
+          </script>
+        </div>
+
+
+        <div class="zh-example" data-category="解构赋值"></div>
+        <div class="zh-example">
+          <script class="stage">
+            let [a, b] = [12, 333];
+
+            // 相关语法
+            // const [a, b] = array;
+            // const [a, , b] = array;          // 中间可以跳过一个，多个逗号可以跳过多个
+            // const [a = aDefault, b] = array;
+            // const [a, b, ...rest] = array;
+            // const [a, , b, ...rest] = array;
+            // const [a, b, ...{ pop, push }] = array;
+            // const [a, b, ...[c, d]] = array;
+
+            // const { a, b } = obj;
+            // const { a: a1, b: b1 } = obj;
+            // const { a: a1 = aDefault, b = bDefault } = obj;
+            // const { a, b, ...rest } = obj;
+            // const { a: a1, b: b1, ...rest } = obj;
+            // const { [key]: a } = obj;
           </script>
         </div>
 
@@ -136,18 +160,7 @@
    * .zh-example 块有标题和数据块两种，标题块是有 data-category 属性的， 统一处理。
    * 数据块每个页面自己处理。
    */
-  function processCode(example, index) {
-
-    const stage = $(".stage", example);
-    stage.attr('id', "stage_" + index);
-    let html = fbase.escapeHtml(stage.html());
-    html = html.replace(/^\s{10}/gm, '');
-
-    const codeBox = fbase.createCodeBlock('js', html, index);
-
-    example.append(codeBox);
-  }
-  fbase.initPageContent(processCode);
+  fbase.initPageContent(fbase.processCode, 'js');
   feather.replace({ 'aria-hidden': 'true' })
 </script>
 

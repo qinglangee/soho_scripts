@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang='zh'>
+
+<head>
+  <meta charset="utf-8">
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Template</title>
+
+  <link href="css/frame_base.css" rel="stylesheet">
+
+
+  <link href="jslib/bootstrap.min.css" rel="stylesheet">
+  <script src="jslib/bootstrap.bundle.min.js"></script>
+
+  <link rel="stylesheet" href="jslib/prism.css">
+  <script src="jslib/prism.js"></script>
+
+
+  <script src="jslib/feather-4.28.0.min.js"></script>
+  <script src="jslib/jquery-3.5.1.js"></script>
+
+
+  <script src="js/frame_base.js"></script>
+
+  <script>
+
+    function initContext(id) {
+      let canvas = document.getElementById(id);
+      let context = canvas.getContext('2d');
+      return [canvas, context];
+    }
+  </script>
+</head>
+
+<body>
+  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow" id="page_header">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.html">Back to Index</a>
+
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>All menus</span>
+            <a class="link-secondary" href="#" aria-label="Add a new report">
+              <span data-feather="plus-circle"></span>
+            </a>
+          </h6>
+          <ul class="nav flex-column mb-2" id="menu_box">
+          </ul>
+        </div>
+      </nav>
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="zh-example" data-category="页面取 canvas  context"></div>
+        <div class="zh-example">
+
+          <canvas id="canvas1" width="40" height="40"></canvas>
+          <script class="stage">
+            let canvas = document.getElementById("canvas1");
+            let context = canvas.getContext('2d'); // 2d not 2D
+            context.fillStyle = 'blue'
+            context.fillRect(10, 10, 10, 10);
+          </script>
+        </div>
+
+
+        <div class="zh-example" data-category="基本画图"></div>
+        <div class="zh-example">
+
+          <canvas id="canvas2" width="1000" height="150"></canvas>
+          <script class="stage">
+            let [canvas2, ctx] = initContext('canvas2');
+            ctx.fillStyle = '#eee';
+            ctx.fillRect(0, 0, canvas2.width, canvas2.height);
+            ctx.fillStyle = '#555';
+            // 画矩形
+            let x = 10;
+            let y = 10;
+            ctx.fillRect(x, y, 30, 30);
+
+            x += 50;
+            ctx.strokeRect(x, y, 30, 30);
+
+            x += 50;
+            ctx.fillRect(x, y, 30, 30);
+            ctx.clearRect(x + 10, y + 10, 10, 10);
+
+            x += 50;
+            ctx.rect(x, y, 30, 30);  // 这种方法相当于用 lineTo() 画线， 后面要接 fill() 或 stroke()  
+            ctx.fill();
+
+            x += 50;
+            ctx.rect(x, y, 30, 30);
+            ctx.stroke();
+            
+            // 画圆
+            ctx.fillStyle = 'green'
+            x += 60;
+            y += 15;
+            ctx.beginPath();
+            ctx.arc(x, y, 15, 0, 2 * Math.PI); // （x, y, radius, start, end);
+            ctx.fill();
+
+            x += 50;
+            ctx.beginPath();
+            ctx.arc(x, y, 15, 0, 2 * Math.PI);
+            ctx.stroke();
+            // 画弧线
+            x += 50;
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.strokeStyle='red';
+            ctx.arc(x, y, 15, Math.PI/4, Math.PI/2); // （x, y, radius, start, end， anticlockwise);  默认是顺时针方向  
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.strokeStyle='black';
+            ctx.arc(x, y, 15, Math.PI/2, Math.PI); // （x, y, radius, start, end， anticlockwise);  默认是顺时针方向  
+            ctx.stroke();
+
+            x += 50;
+            ctx.beginPath();
+            ctx.strokeStyle='black';
+            ctx.arc(x, y, 15, 0, Math.PI * 3 / 4); // （x, y, radius, start, end， anticlockwise);  默认是顺时针方向  
+            ctx.fill();
+
+            
+            x += 50;
+            ctx.beginPath();
+            ctx.moveTo(x - 15, y);
+            ctx.arcTo(x, y - 30, x + 15, y, 30); // 这个好像是以三个点的连线为切线画弧。 有时会莫名其妙地加条直线干嘛。。。
+            ctx.stroke();
+
+
+            // 画线
+            x += 35;
+            ctx.lineWidth = 1;
+            
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x + 15, y - 15);
+            ctx.lineTo(x + 30, y);
+            ctx.stroke();
+            
+            x += 50;
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x + 15, y - 15);
+            ctx.lineTo(x + 30, y);
+            ctx.closePath();
+            ctx.stroke();
+            
+            x += 50;
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x + 15, y - 15);
+            ctx.lineTo(x + 30, y);
+            ctx.fill();
+
+            // 贝塞尔曲线
+            x += 50;
+
+            // 二次贝塞尔曲线
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.quadraticCurveTo(x + 15, y + 15, x + 30, y)
+            ctx.quadraticCurveTo(x + 45, y - 15, x + 60, y)
+            ctx.stroke();
+
+            // 三次贝塞尔曲线
+            x += 80;
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.bezierCurveTo(x + 5, y + 15, x + 25, y + 15, x + 30, y)
+            ctx.bezierCurveTo(x + 40, y - 15, x + 50, y - 15, x + 60, y)
+            ctx.stroke();
+
+            // 写字
+            x = 10;
+            y = 80;
+
+            ctx.font = "24px serif";  // font 设置大小时，也要指定哪个字体. 默认值是  10px sans-serif
+            ctx.fillText("Path2D", x, y);  // fillText(text, x, y [, maxWidth]);
+            ctx.font = "48px arial";
+            ctx.strokeText("Path2D", x, y + 60);  // strokeText(text, x, y [, maxWidth]);
+
+            // Path 2D
+            x += 180;
+
+            let rectangle = new Path2D();
+            rectangle.rect(x, y, 30, 30);
+            let circle = new Path2D();
+            circle.moveTo(x + 50, y + 15);
+            circle.arc(x + 50, y + 15, 15, 0, 2 * Math.PI);
+
+            ctx.stroke(rectangle);
+            ctx.fill(circle);
+            
+          </script>
+        </div>
+
+
+        <div class="zh-example" data-category="常用函数"></div>
+        <div class="zh-example">
+
+          <canvas id="canvas2" width="100" height="15"></canvas>
+          <script class="stage">
+            // add two vector
+            function add(p1, p2) {
+              return [p1[0] + p2[0], p1[1] + p2[1]];
+            }
+            // subtract two vector
+            function subtract(p1, p2) {
+              return [p1[0] - p2[0], p1[1] - p2[1]];
+            }
+            // multiply vector and scaler
+            function multi(p, s) {
+              return [p[0] * s, p[1] * s];
+            }
+            // calculate distance of two point
+            function distance(p1, p2) {
+              let x = p1[0] - p2[0];
+              let y = p1[1] - p2[1];
+              return Math.sqrt(x * x + y * y);
+            }
+            // Draw a circle
+            function drawCircle(x, y, radius, color = 'black', fill = false) {
+              context.save();
+              context.strokeStyle = color;
+              context.fillStyle = color;
+              context.beginPath();
+              context.arc(x, y, radius, 0, 2 * Math.PI);
+              if (fill) {
+                context.fill();
+              } else {
+                context.stroke();
+              }
+              context.restore();
+            }
+          </script>
+        </div>
+
+
+        <div class="zh-example" data-category="页面循环函数"></div>
+        <div class="zh-example">
+          <canvas id="canvas3" width="100" height="50"></canvas>
+          <script class="stage">
+            function draw3(t){
+              let [canvas, ctx] = initContext('canvas3');
+              ctx.clearRect(0, 0, canvas.width, canvas.height);
+              ctx.fillText("time " + (t/ 1000) , 10, 20);
+              window.requestAnimationFrame(draw3);
+            }
+            draw3(0);
+          </script>
+        </div>
+
+
+        <div class="zh-example" data-category="变换函数"></div>
+        <div class="zh-example">
+          <canvas id="canvas4" width="1000" height="200"></canvas>
+          <script class="stage">
+            function draw4(t){
+              let [canvas, ctx] = initContext('canvas4');
+              ctx.fillStyle = '#eee'
+              ctx.fillRect(0, 0, canvas.width, canvas.height);
+              ctx.fillStyle = '#000'
+              ctx.strokeStyle = '#000'
+              // 先平移后旋转
+              ctx.save();
+              ctx.translate(50, 0);
+              ctx.rotate(Math.PI/4);
+              ctx.strokeRect(0, 0, 10, 10);
+              ctx.fillText("先平移后旋转", 0, 20);
+              ctx.restore();
+
+              // 先旋转后平移
+              ctx.save();
+              ctx.rotate(Math.PI/4);
+              ctx.translate(50, 0);
+              ctx.strokeRect(0, 0, 10, 10);
+              ctx.fillText("先旋转后平移", 0, 20);
+              ctx.restore();
+
+              // 先平移后缩放
+              ctx.save();
+              ctx.translate(150, 0);
+              ctx.scale(2, 2);
+              ctx.strokeRect(0, 0, 10, 10);
+              ctx.fillText("先平移后缩放", 0, 20);
+              ctx.restore();
+
+              // 先缩放后平移
+              ctx.save();
+              ctx.scale(2, 2);
+              ctx.translate(150, 0);
+              ctx.strokeRect(0, 0, 10, 10);
+              ctx.fillText("先缩放后平移", 0, 20);
+              ctx.restore();
+            }
+            draw4();
+          </script>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+<script>
+  /**
+   * .zh-example 块有标题和数据块两种，标题块是有 data-category 属性的， 统一处理。
+   * 数据块每个页面自己处理。
+   */
+  fbase.initPageContent(fbase.processCode, 'js');
+  feather.replace({ 'aria-hidden': 'true' })
+</script>
+
+</html>

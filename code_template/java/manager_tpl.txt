@@ -2,15 +2,15 @@
 import java.util.List;
 import java.util.ArrayList;
 
-public class ${bean}Manager{
+public class ${bean}Manager {
 
     private List<${bean}> dataList;
 
-    public ${bean}Manager(){
+    public ${bean}Manager() {
         dataList = new ArrayList<>();
     }
 
-    public List<${bean}> getDataList(){
+    public List<${bean}> getDataList() {
         return dataList;
     }
 
@@ -20,7 +20,7 @@ public class ${bean}Manager{
      * @return
      */
     public ${bean} getById(int id){
-        for(${bean} bean : dataList){
+        for(${bean} bean : dataList) {
             if(bean.getId() == id){
                 return bean;
             }
@@ -33,9 +33,9 @@ public class ${bean}Manager{
      * @param id ${bean} name
      * @return
      */
-    public ${bean} getByName(String name){
-        for(${bean} bean : dataList){
-            if(bean.getName().equals(name)){
+    public ${bean} getByName(String name) {
+        for(${bean} bean : dataList) {
+            if(bean.getName().equals(name)) {
                 return bean;
             }
         }

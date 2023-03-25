@@ -118,7 +118,8 @@ class FacBase():
         fileContent = fileContent.replace(r'${classname}', beanDefine.classname)
         fileContent = fileContent.replace(r'${fields}', allFieldStr)
         fileContent = fileContent.replace(r'${methods}', allMethods)
-        fileContent = fileContent.replace(r'${modifier}', b.fields[0].modifier)   # c++ 有这个
+        if len(b.fields) > 0:
+            fileContent = fileContent.replace(r'${modifier}', b.fields[0].modifier)   # c++ 有这个
         
         fileContent = fileContent.replace(r'${interfaces}', beanDefine.implements) 
 

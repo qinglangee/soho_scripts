@@ -261,23 +261,7 @@
    * .zh-example 块有标题和数据块两种，标题块是有 data-category 属性的， 统一处理。
    * 数据块每个页面自己处理。
    */
-  function processCode(example, index) {
-
-    const stage = $(".stage", example);
-    stage.attr('id', "stage_" + index);
-    console.log('001', stage);
-    console.log('002', stage.html());
-    if (stage.length == 0) {
-      return;
-    }
-    let html = fbase.escapeHtml(stage.html());
-    html = html.replace(/^\s{10}/gm, '');
-
-    const codeBox = fbase.createCodeBlock('css', html, index);
-
-    example.append(codeBox);
-  }
-  fbase.initPageContent(processCode);
+  fbase.initPageContent(fbase.processCode, 'css');
   feather.replace({ 'aria-hidden': 'true' })
 </script>
 

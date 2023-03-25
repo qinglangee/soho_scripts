@@ -25,4 +25,8 @@ ${methods}
         this.${name} = ${name};
     }
 ```
-
+```string
+    public String toString() {
+        return "";
+    }
+```
