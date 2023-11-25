@@ -22,6 +22,11 @@
 
   <script src="js/frame_base.js"></script>
 
+  <style>
+    .clear{
+      clear: both;
+    }
+  </style>
 
 </head>
 
@@ -65,12 +70,13 @@
             </div>
           </div>
           <style class="stage">
-            #glass01 .d1{
-              width:500px;
-              height:300px;
+            #glass01 .d1 {
+              width: 500px;
+              height: 300px;
               background-image: url(imgs/001.jpg);
             }
-            #glass01 .d2{
+
+            #glass01 .d2 {
               width: 300px;
               height: 200px;
               margin: 50px 100px;
@@ -82,23 +88,24 @@
           </style>
         </div>
 
-        
+
         <div class="zh-example" data-category="文字模糊效果"></div>
         <div class="zh-example" id="text01">
           <div class="d1 text-center">
             这里有些文字
           </div>
           <style class="stage">
-            #text01 .d1{
-              width:500px;
-              height:300px;
+            #text01 .d1 {
+              width: 500px;
+              height: 300px;
               background-color: antiquewhite;
 
-              color: rgba(0,0,0,0);
+              color: rgba(0, 0, 0, 0);
               text-shadow: 0 0 10px #000;
             }
-            #text01 .d1:hover{
-              color: rgba(0,0,0,1);
+
+            #text01 .d1:hover {
+              color: rgba(0, 0, 0, 1);
               text-shadow: none;
             }
           </style>
@@ -110,19 +117,25 @@
           <div class="d2">con2</div>
           <div class="d3">con3</div>
           <style class="stage">
-            #shadow01 div{
+            #shadow01 div {
               width: 100px;
               height: 50px;
               margin: 20px;
             }
-            #shadow01 .d1{
-              box-shadow: 10px 13px 15px #f00; /** 设置右，下偏移距离， 模糊半径， 颜色  */
+
+            #shadow01 .d1 {
+              box-shadow: 10px 13px 15px #f00;
+              /** 设置右，下偏移距离， 模糊半径， 颜色  */
             }
-            #shadow01 .d2{
-              box-shadow: 0px 5px 5px #f00; /** 设置右，下偏移距离， 模糊半径， 颜色  */
+
+            #shadow01 .d2 {
+              box-shadow: 0px 5px 5px #f00;
+              /** 设置右，下偏移距离， 模糊半径， 颜色  */
             }
-            #shadow01 .d3{
-              box-shadow: 5px 5px 0px #f00; /** 设置右，下偏移距离， 模糊半径， 颜色  */
+
+            #shadow01 .d3 {
+              box-shadow: 5px 5px 0px #f00;
+              /** 设置右，下偏移距离， 模糊半径， 颜色  */
             }
           </style>
         </div>
@@ -131,13 +144,15 @@
         <div class="zh-example">
           <button id="btn01">按钮样式设置</button>
           <style class="stage">
-            #btn01{
+            #btn01 {
               background-color: aquamarine;
             }
-            #btn01:hover{
+
+            #btn01:hover {
               background-color: rgb(98, 195, 163);
             }
-            #btn01:active{
+
+            #btn01:active {
               background-color: rgb(65, 126, 106);
             }
           </style>
@@ -250,6 +265,90 @@
             #table02 th {
               border: 1px solid #000000;
             }
+          </style>
+        </div>
+
+        <div class="zh-example" data-category="loading 加载等待"></div>
+        <div class="zh-example">
+          <div class="loader-1"></div>
+          <style class="stage">
+            .loader-1 {
+              width: 48px;
+              height: 48px;
+              border: 5px solid #e7e2e2;
+              border-bottom-color: #FF3D00;
+              border-radius: 50%;
+              display: inline-block;
+              -webkit-animation: circle 1s linear infinite;
+              animation: circle 1s linear infinite;
+            }
+
+            @keyframes circle {
+              0% {
+                transform: rotate(0);
+              }
+
+              100% {
+                transform: rotate(360deg);
+              }
+            }
+          </style>
+        </div>
+
+        <div class="zh-example" data-category="斜向渐变色"></div>
+        <div class="zh-example">
+          <div class="grade-color grade-color-1"></div>
+          <div class="grade-color grade-color-2"></div>
+          <div class="grade-color grade-color-3"></div>
+          <div class="grade-color grade-color-4"></div>
+          <div class="grade-color grade-color-5"></div>
+          <div class="clear"></div>
+          <style class="stage">
+            .grade-color {
+              float:left;
+              width: 148px;
+              height: 148px;
+            }
+            .grade-color-1 {
+              background: linear-gradient( red, blue); /** 默认上下 */
+            }
+            .grade-color-2 {
+              background: linear-gradient(90deg, red, blue); /** 指定角度 */
+            }
+            .grade-color-3 {
+              background: linear-gradient(45deg, red, yellow, green, blue); /** 多个颜色 */
+            }
+            .grade-color-4 {
+              background: linear-gradient(45deg, red 0%, yellow 25%, green 50%, blue 100%); /* 指定比例 */
+            }
+            .grade-color-5 {
+              background: linear-gradient(45deg, red, blue);
+            }
+
+          </style>
+        </div>
+
+        <div class="zh-example" data-category="透视旋转"></div>
+        <div class="zh-example">
+          <div class="rotate-0 rotate-1"></div>
+          <div class="rotate-0 rotate-2"></div>
+          <div class="clear"></div>
+          <style class="stage">
+            .rotate-0 {
+              float:left;
+              width: 148px;
+              height: 148px;
+              background-color: green;
+              margin-left: 20px;
+              border-radius: 10px;
+            }
+            .rotate-1 {
+              transform: perspective(500px) rotateX(50deg);
+            }
+            .rotate-2 {
+              transform: perspective(500px) rotateX(20deg) rotateY(15deg);
+            }
+
           </style>
         </div>
       </main>

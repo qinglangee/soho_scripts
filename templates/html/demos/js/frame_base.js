@@ -46,7 +46,6 @@
    * 内容实行扁平化管理，层级上有 data-category 的实际上是包含跟随它的后续 .zh-example，但也都是同级的 div. 
    */
   function initPageContent(callback, codeType='js') {
-
     const examples = $('.zh-example');
     let index = 0;
     for (let example of examples) {
@@ -109,6 +108,7 @@
    * @returns 
    */
   function processCode(example, index, codeType) {
+
 
     const stage = $(".stage", example);
     stage.attr('id', "stage_" + index);

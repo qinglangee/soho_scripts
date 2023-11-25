@@ -8,7 +8,9 @@ import javax.swing.*;
  */
 public class BaseFrame extends JFrame {
     static{
-        String lookAndFeel = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
+        // String lookAndFeel = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
+
+        String lookAndFeel = UIManager.getSystemLookAndFeelClassName();
         try {
             UIManager.setLookAndFeel(lookAndFeel);
         } catch (Exception e) {

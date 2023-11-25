@@ -92,6 +92,19 @@
         </div>
 
 
+        <div class="zh-example" data-category="判断 scroll 有没有滚动到底部"></div>
+        <div class="zh-example">
+          <script class="stage">
+            window.onscroll = function () {
+              if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
+                console.log("At the bottom!")
+              }
+            }
+            // 讲了一些适应不同浏览器的方法 https://techstacker.com/javascript-detect-when-scrolled-to-bottom/
+          </script>
+        </div>
+
+
         <div class="zh-example" data-category="字符串常用方法"></div>
         <div class="zh-example">
           <script class="stage">
@@ -112,6 +125,31 @@
               let str = `模板内容加上${text}`;
               console.log('str', str);
               $('#str2').val(str);
+              let long = `可以有多行字符串
+              line 1
+              line 2
+              line 3
+              `;
+              console.log(long);
+            }
+          </script>
+        </div>
+
+
+        <div class="zh-example" data-category="生成随机颜色"></div>
+        <div class="zh-example">
+          <input type="text" id="str3" value="abc">
+          <button onclick="$('#str3').val(randomColor())">生成随机颜色</button>
+          <script class="stage">
+            function randomColor(){
+              // HEX 100000 = 1048576
+              // HEX ffffff = 16777215
+              let hex = Math.floor(Math.random()*16777215).toString(16);
+              while(hex.length < 6){
+                hex = "0" + hex;
+              }
+              console.log('hex', hex);
+              return '#' + hex;
             }
           </script>
         </div>
@@ -128,10 +166,22 @@
         </div>
 
 
+        <div class="zh-example" data-category="键盘输入组合健"></div>
+        <div class="zh-example">
+          <script class="stage">
+            function input01(event) {
+              if (event.keyCode == 13 && event.ctrlKey) {
+                // do something
+              }
+            }
+          </script>
+        </div>
+
+
         <div class="zh-example" data-category="解构赋值"></div>
         <div class="zh-example">
           <script class="stage">
-            let [a, b] = [12, 333];
+            let [var_a, var_b] = [12, 333];
 
             // 相关语法
             // const [a, b] = array;
@@ -148,6 +198,59 @@
             // const { a, b, ...rest } = obj;
             // const { a: a1, b: b1, ...rest } = obj;
             // const { [key]: a } = obj;
+          </script>
+        </div>
+
+
+        <div class="zh-example" data-category="获取url链接参数"></div>
+        <div class="zh-example">
+          <script class="stage">
+
+            function getQueryParam(name) {
+              let params = queryParams();
+              return params[name];
+            }
+
+            function getQueryParams(name) {
+              const queryString = window.location.search;
+              const urlParams = new URLSearchParams(queryString);
+              const queryParams = {};
+
+              for (const [key, value] of urlParams.entries()) {
+                queryParams[key] = value;
+              }
+
+              return queryParams;
+            }
+          </script>
+        </div>
+
+
+        <div class="zh-example" data-category="js load js"></div>
+        <div class="zh-example">
+          <script class="stage">
+
+            function loadJS(url, success) {
+              var domScript = document.createElement('script');
+              domScript.src = url;
+              success = success || function () { };
+              domScript.onload = domScript.onreadystatechange = function () {
+                if (!this.readyState || 'loaded' === this.readyState || 'complete' === this.readyState) {
+                  success();
+                  this.onload = this.onreadystatechange = null;
+                  this.parentNode.removeChild(this); // 完事儿后删除 script, 也可以不删除
+                }
+              }
+              document.getElementsByTagName('head')[0].appendChild(domScript);
+            }
+            // loadJS("js/demo03.js");
+          </script>
+        </div>
+
+
+        <div class="zh-example" data-category="页面底部"></div>
+        <div class="zh-example">
+          <script class="stage">
           </script>
         </div>
 
