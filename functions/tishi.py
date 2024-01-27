@@ -8,6 +8,10 @@ names = OrderedDict({
         'git update-index --no-assume-unchanged filename',
         'git config user.name "name"',
         'git config user.email "email"',
+        "git config --global http.proxy 'socks5://127.0.0.1:20808' ",
+        "git config --global https.proxy 'socks5://127.0.0.1:20808'",
+        "git config --global --unset http.proxy",
+        "git config --global --unset https.proxy"
     ],
     'php':{
         'php -S localhost:8000',
@@ -32,6 +36,7 @@ names = OrderedDict({
         'python -m venv  myvenv',
         'myvenv/Scripts/activate.ps1',
         'pip install -r requirements.txt',
+        'd:\document\python_env\myvenv\Scripts\Activate.ps1',
     ],
     # bash 可能会比较多，可以多分几组
     'bash lslibs':[],
