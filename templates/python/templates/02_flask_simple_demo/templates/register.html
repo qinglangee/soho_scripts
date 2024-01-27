@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block head %}
+<title>Register</title>
+{% endblock %}
+{% block body %}
+  <div class="container pt-2">
+    {% import './macros.tmpl' as macros %}
+    {{ macros.show_message(err_msg, success_msg) }}
+
+    <form action="/register" method="post">
+
+      <div class="login-box">
+        <div class="row mb-2">
+          <div class="col-4">Username:</div>
+          <div class="col-8">
+            <input type="text" class="form-control" name="username" required="true">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-4">Password:</div>
+          <div class="col-8">
+            <input type="password" class="form-control" name="password" required="true">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-4">Confirm password:</div>
+          <div class="col-8">
+            <input type="password" class="form-control" name="confirm_password" required="true">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-4">
+            <a href="/login" class="btn btn-secondary">Login</a>
+          </div>
+          <div class="col-8">
+            <button class="btn btn-primary">Register</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}
