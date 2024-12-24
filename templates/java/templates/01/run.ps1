@@ -5,9 +5,10 @@
 ###############################################################################
 param($1,$2,$3,$4, $5, $6, $7, $8, $9)
 
-$zh_classpath="classes;"
-$src="src/CHC5223"
-$main="CHC5223.CHC5223"
+$zh_classpath="classes;."
+$srcDir="src"
+$src="src/*.java"
+$main="TrafficSimulator"
 
 
 function run_java{
@@ -21,14 +22,14 @@ function run_java{
 # }
 
 if(($1 -eq "c") -or ($1 -eq "compile")){
-    javac -d classes -cp $zh_classpath -encoding utf-8 $src/*.java
+    javac -d classes -cp $zh_classpath -encoding utf-8 -sourcepath $srcDir $src
     if ($LASTEXITCODE -eq 0){
         run_java $2 $3 $4 $5 $6 $7 $8 $9
     }
 }elseif(($1 -eq "cc")){  # only compile
-    javac -d classes -cp $zh_classpath -encoding utf-8 $src/*.java
+    javac -d classes -cp $zh_classpath -encoding utf-8 -sourcepath $srcDir $src
 }elseif(($1 -eq "m")){  # only compile
-    javac -d classes -cp $zh_classpath -encoding utf-8 $src/*.java
+    javac -d classes -cp $zh_classpath -encoding utf-8 -sourcepath $srcDir $src
     $main=$2
     if ($LASTEXITCODE -eq 0){
         run_java $2 $3 $4 $5 $6 $7 $8 $9

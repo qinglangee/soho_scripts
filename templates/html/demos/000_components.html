@@ -2441,18 +2441,6 @@
 </body>
 <script src="js/frame_base.js"></script>
 <script>
-  function escapeHtml(htmlStr) {
-    return htmlStr
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-
-      // 为什么加了下面这些会出错呢，因为有些引号要保留的，不能替换了
-      // .replace(/"/g, "&quot;")
-      // .replace(/'/g, "&#39;")
-      // .replace(/&/g, "&amp;")
-      ;
-
-  }
   function unEscapeHtml(htmlStr) {
     htmlStr = htmlStr.replace(/&lt;/g, "<");
     htmlStr = htmlStr.replace(/&gt;/g, ">");
@@ -2463,25 +2451,8 @@
   }
 
 
-  /**
-   * 内容菜单生成，查找所有的 div.zh-example, 
-   * 其中有 data-category 属性的，取出作为标题。 
-   * 没有 data-category 的作为内容 div, 取出其中的 .stage 元素，取其 html 作为 code 添加显示出来。 
-   */
-  function setupCode(example, index) {
-
-    const stage = $(".stage", example);
-    stage.attr('id', "stage_" + index);
-    let html = escapeHtml(stage.html());
-    html = html.replace(/^\s{10}/gm, '');
-
-    const codeBox = fbase.createCodeBlock('html', html, index);
-
-    example.append(codeBox);
-  }
-
   function init() {
-    fbase.initPageContent(setupCode);
+    fbase.initPageContent(fbase.processCode, 'html');
 
     feather.replace({ 'aria-hidden': 'true' })
   }

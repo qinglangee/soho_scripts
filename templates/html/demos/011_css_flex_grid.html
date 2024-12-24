@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang='zh'>
+
+<head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Template</title>
+
+    <link href="css/frame_base.css" rel="stylesheet">
+
+
+    <link href="jslib/bootstrap.min.css" rel="stylesheet">
+    <script src="jslib/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="jslib/prism.css">
+    <script src="jslib/prism.js"></script>
+
+
+    <script src="jslib/feather-4.28.0.min.js"></script>
+    <script src="jslib/jquery-3.5.1.js"></script>
+
+
+    <script src="js/frame_base.js"></script>
+
+    <style>
+        .clear {
+            clear: both;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow" id="page_header">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.html">Back to Index</a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+                <a class="nav-link px-3" href="#">Sign out</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+
+                    <h6
+                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>All menus</span>
+                        <a class="link-secondary" href="#" aria-label="Add a new report">
+                            <span data-feather="plus-circle"></span>
+                        </a>
+                    </h6>
+                    <ul class="nav flex-column mb-2" id="menu_box">
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="zh-example" data-category="Flex Grid"></div>
+                <div class="zh-example">
+                    <div>
+                        Flex 与 grid 的区别， 主要的应用场景。<br>
+
+                        https://css-tricks.com/quick-whats-the-difference-between-flexbox-and-grid/ <br>
+                        Grid 也可以实现 flex 的多数功能，用 fr 设置比例， px 设置固定值， 而且 grid 的布局一般更确定。
+                    </div>
+                </div>
+
+                <div class="zh-example" data-category="Flex 总纲"></div>
+                <div class="zh-example">
+
+                    <div>
+                        所有的 flex 外容器共用一个 class="flex-box", 子元素用 class="item"
+                    </div>
+                    <style class="stage">
+                        .big-box {
+                            display: flex;
+                            justify-content: space-around;
+                            flex-wrap: wrap;
+                        }
+
+                        .flex-box {
+                            display: flex;
+                            width: 400px;
+                            height: 200px;
+                            border: dashed 1px;
+                            border-radius: 5px;
+                            background: #e1e1e1;
+                        }
+
+                        .item {
+                            width: 100px;
+                            height: 50px;
+                            background-color: aquamarine;
+                            border-radius: 5px;
+                            border: solid 1px gray
+                        }
+                    </style>
+                </div>
+
+                <div class="zh-example" data-category="Flex 排列"></div>
+                <div class="zh-example">
+                    排列有 row column, 默认是row, 默认不会换行
+                    <div class="stage">
+                        <div class="big-box" id="b02">
+                            <div class="flex-box row1" data-num="30"></div>
+                            <div class="flex-box column1" data-num="6"></div>
+                        </div>
+                        <style>
+                            #b02 .row1 {}
+
+                            #b02 .column1 {
+                                flex-direction: column;
+                            }
+                        </style>
+                    </div>
+                </div>
+
+                <div class="zh-example" data-category="Flex 换行"></div>
+                <div class="zh-example">
+                    flex-wrap 设置 wrap, 也可以 flex-flow 一起设置两个属性。
+                    <div class="stage">
+                        <div class="big-box" id="b03">
+                            <div class="flex-box wrap02" data-num="13"></div>
+                            <div class="flex-box wrap03" data-num="6"></div>
+                        </div>
+                        <style>
+                            .wrap02 {
+                                flex-wrap: wrap;
+                            }
+
+                            .wrap03 {
+                                flex-flow: column wrap;
+                            }
+                        </style>
+                    </div>
+                </div>
+
+                <div class="zh-example" data-category="Flex 空间"></div>
+                <div class="zh-example">
+                    justify-content 设置 main axis 剩余空间如何分配。<br>
+                    align-content 设置在 cross axis 剩余空间如何分配
+                    <div class="stage">
+                        <div class="big-box" id="b04">
+                            <div class="flex-box f1" data-num="3"></div>
+                            <div class="flex-box f2" data-num="2"></div>
+                            <div class="flex-box f3" data-num="2"></div>
+                            <div class="flex-box f4" data-num="2"></div>
+                        </div>
+                        <style>
+                            #b04 .f1 {
+                                flex-wrap: wrap;
+                                justify-content: space-between;
+                                align-content: center;
+                            }
+
+                            #b04 .f2 {
+                                justify-content: space-around;
+                            }
+
+                            #b04 .f3 {
+                                justify-content: space-evenly;
+                            }
+
+                            #b04 .f4 {
+                                justify-content: center;
+                            }
+                        </style>
+                    </div>
+                </div>
+
+                <div class="zh-example" data-category="Flex 占据剩余"></div>
+                <div class="zh-example">
+                    flex-grow 的属性规定为一个 number, 负值无效，默认为 0。<br>
+                    这个属性规定了 flex-grow 项在 flex 容器中分配剩余空间的相对比例
+                    <div class="stage">
+                        <div class="big-box" id="b05">
+                            <div class="flex-box f1" data-num="3"></div>
+                            <div class="flex-box f2" data-num="2"></div>
+                        </div>
+                        <style>
+                            #b05 .f1 .item:nth-child(2) {
+                                flex-grow: 1;
+                            }
+
+                            #b05 .f2 {
+                                flex-grow: 1;
+                            }
+
+                            #b05 .f2 .item:nth-child(2) {
+                                flex-grow: 1;
+                            }
+                        </style>
+                    </div>
+                </div>
+
+                <div class="zh-example" data-category="Flex 初始大小"></div>
+                <div class="zh-example">
+                    flex-basis 指定了 flex 元素在主轴方向上的初始大小。<br>
+                    <div class="stage">
+                        <div class="big-box" id="b06">
+                            <div class="flex-box f1" data-num="5"></div>
+                            <div class="flex-box f2" data-num="8"></div>
+                        </div>
+                        <style>
+                            #b06 .f1 {
+                                flex-wrap: wrap;
+                                flex-basis: 220px;
+                            }
+
+                            #b06 .f2 {
+                                flex-wrap: wrap;
+                                flex-basis: 620px;
+                            }
+                        </style>
+                    </div>
+                </div>
+
+                <div class="zh-example" data-category="子元素控制布局"></div>
+                <div class="zh-example">
+                    父元素只指定了 flex, 布局由子元素的 flex 属性来控制。<br>
+                    <div class="stage">
+                        <div class="big-box" id="b07">
+                            <div class="flex-box f1">
+                                <div>1</div>
+                                <div>2</div>
+                                <div>3</div>
+                            </div>
+                        </div>
+                        <style>
+                            #b07 .flex-box div {
+                                border: solid 1px greenyellow;
+                                border-radius: 5px;
+                                background-color: bisque;
+                            }
+                            #b07 .flex-box {
+                                >div {
+                                    &:nth-child(1) {
+                                        flex: 0 0 100px;
+                                    }
+
+                                    &:nth-child(2) {
+                                        flex: 1;
+                                        max-width: 500px;
+                                    }
+
+                                    &:nth-child(3) {
+                                        flex: 0 0 50px;
+                                        margin-left: auto;
+                                    }
+                                }
+                            }
+
+                        </style>
+                    </div>
+                </div>
+
+                <div class="zh-example" data-category="Grid 总纲"></div>
+                <div class="zh-example">
+
+                    <div>
+                        所有的 grid 外容器共用一个 class="flex-box", 子元素用 class="item"<br>
+                        fr (fractional unit): 1fr 就表示一份的可用空间，相当于把所有 fr 表示的空间按比例分配。
+                    </div>
+                    <style class="stage">
+                        .grid-box {
+                            display: grid;
+                            width: 400px;
+                            height: 200px;
+                            border: dashed 1px;
+                            border-radius: 5px;
+                            background: #e1e1e1;
+                        }
+
+                        .gitem {
+                            background-color: aquamarine;
+                            border-radius: 5px;
+                            border: solid 1px gray
+                        }
+                    </style>
+                </div>
+
+                <div class="zh-example" data-category="Grid 指定位置"></div>
+                <div class="zh-example">
+                    Grid 布局可以行高和列宽，并给每个格子指定名字，然后可以把子元素按名字指定格子。<br>
+                    <div class="stage">
+                        <div id="g01">
+                            <div class="grid-box f1">
+                                <div class=" child-1">header</div>
+                                <div class=" child-2">main</div>
+                                <div class=" child-3">sidebar</div>
+                                <div class=" child-4">footer</div>
+                            </div>
+                        </div>
+                        <style>
+                            #g01 .f1 {
+                                display: grid;
+                                /* Three columns, one three times as wide as the others */
+                                grid-template-columns: 1fr 3fr 1fr;
+                                /* Three rows, two with explicit widths */
+                                grid-template-rows: 100px auto 30px;
+                                grid-template-areas:
+                                    "header header header"
+                                    ". main sidebar"
+                                    "footer . .";
+                            }
+
+                            #g01 .f1 div {
+                                border: solid 1px;
+                                border-radius: 5px;
+                                background-color: aqua;
+                            }
+
+                            .child-1 {
+                                grid-area: header;
+                            }
+
+                            .child-2 {
+                                grid-area: main;
+                            }
+
+                            .child-3 {
+                                grid-area: sidebar;
+                            }
+
+                            .child-4 {
+                                grid-area: footer;
+                            }
+                        </style>
+                    </div>
+                </div>
+
+                <div class="zh-example" data-category="Grid 只指定行列"></div>
+                <div class="zh-example">
+                    子元素指定了宽高的话会优先按指定的大小。<br>
+                    子元素没有指定大小则会按 grid 父元素指定的比例或大小，拉伸填充 grid 父元素。
+                    <div class="stage">
+                        <div class="big-box" id="g02">
+                            <div class="grid-box f1" data-num="5"></div>
+                            <div class="grid-box f2" data-num="9"></div>
+                        </div>
+                        <style>
+                            #g02 .f1 {
+                                grid-template-columns: 1fr 3fr 1fr;
+                            }
+
+                            #g02 .f2 {
+                                grid-template-columns: 1fr 3fr 1fr;
+                                grid-template-rows: 1fr 1fr 2fr
+                            }
+                        </style>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+<script>
+    /**
+     * .zh-example 块有标题和数据块两种，标题块是有 data-category 属性的， 统一处理。
+     * 数据块每个页面自己处理。
+     */
+    fbase.initPageContent(fbase.processCode, 'html');
+    feather.replace({ 'aria-hidden': 'true' })
+
+
+    $('.flex-box').each((index, e) => {
+        if (e.hasAttribute('data-num')) {
+            let num = Number(e.getAttribute('data-num'));
+            for (let i = 0; i < num; i++) {
+                $(e).append($('<div class="item">' + i + '</div>'));
+            }
+        }
+    });
+    $('.grid-box').each((index, e) => {
+        if (e.hasAttribute('data-num')) {
+            let num = Number(e.getAttribute('data-num'));
+            for (let i = 0; i < num; i++) {
+                $(e).append($('<div class="gitem">' + i + '</div>'));
+            }
+        }
+    });
+</script>
+
+</html>

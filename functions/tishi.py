@@ -37,6 +37,7 @@ names = OrderedDict({
         'myvenv/Scripts/activate.ps1',
         'pip install -r requirements.txt',
         'd:\document\python_env\myvenv\Scripts\Activate.ps1',
+        'python -m http.server'
     ],
     # bash 可能会比较多，可以多分几组
     'bash lslibs':[],

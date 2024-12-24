@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang='zh'>
+
+<head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Template</title>
+
+    <link href="css/frame_base.css" rel="stylesheet">
+
+
+    <link href="jslib/bootstrap.min.css" rel="stylesheet">
+    <script src="jslib/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="jslib/prism.css">
+    <script src="jslib/prism.js"></script>
+
+
+    <script src="jslib/feather-4.28.0.min.js"></script>
+    <script src="jslib/jquery-3.5.1.js"></script>
+
+    <script src="jslib/v_chart.min.js"></script>
+    <!-- <script src="https://unpkg.com/@visactor/vchart/build/index.min.js"></script> -->
+
+    <script src="js/frame_base.js"></script>
+
+
+</head>
+
+<body>
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow" id="page_header">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.html">Back to Index</a>
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="014_v_table.html">Link to Table</a>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+
+                    <h6
+                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>All menus</span>
+                        <a class="link-secondary" href="#" aria-label="Add a new report">
+                            <span data-feather="plus-circle"></span>
+                        </a>
+                    </h6>
+                    <ul class="nav flex-column mb-2" id="menu_box">
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="zh-example" data-category="CDN 代码引入方式"></div>
+                <div class="zh-example">
+                    &lt;script src="https://unpkg.com/@visactor/vchart/build/index.min.js">&lt;/script>
+                    <br> jslib 中的是 v1.9.0
+                    <p>
+                        教程地址 : <a href="https://visactor.io/vchart/guide/tutorial_docs/Getting_Started">
+                            https://visactor.io/vchart/guide/tutorial_docs/Getting_Started
+                        </a>
+                    </p>
+                    <p>
+                        表格示例 : <a href="https://visactor.io/vchart/example">https://visactor.io/vchart/example</a>
+                    </p>
+                </div>
+
+                <div class="zh-example" data-category="绘制一个简单的图表"></div>
+                <div class="zh-example">
+                    <div class="stage">
+                        <!-- 为 vchart 准备一个具备大小（宽高）的 DOM，当然你也可以在 spec 配置中指定 -->
+                        <div id="chart001" style="width: 600px;height:400px;"></div>
+                        <script type="module">
+                            const spec1 = {
+                                data: [
+                                    {
+                                        id: 'barData',
+                                        values: [
+                                            { month: 'Monday', sales: 22 },
+                                            { month: 'Tuesday', sales: 13 },
+                                            { month: 'Wednesday', sales: 25 },
+                                            { month: 'Thursday', sales: 29 },
+                                            { month: 'Friday', sales: 38 }
+                                        ]
+                                    }
+                                ],
+                                type: 'bar',
+                                xField: 'month',
+                                yField: 'sales'
+                            };
+
+                            // 创建 vchart 实例
+                            const vchart1 = new VChart.default(spec1, { dom: "chart001" });
+
+                            // const vchart = new VChart(spec, { dom: 'chart' });
+                            // 绘制
+                            vchart1.renderSync();
+
+                        </script>
+                    </div>
+                </div>
+                <div class="zh-example">
+                    数据很多的图表
+                    <div class="stage">
+                        <!-- 为 vchart 准备一个具备大小（宽高）的 DOM，当然你也可以在 spec 配置中指定 -->
+                        <div id="chart002" style="width: 600px;height:400px;"></div>
+                        <script type="module">
+                            const spec2 = {
+                                data: [
+                                    {
+                                        id: 'barData',
+                                        values: [
+                                            { month: '1', sales: 22 },
+                                            { month: '2', sales: 13 },
+                                            { month: '3', sales: 25 },
+                                            { month: '4', sales: 29 },
+                                            { month: '5', sales: 38 },
+                                            { month: '6', sales: 22 },
+                                            { month: '7', sales: 13 },
+                                            { month: '8', sales: 25 },
+                                            { month: '9', sales: 29 },
+                                            { month: '10', sales: 38 },
+                                            { month: '11', sales: 22 },
+                                            { month: '12', sales: 13 },
+                                            { month: '13', sales: 25 },
+                                            { month: '14', sales: 29 },
+                                            { month: '15', sales: 38 },
+                                            { month: '16', sales: 22 },
+                                            { month: '17', sales: 13 },
+                                            { month: '18', sales: 25 },
+                                            { month: '19', sales: 29 },
+                                            { month: '20', sales: 38 },
+                                        ]
+                                    }
+                                ],
+                                type: 'bar',
+                                xField: 'month',
+                                yField: 'sales'
+                            };
+
+                            // 创建 vchart 实例
+                            const vchart2 = new VChart.default(spec2, { dom: "chart002" });
+
+                            // const vchart = new VChart(spec, { dom: 'chart' });
+                            // 绘制
+                            vchart2.renderSync();
+
+                        </script>
+                    </div>
+                </div>
+
+                <div class="zh-example" data-category="基础折线图"></div>
+                <div class="zh-example">
+                    <div class="stage">
+                        <!-- 为 vchart 准备一个具备大小（宽高）的 DOM，当然你也可以在 spec 配置中指定 -->
+                        <div id="chart003" style="width: 600px;height:400px;"></div>
+                        <script>
+                            const spec3 = {
+                                type: 'line',
+                                data: {
+                                    values: [
+                                        {
+                                            time: '2:00',
+                                            value: 8
+                                        },
+                                        {
+                                            time: '4:00',
+                                            value: 9
+                                        },
+                                        {
+                                            time: '6:00',
+                                            value: 11
+                                        },
+                                        {
+                                            time: '8:00',
+                                            value: 14
+                                        },
+                                        {
+                                            time: '10:00',
+                                            value: 16
+                                        },
+                                        {
+                                            time: '12:00',
+                                            value: 17
+                                        },
+                                        {
+                                            time: '14:00',
+                                            value: 17
+                                        },
+                                        {
+                                            time: '16:00',
+                                            value: 16
+                                        },
+                                        {
+                                            time: '18:00',
+                                            value: 15
+                                        }
+                                    ]
+                                },
+                                xField: 'time',
+                                yField: 'value'
+                            };
+
+                            const vchart3 = new VChart.default(spec3, { dom: "chart003" });
+                            vchart3.renderSync();
+
+                            // Just for the convenience of console debugging, DO NOT COPY!
+                            window['vchart3'] = vchart3;
+                        </script>
+                    </div>
+                </div>
+
+                <div class="zh-example" data-category="数据别名"></div>
+                <div class="zh-example">
+                    <div class="stage">
+                        <!-- 为 vchart 准备一个具备大小（宽高）的 DOM，当然你也可以在 spec 配置中指定 -->
+                        <div id="chart004" style="width: 600px;height:400px;"></div>
+                        <script>
+                            const spec4 = {
+                                type: 'line',
+                                data: [
+                                    {
+                                        id: 'line',
+                                        fields: {
+                                            temperature: {
+                                                alias: 'temperature'
+                                            },
+                                            date: {
+                                                alias: 'date'
+                                            },
+                                            type: {
+                                                alias: 'type'
+                                            }
+                                        },
+                                        values: [
+                                            {
+                                                date: 'Monday',
+                                                temperature: 18,
+                                                type: 'lowest'
+                                            },
+                                            {
+                                                date: 'Tuesday',
+                                                temperature: 16,
+                                                type: 'lowest'
+                                            },
+                                            {
+                                                date: 'Wednesday',
+                                                temperature: 17,
+                                                type: 'lowest'
+                                            },
+                                            {
+                                                date: 'Thursday',
+                                                temperature: 18,
+                                                type: 'lowest'
+                                            },
+                                            {
+                                                date: 'Friday',
+                                                temperature: 19,
+                                                type: 'lowest'
+                                            },
+                                        ]
+                                    }
+                                ],
+                                xField: 'date',
+                                yField: 'temperature',
+                                seriesField: 'type',
+                                axes: [
+                                    { orient: 'left', title: { visible: true } },
+                                    { orient: 'bottom', title: { visible: true } }
+                                ],
+                                title: {
+                                    visible: true,
+                                    text: 'Weekly temperature change'
+                                }
+                            };
+
+                            const vchart4 = new VChart.default(spec4, { dom: "chart004" });
+                            vchart4.renderSync();
+
+                        </script>
+                    </div>
+                </div>
+                <div class="zh-example">
+                    <div class="stage">
+                        <!-- 为 vchart 准备一个具备大小（宽高）的 DOM，当然你也可以在 spec 配置中指定 -->
+                        <div id="chart005" style="width: 600px;height:400px;"></div>
+                        <script>
+                            function addDatas(arr, xDatas, yDatas, typeLabel, xLabel, yLabel) {
+                                for (let i = 0; i < xDatas.length; i++) {
+                                    let data = {
+                                         type: typeLabel
+                                     };
+                                     data[xLabel] = xDatas[i];
+                                     data[yLabel] = yDatas[i];
+                                    arr.push(data);
+                                }
+                            }
+                            // 这里是设置数据的示例
+                            let xData, y1Data, y2Data;
+                            xData = ['700', '800', '900', '1000', '1100'];
+                            y1Data = [1347, 631, 697, 873, 711];
+                            y2Data = [844, 557, 855, 518, 1009];
+                            let allValues = [];
+                            let xLabel = "date";
+                             let yLabel = "temperature";
+                            addDatas(allValues, xData, y1Data, 'merge', xLabel, yLabel);
+                            addDatas(allValues, xData, y2Data, 'quick', xLabel, yLabel);
+                            const spec5 = {
+                                type: 'line',
+                                data: [
+                                    {
+                                        id: 'line',
+                                        fields: {
+                                            temperature: {
+                                                alias: yLabel
+                                            },
+                                            date: {
+                                                alias: xLabel
+                                            },
+                                            type: {
+                                                alias: 'type'
+                                            }
+                                        },
+                                        values: allValues
+                                    }
+                                ],
+                                xField: xLabel,
+                                yField: yLabel,
+                                seriesField: 'type',
+                                color: ['#016BFF', '#FF6666'],
+                                line: {
+                                    style: {
+                                        curveType: 'basis'
+                                    }
+                                },
+                                point: {
+                                    visible: false
+                                },
+                                axes: [
+                                    { orient: 'left', title: { visible: true } },
+                                    { orient: 'bottom', title: { visible: true } }
+                                ],
+                                legends: {
+                                    visible: true,
+                                    orient: 'bottom',
+                                    title: {
+                                        visible: true
+                                    }
+                                },
+                                title: {
+                                    visible: true,
+                                    text: 'Weekly temperature change'
+                                }
+                            };
+
+                            const vchart5 = new VChart.default(spec5, { dom: "chart005" });
+                            vchart5.renderSync();
+                        </script>
+                    </div>
+                </div>
+
+                <div class="zh-example" data-category="基础饼图"></div>
+                <div class="zh-example">
+                    <div class="stage">
+                        <!-- 为 vchart 准备一个具备大小（宽高）的 DOM，当然你也可以在 spec 配置中指定 -->
+                        <div id="chart006" style="width: 600px;height:400px;"></div>
+                        <script>
+                            const spec6 = {
+                                type: 'pie',
+                                data: [
+                                    {
+                                        id: 'id0',
+                                        values: [
+                                            { type: 'oxygen', value: '46.60' },
+                                            { type: 'silicon', value: '27.72' },
+                                            { type: 'aluminum', value: '8.13' },
+                                            { type: 'iron', value: '5' },
+                                        ]
+                                    }
+                                ],
+                                outerRadius: 0.8,
+                                valueField: 'value',
+                                categoryField: 'type',
+                                title: {
+                                    visible: true,
+                                    text: 'Statistics of Surface Element Content'
+                                },
+                                legends: {
+                                    visible: true,
+                                    orient: 'left'
+                                },
+                                label: {
+                                    visible: true
+                                },
+                                tooltip: {
+                                    mark: {
+                                        content: [
+                                            {
+                                                key: datum => datum['type'],
+                                                value: datum => datum['value'] + '%'
+                                            }
+                                        ]
+                                    }
+                                }
+                            };
+
+                            const vchart6 = new VChart.default(spec6, { dom: "chart006" });
+                            vchart6.renderSync();
+
+                        </script>
+                    </div>
+                </div>
+
+                <div class="zh-example" data-category="Example type 2"></div>
+                <div class="zh-example">
+                    <div class="stage">
+                        <!-- 为 vchart 准备一个具备大小（宽高）的 DOM，当然你也可以在 spec 配置中指定 -->
+                        <div id="chart00n" style="width: 600px;height:400px;"></div>
+                        <script>
+
+                        </script>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+</body>
+<script>
+    /**
+     * .zh-example 块有标题和数据块两种，标题块是有 data-category 属性的， 统一处理。
+     * 数据块每个页面自己处理。   
+     * 对只是查找 .stage 中代码并展示的可以调用 fbase.processCode() 进行统一处理
+     */
+    function processCode(example, index) {
+
+    }
+    // 参数里指定一下语言的类型，现在的模式好像是只支持一种语言的，可以写 html 或 js, 后面可能有 python 之类的，现在还没有。 
+    fbase.initPageContent(fbase.processCode, 'html');
+    feather.replace({ 'aria-hidden': 'true' })
+</script>
+
+</html>

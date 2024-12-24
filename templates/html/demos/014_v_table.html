@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang='zh'>
+
+<head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Template</title>
+
+    <link href="css/frame_base.css" rel="stylesheet">
+
+
+    <link href="jslib/bootstrap.min.css" rel="stylesheet">
+    <script src="jslib/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="jslib/prism.css">
+    <script src="jslib/prism.js"></script>
+
+
+    <script src="jslib/feather-4.28.0.min.js"></script>
+    <script src="jslib/jquery-3.5.1.js"></script>
+
+    <script src="jslib/v_table.min.js"></script>
+
+    <script src="js/frame_base.js"></script>
+
+
+</head>
+
+<body>
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow" id="page_header">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.html">Back to Index</a>
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="013_v_chart.html">Link to Chart</a>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+
+                    <h6
+                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>All menus</span>
+                        <a class="link-secondary" href="#" aria-label="Add a new report">
+                            <span data-feather="plus-circle"></span>
+                        </a>
+                    </h6>
+                    <ul class="nav flex-column mb-2" id="menu_box">
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="zh-example" data-category="CDN 代码引入方式"></div>
+                <div class="zh-example">
+                    &lt;script src="https://unpkg.com/@visactor/vtable/dist/vtable.min.js">&lt;/script>
+                    <br> jslib 中的是 v0.18.4
+                    <p>
+                        教程地址 : <a href="https://visactor.io/vtable/guide/Getting_Started/Getting_Started">
+                            https://visactor.io/vtable/guide/Getting_Started/Getting_Started
+                        </a>
+                    </p>
+                    <p>
+                        表格示例 : <a href="https://visactor.io/vtable/example">https://visactor.io/vtable/example</a>
+                    </p>
+                </div>
+                <div class="zh-example" data-category="简单表格"></div>
+                <div class="zh-example">
+                    <div class="stage">
+                        <div id="table001" style="width: 500px;height:200px;"></div>
+                        <script>
+
+                            const records = [
+                                {
+                                    "1001": "CA-2018-156720",
+                                    "1002": "JM-15580",
+                                    "1003": "Bagged Rubber Bands",
+                                    "1004": "Office Supplies",
+                                },
+                                {
+                                    "1001": "CA-2018-115427",
+                                    "1002": "EB-13975",
+                                    "1003": "GBC Binding covers",
+                                    "1004": "Office Supplies",
+                                },
+                                {
+                                    "1001": "CA-2018-115427",
+                                    "1002": "EB-13975",
+                                    "1003": "Cardinal Slant-D Ring Binder, Heavy Gauge Vinyl",
+                                    "1004": "Office Supplies",
+                                },
+                                {
+                                    "1001": "CA-2018-143259",
+                                    "1002": "PO-18865",
+                                    "1003": "Wilson Jones Legal Size Ring Binders",
+                                    "1004": "Office Supplies",
+                                },
+                                {
+                                    "1001": "CA-2018-143259",
+                                    "1002": "PO-18865",
+                                    "1003": "Gear Head AU3700S Headset",
+                                    "1004": "Technology",
+                                },
+                                
+                            ];
+
+                            const columns = [
+                                {
+                                    "field": "1001",
+                                    "title": "Order ID",
+                                    "width": "auto"
+                                },
+                                {
+                                    "field": "1002",
+                                    "title": "Customer ID",
+                                    "width": "auto"
+                                },
+                                {
+                                    "field": "1003",
+                                    "title": "Product Name",
+                                    "width": "auto"
+                                },
+                                {
+                                    "field": "1004",
+                                    "title": "Category",
+                                    "width": "auto"
+                                }
+                            ];
+
+                            const option = {
+                                records,
+                                columns,
+                                widthMode: 'standard'
+                            };
+
+                            // 创建 VTable 实例
+                            const tableInstance = new VTable.ListTable(document.getElementById("table001"), option);
+
+                        </script>
+                    </div>
+                </div>
+                <div class="zh-example" data-category="Example type 2"></div>
+                <div class="zh-example">
+                    <div class="stage">
+                        demo 002
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+</body>
+<script>
+    /**
+     * .zh-example 块有标题和数据块两种，标题块是有 data-category 属性的， 统一处理。
+     * 数据块每个页面自己处理。   
+     * 对只是查找 .stage 中代码并展示的可以调用 fbase.processCode() 进行统一处理
+     */
+    function processCode(example, index) {
+
+    }
+    // 参数里指定一下语言的类型，现在的模式好像是只支持一种语言的，可以写 html 或 js, 后面可能有 python 之类的，现在还没有。 
+    fbase.initPageContent(fbase.processCode, 'html');
+    feather.replace({ 'aria-hidden': 'true' })
+</script>
+
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang='zh'>
+
+<head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Template</title>
+
+    <link href="css/frame_base.css" rel="stylesheet">
+
+
+    <link href="jslib/bootstrap.min.css" rel="stylesheet">
+    <script src="jslib/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="jslib/prism.css">
+    <script src="jslib/prism.js"></script>
+
+
+    <script src="jslib/feather-4.28.0.min.js"></script>
+    <script src="jslib/jquery-3.5.1.js"></script>
+
+
+    <script src="js/frame_base.js"></script>
+
+    <style>
+        .clear {
+            clear: both;
+        }
+
+        .main {
+            background-color: #e1e1e1;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="main outer01" id="main01" data-display="flex">
+        <div class="inner01">
+
+            <div class="replaceable" data-n="n1"></div>
+
+            <div class="zh-example" data-category="方框上下左右居中"></div>
+            <div class="zh-example">
+
+                <div class="flex-box">
+                    outer 占全屏 flex， 设置横竖都居中。<br>
+                    align-content: center; 垂直居中需要配合 flex-wrap: wrap; 才会生效， 不时 nowrap 就可以。
+                </div>
+                <div class="stage" data-lang="html">
+
+                    <style>
+                        .outer01 {
+                            display: flex;
+                            justify-content: center;
+                            flex-wrap: wrap;
+                            align-content: center;
+                            height: 100%;
+                            background: #e1e1e1;
+                        }
+
+                        .inner01 {
+                            width: 800px;
+                            height: 400px;
+                            background-color: grey;
+                            border-radius: 10px;
+                        }
+                    </style>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main outer02" id="main02" data-display="flex">
+        <div class="inner02">
+
+            <div class="replaceable" data-n="n1"></div>
+
+            <div class="zh-example" data-category="方框上下通天 左右居中。"></div>
+            <div class="zh-example">
+
+                <div class="flex-box">
+                    outer 占全屏 flex， inner 设置居中。<br>
+                </div>
+                <div class="stage" data-lang="html">
+
+                    <style>
+                        .outer02 {
+                            display: flex;
+                            justify-content: center;
+                            flex-wrap: wrap;
+                            align-content: center;
+                            height: 100%;
+                            background: #e1e1e1;
+                        }
+
+                        .inner02 {
+                            width: 800px;
+                            height: 100%;
+                            background-color: grey;
+                            border-radius: 10px;
+                        }
+                    </style>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main outer03" id="main03" data-display="flex">
+        <div class="inner03">
+
+            <div class="replaceable" data-n="n1"></div>
+
+            <div class="zh-example" data-category="方框上下自由 左右居中。"></div>
+            <div class="zh-example">
+
+                <div class="flex-box">
+                    outer 占全屏 flex， inner 设置水平居中。<br>
+                    outer 设置 min-height 100%, 就可以在 inner 增加时随着增大。
+                </div>
+                <button onclick="addItems()">Add items</button>
+                <button onclick="removeItems()">Remove items</button>
+                <div class="box03"></div>
+                <div class="stage" data-lang="html">
+
+                    <style>
+                        .outer03 {
+                            display: flex;
+                            justify-content: center;
+                            background: #e1e1e1;
+                            min-height: 100%;
+                        }
+
+                        .inner03 {
+                            width: 800px;
+                            background-color: grey;
+                            border-radius: 10px;
+                        }
+
+                        .inner03 .item {
+                            width: 100%;
+                            height: 200px;
+                            background-color: aquamarine;
+                            border: solid 1px green;
+                            border-radius: 10px;
+                        }
+                    </style>
+                </div>
+                <script>
+                    function addItems() {
+                        for (let i = 0; i < 10; i++) {
+                            let ele = $("<div class='item'></div>");
+                            $(".box03").append(ele);
+                        }
+                    }
+                    function removeItems() {
+                        $(".box03").html('');
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+    <div style="display: none;" id="buttons">
+        <div id="buttons-inner">
+            <div class="link">
+                <a href="index.html">Back to Index</a>
+            </div>
+            <button onclick="showMainBlock(0)">Show 01</button>
+            <button onclick="showMainBlock(1)">Show 02</button>
+            <button onclick="showMainBlock(2)">Show 03</button>
+        </div>
+        <style>
+            #buttons-inner .link {
+                padding-top: 20px;
+            }
+        </style>
+    </div>
+</body>
+<script>
+
+    function id(idStr) {
+        return document.getElementById(idStr);
+    }
+    function query(selector, callback) {
+        let eles = document.querySelectorAll(selector);
+        if (callback != null) {
+            for (let ele of eles) {
+                callback(ele);
+            }
+        }
+        return eles;
+    }
+    function showMainBlock(index) {
+        query('.main', e => e.style.display = 'none');
+
+        let ele = query('.main')[index];
+        ele.style.display = ele.getAttribute('data-display');
+        let replaceable = ele.querySelector('.replaceable');
+        replaceable.appendChild(id('buttons-inner'));
+    }
+    showMainBlock(0)
+
+    /**
+     * .zh-example 块有标题和数据块两种，标题块是有 data-category 属性的， 统一处理。
+     * 数据块每个页面自己处理。
+     */
+    fbase.initPageContent(fbase.processCode, 'css');
+    feather.replace({ 'aria-hidden': 'true' })
+</script>
+
+</html>
